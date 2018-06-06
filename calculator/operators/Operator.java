@@ -1,3 +1,7 @@
+package operators;
+
+import Evaluator.Operand;
+
 public abstract class Operator {
   // The Operator class should contain an instance of a HashMap
   // This map will use keys as the tokens we're interested in,
