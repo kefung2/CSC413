@@ -6,7 +6,7 @@ public abstract class Operator {
   // The Operator class should contain an instance of a HashMap
   // This map will use keys as the tokens we're interested in,
   // and values will be instances of the Operators.
-
+  // ALL subclasses of operator MUST be in their own file.
   // Example:
   // Where does this declaration go? What should its access level be?
   // Class or instance variable? Is this the right declaration?
