@@ -26,7 +26,7 @@ public class Program {
      *
      * @param program Program object that holds a list of ByteCodes
      */
-    public void resolveAddrs(Program program) {
+    public void resolveAddrs() {
 
     }
 

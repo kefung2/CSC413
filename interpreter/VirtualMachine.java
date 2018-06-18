@@ -5,7 +5,7 @@ import java.util.Stack;
 public class VirtualMachine {
 
     private RunTimeStack runStack;
-    private Stack returnAddrs;
+    private Stack<Integer> returnAddrs;
     private Program program;
     private int pc;
     private boolean isRunning;
