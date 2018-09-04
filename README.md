@@ -1,6 +1,7 @@
-# csc413-p1
+# CSC 413 - Project One
 
-## Please fill in the following before the due date:
- 1. Student Name  :
- 2. Student ID    : 
- 3. Student Email :
+## Student Name  : Name here
+
+## Student ID    : ID here
+
+## Student Email : Email here

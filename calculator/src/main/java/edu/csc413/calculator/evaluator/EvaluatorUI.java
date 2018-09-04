@@ -1,5 +1,4 @@
-package Evaluator;
-
+package edu.csc413.calculator.evaluator;
 
 import javax.swing.*;
 import java.awt.*;
