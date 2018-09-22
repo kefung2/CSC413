@@ -7,6 +7,14 @@
 # BlueJ files
 *.ctxt
 
+#intlij .idea
+.idea
+.idea/*
+out/*
+
+#Netbeans
+nbproject/*
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
