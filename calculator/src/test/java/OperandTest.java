@@ -23,39 +23,13 @@ public class OperandTest {
     }
 
     @Test
-    public void checkValue01Test(){
+    public void checkValueTest(){
         assertTrue(Operand.check("13"));
-    }
-
-    @Test
-    public void checkValue02Test(){
         assertTrue(Operand.check("19"));
-    }
-
-    @Test
-    public void checkValue03Test(){
         assertTrue(Operand.check("465465"));
-    }
-
-    @Test
-    public void checkValue04Test(){
         assertFalse(Operand.check("c"));
-    }
-
-    @Test
-    public void checkValue05Test(){
         assertFalse(Operand.check("3.0"));
-
-    }
-
-    @Test
-    public void checkValue06Test(){
         assertFalse(Operand.check("3."));
-
-    }
-
-    @Test
-    public void checkValue07Test(){
         assertFalse(Operand.check("343324fd"));
     }
 

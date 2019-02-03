@@ -26,9 +26,13 @@ public abstract class Operator {
     /**
      * determines if a given token is a valid operator.
      * please do your best to avoid static checks
+     * for example token.equals("+") and so on.
+     * Think about what happens if we add more operators.
      */
     public static boolean check( String token ) {
         return false;
     }
 
+
+    public static Operator getOperator(String token){return null;}
 }

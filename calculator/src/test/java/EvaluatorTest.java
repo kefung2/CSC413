@@ -91,9 +91,33 @@ public class EvaluatorTest {
         res = ev.eval(exp);
         assertEquals(4,res);
     }
-
     @Test
     void testExpression09(){
+        String exp = "3^2/2 +(4+5)";
+        int res;
+
+        Evaluator ev = new Evaluator();
+        res = ev.eval(exp);
+        assertEquals(13,res);
+    }@Test
+    void testExpression10(){
+        String exp = "3^2 + (2^4) +(4+5)";
+        int res;
+
+        Evaluator ev = new Evaluator();
+        res = ev.eval(exp);
+        assertEquals(34,res);
+    }@Test
+    void testExpression11(){
+        String exp = "3+2-9+8*2 + (3+9-8/2)";
+        int res;
+
+        Evaluator ev = new Evaluator();
+        res = ev.eval(exp);
+        assertEquals(20,res);
+    }
+    @Test
+    void testExpression12(){
         String exp = "2+3-5*((2-3)*2-5*2+3*(2-3-5-5*6)+4/2)*2-9";
         int res;
 

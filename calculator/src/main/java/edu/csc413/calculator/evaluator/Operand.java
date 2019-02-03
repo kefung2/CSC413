@@ -1,7 +1,7 @@
 package edu.csc413.calculator.evaluator;
 /**
  * Operand class used to represent an operand
- * in a valid mathmetical expression.
+ * in a valid mathematical expression.
  */
 public class Operand {
   /**
