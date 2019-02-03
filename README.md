@@ -13,7 +13,7 @@
 ### InteliJ
 In order to use the Unit tests given you will need to let intelij know where to find the needed jars. (jars are just java version of an archived folder or zip file.). 
 
-Intelij will actually find these for you imporiting the project.
+Intelij will actually find these jars for you while imporiting the project.
 
 If for some reason it does not, you can add the jars in the following way:
 
