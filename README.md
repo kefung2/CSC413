@@ -6,7 +6,7 @@
 
 ## Student Email : Email here
 
-### Note failure to completely fill out this README.md could cause you to recieve a  0 for your grade until correctly done
+### Note failure to completely fill out this README.md could cause you to recieve a  0 for your project until correctly done
 
 ## Adding the JUnit 5 Jars to your project.
 
@@ -18,7 +18,6 @@ Intelij will actually find these for you imporiting the project.
 If for some reason it does not, you can add the jars in the following way:
 
 1. Complete the process for "create project from existing resources"
-
 2. Then go to File -> Project Structure.
 3. Inside project Structure select the "Libraries" tab on the left.
 4. You will see a "+" symbol near the top of the window. CLick this symbol.
