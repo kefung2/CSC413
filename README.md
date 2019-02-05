@@ -1,10 +1,10 @@
 # CSC 413 - Project One
 
-## Student Name  : Name here
+## Student Name  : Kevin Fung
 
-## Student ID    : ID here
+## Student ID    : 915857298
 
-## Student Email : Email here
+## Student Email : kfung5@mail.sfsu.edu
 
 ### Note failure to completely fill out this README.md could cause you to recieve a  0 for your project until correctly done
 
