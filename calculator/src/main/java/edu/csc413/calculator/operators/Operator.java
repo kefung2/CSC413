@@ -17,7 +17,13 @@ public abstract class Operator {
     // HashMap operators = new HashMap();
     // operators.put( "+", new AdditionOperator() );
     // operators.put( "-", new SubtractionOperator() );
-    
+
+    /*
+    * created hashmap outside
+    *
+    * static();
+    *
+    * */
     
     public abstract int priority();
     public abstract Operand execute(Operand op1, Operand op2 );
