@@ -18,12 +18,22 @@ public abstract class Operator {
     // operators.put( "+", new AdditionOperator() );
     // operators.put( "-", new SubtractionOperator() );
 
-    /*
+    /**
     * created hashmap outside
     *
     * static();
     *
-    * */
+    */
+
+    static HashMap operators = new HashMap();
+
+    static {
+        operators.put( "+", new AddOperator());
+        operators.put( "-", new SubtractOperator());
+        operators.put( "*", new MultipyOperator());
+        operators.put( "/", new DivideOperator());
+        operators.put( "^", new PowerOperator());
+    };
     
     public abstract int priority();
     public abstract Operand execute(Operand op1, Operand op2 );
