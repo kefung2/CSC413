@@ -45,11 +45,25 @@ public class Evaluator {
           }
 
 
+
           // TODO Operator is abstract - these two lines will need to be fixed:
           // The Operator class should contain an instance of a HashMap,
           // and values will be instances of the Operators.  See Operator class
           // skeleton for an example.
-          Operator newOperator = new Operator();
+
+          Operator newOperator = new Operator() {
+            @Override
+            public int priority() {
+              return 0;
+            }
+
+            @Override
+            public Operand execute(Operand op1, Operand op2) {
+              return null;
+            }
+          };
+
+
           
           while (operatorStack.peek().priority() >= newOperator.priority() ) {
             // note that when we eval the expression 1 - 2 we will

@@ -30,7 +30,7 @@ public abstract class Operator {
     static {
         operators.put( "+", new AddOperator());
         operators.put( "-", new SubtractOperator());
-        operators.put( "*", new MultipyOperator());
+        operators.put( "*", new MultiplyOperator());
         operators.put( "/", new DivideOperator());
         operators.put( "^", new PowerOperator());
     };
@@ -46,9 +46,11 @@ public abstract class Operator {
      * Think about what happens if we add more operators.
      */
     public static boolean check( String token ) {
-        return false;
+        //if key match w/ one the the key in hashmap return TRUE o/w FALSE
+        return operators.containsKey(token);
     }
 
 
-    public static Operator getOperator(String token){return null;}
+    public static Operator getOperator(String token){
+        return (Operator) operators.get(token);}
 }

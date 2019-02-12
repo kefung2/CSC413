@@ -2,7 +2,7 @@ package edu.csc413.calculator.operators;
 
 import edu.csc413.calculator.evaluator.Operand;
 
-public class MultipyOperator extends Operator {
+public class MultiplyOperator extends Operator {
 
     @Override
     public int priority(){
