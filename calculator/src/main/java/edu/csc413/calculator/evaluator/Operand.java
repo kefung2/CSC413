@@ -32,11 +32,9 @@ public class Operand {
   public static boolean check( String token ) {
     try {
       Integer.parseInt(token);
+      return true;
     } catch (NumberFormatException e){
       return false;
     }
-      return true;
-
-
   }
 }

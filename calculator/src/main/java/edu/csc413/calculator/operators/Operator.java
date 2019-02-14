@@ -25,7 +25,7 @@ public abstract class Operator {
     *
     */
 
-    static HashMap operators = new HashMap();
+    private static HashMap operators = new HashMap();
 
     static {
         operators.put( "+", new AddOperator());
@@ -33,6 +33,8 @@ public abstract class Operator {
         operators.put( "*", new MultiplyOperator());
         operators.put( "/", new DivideOperator());
         operators.put( "^", new PowerOperator());
+        operators.put("(", new OpenPrenOperator());
+        operators.put(")", new ClosePrenOperator());
     };
     
     public abstract int priority();

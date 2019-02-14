@@ -12,7 +12,10 @@ public class PowerOperator extends Operator{
 
     @Override
     public Operand execute(Operand op1, Operand op2) {
-        return null;
+
+        int total = (int) Math.pow(op1.getValue(), op2.getValue());
+        Operand result = new Operand(total);
+        return result;
     }
 
 }
