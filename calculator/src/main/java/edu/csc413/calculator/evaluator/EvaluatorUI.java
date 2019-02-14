@@ -14,8 +14,8 @@ public class EvaluatorUI extends JFrame implements ActionListener {
     // numbered from left to right, top to bottom
     // bText[] array contains the text for corresponding buttons
     private static final String[] bText = {
-        "7", "8", "9", "+", "4", "5", "6", "- ", "1", "2", "3",
-        "*", "0", "^", "=", "/", "(", ")", "C", "CE"
+            "7", "8", "9", "+", "4", "5", "6", "- ", "1", "2", "3",
+            "*", "0", "^", "=", "/", "(", ")", "C", "CE"
     };
 
     /**
@@ -66,5 +66,33 @@ public class EvaluatorUI extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent arg0) {
         // You need to fill in this fuction
+        // = to call eval to do the math
+        // CE to clear everything
+        // C for clear the latest char in the string
+
+        String str = arg0.getActionCommand();
+        if (arg0.getActionCommand() == "=") {
+            Evaluator calc = new Evaluator();
+            String eq = txField.getText();
+            if (eq.length() > 0) {
+                int answer = calc.eval(eq);
+                String displayAnswer = Integer.toString(answer);
+                txField.setText(displayAnswer);
+            } else {
+                txField.setText("");
+            }
+        } else if (arg0.getActionCommand() == "C") {
+
+            String text = txField.getText();
+            if (text.length() > 0) {
+                txField.setText(text = text.substring(0, text.length() - 1));
+            } else {
+                txField.setText("");
+            }
+        } else if (arg0.getActionCommand() == "CE") {
+            txField.setText("");
+        } else {
+            txField.setText(txField.getText() + str); //
+        }
     }
 }
