@@ -71,13 +71,17 @@ public class EvaluatorUI extends JFrame implements ActionListener {
         // C for clear the latest char in the string
 
         String str = arg0.getActionCommand();
+        //String displayAnswer = null;
+        //boolean reset = false;
+
         if (arg0.getActionCommand() == "=") {
             Evaluator calc = new Evaluator();
             String eq = txField.getText();
-            if (eq.length() > 0) {
+            if (eq.length() > 0) {  // prevent error from pressing = in the beginning
                 int answer = calc.eval(eq);
                 String displayAnswer = Integer.toString(answer);
                 txField.setText(displayAnswer);
+                //reset = true;
             } else {
                 txField.setText("");
             }
@@ -91,8 +95,20 @@ public class EvaluatorUI extends JFrame implements ActionListener {
             }
         } else if (arg0.getActionCommand() == "CE") {
             txField.setText("");
-        } else {
+        } else{
             txField.setText(txField.getText() + str); //
+        }/**
+        if(reset){
+            if()
+            txField.setText("");
+            reset = false;
         }
+         */
+
     }
 }
+/** reset code
+if(txField.getText() == displayAnswer){
+        txField.setText("");
+        }else
+ */
