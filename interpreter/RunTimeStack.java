@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class RunTimeStack {
 
-    private ArrayList runTimeStack;
+    private ArrayList<Integer> runTimeStack;
     private Stack<Integer> framePointer;
 
     public RunTimeStack() {
