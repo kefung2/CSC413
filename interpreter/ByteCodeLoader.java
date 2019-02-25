@@ -4,6 +4,8 @@ package interpreter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 
 public class ByteCodeLoader extends Object {
@@ -28,6 +30,30 @@ public class ByteCodeLoader extends Object {
      *      the newly created ByteCode instance via the init function.
      */
     public Program loadCodes() {
-       return null;
+        //String codeLine;
+        StringTokenizer tokenizer;
+        Program program = new Program();
+        ArrayList <String> argumentList = new ArrayList<>();
+
+        try {
+            //codeLine = byteSource.readLine();
+            tokenizer = new StringTokenizer(byteSource.readLine());
+        } catch (IOException e) {
+            System.out.println("No line find");
+            System.exit(-1);
+        }
+
+        while (tokenizer != null) {
+
+            String codeName = CodeTable.getClassName(tokenizer.nextToken());
+
+            while (tokenizer.hasMoreTokens()) {
+
+
+            }
+
+
+            return program;
+        }
     }
 }
