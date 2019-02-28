@@ -14,6 +14,6 @@ public class HaltCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine VM) {
-
+        VM.setRunning();
     }
 }

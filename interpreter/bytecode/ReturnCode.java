@@ -12,6 +12,6 @@ public class ReturnCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine VM) {
-
+        VM.setPc(VM.getReturnAddrs());
     }
 }

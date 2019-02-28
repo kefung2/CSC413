@@ -7,7 +7,7 @@ import java.util.Stack;
 public class VirtualMachine {
 
     private RunTimeStack runStack;
-    private Stack returnAddrs;
+    private Stack<Integer> returnAddrs;
     private Program program;
     private int pc;
     private boolean isRunning;
@@ -16,6 +16,7 @@ public class VirtualMachine {
         this.program = program;
     }
 
+    //sample base function given
     public void executeProgram(){
         pc = 0;
         runStack = new RunTimeStack();
@@ -29,4 +30,19 @@ public class VirtualMachine {
         }
     }
 
+    public RunTimeStack getRunStack() {
+        return runStack;
+    }
+
+    public void setRunning(){
+        isRunning = false;
+    }
+
+    public void setPc(int pc) {
+        this.pc = pc;
+    }
+
+    public int getReturnAddrs(){
+        return returnAddrs.pop();
+    }
 }
