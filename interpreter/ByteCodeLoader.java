@@ -1,6 +1,8 @@
 
 package interpreter;
 
+import interpreter.bytecode.ByteCode;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -31,29 +33,53 @@ public class ByteCodeLoader extends Object {
      */
     public Program loadCodes() {
         //String codeLine;
-        StringTokenizer tokenizer;
+        StringTokenizer tokenizer = null;
         Program program = new Program();
-        ArrayList <String> argumentList = new ArrayList<>();
+        ArrayList<String> argumentList = new ArrayList<>();
 
         try {
-            //codeLine = byteSource.readLine();
+            // read file
             tokenizer = new StringTokenizer(byteSource.readLine());
         } catch (IOException e) {
             System.out.println("No line find");
-            System.exit(-1);
+            //System.exit(-1);
         }
-
+        //while the file is not empty
         while (tokenizer != null) {
-
+            //getting the code part of the string
             String codeName = CodeTable.getClassName(tokenizer.nextToken());
 
-            while (tokenizer.hasMoreTokens()) {
+            try {
+                //building instance of bytecode
+                ByteCode byteCode = (ByteCode) (Class.forName("interpreter.bytecode." + codeName).newInstance());
 
+                while (tokenizer.hasMoreTokens()) {
+                    // read any additional argument from the given bytecode if any
+                    argumentList.add(tokenizer.nextToken());
+                }
+                //pass argument into bytecode's init function
+                byteCode.init(argumentList);
+                //Store initialized bytecode instance into program
+                program.setByte(byteCode);
 
+            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+                e.printStackTrace();
             }
 
-
-            return program;
+            try {
+                //get more line from file
+                tokenizer = new StringTokenizer(byteSource.readLine());
+            } catch (IOException e) {
+                System.out.println("No line find");
+                //System.exit(-1);
+            } catch (NullPointerException n){
+                //if file is empty, set token to null to end loop
+                tokenizer = null;
+            }
         }
+        //resolve all symbolic addresses
+        program.resolveAddrs();
+        return program;
+
     }
 }

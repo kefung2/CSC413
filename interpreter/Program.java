@@ -1,5 +1,7 @@
 package interpreter;
 
+import interpreter.bytecode.ByteCode;
+
 import java.util.ArrayList;
 
 public class Program {
@@ -16,6 +18,10 @@ public class Program {
 
     public int getSize() {
         return this.program.size();
+    }
+
+    public void setByte(ByteCode bytecode){
+        this.program.add(bytecode);
     }
 
     /**
