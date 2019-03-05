@@ -33,6 +33,8 @@ public class ByteCodeLoader extends Object {
      */
     public Program loadCodes() {
         //String codeLine;
+        //System.out.println("Im in and loading boyz!");
+
         StringTokenizer tokenizer = null;
         Program program = new Program();
         ArrayList<String> argumentList = new ArrayList<>();
@@ -78,7 +80,7 @@ public class ByteCodeLoader extends Object {
             }
         }
         //resolve all symbolic addresses
-        program.resolveAddrs();
+        program.resolveAddrs(program);
         return program;
 
     }

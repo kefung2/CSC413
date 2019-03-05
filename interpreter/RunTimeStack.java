@@ -17,7 +17,7 @@ public class RunTimeStack {
     }
 
     public void dump(){
-
+        System.out.println(" ");
     }
 
     public int peek(){
@@ -32,22 +32,34 @@ public class RunTimeStack {
     }
 
     public void newFrameAt(int offset){
-
+        framePointer.push(runTimeStack.size() - offset);
     }
 
     public void popFrame(){
+        int val = peek();
+        int frame = framePointer.pop();
+        while(runTimeStack.size() >= frame){
+            pop();
+        }
 
+        push(val);
     }
 
     public int store (int offset){
-        return 0;
+        int val = pop();
+        //runTimeStack.add(framePointer.peek() - offset);
+
+        return val;
     }
 
     public int load (int offset){
-        return 0;
+        int val = runTimeStack.get(framePointer.peek() - offset);
+        push(val);
+        return val;
     }
 
     public Integer push(Integer val){
+        runTimeStack.add(val);
         return 0;
     }
 }

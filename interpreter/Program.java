@@ -1,6 +1,9 @@
 package interpreter;
 
 import interpreter.bytecode.ByteCode;
+import interpreter.bytecode.CallCode;
+import interpreter.bytecode.FalseBranchCode;
+import interpreter.bytecode.GotoCode;
 
 import java.util.ArrayList;
 
@@ -21,7 +24,18 @@ public class Program {
     }
 
     public void setByte(ByteCode bytecode){
+
+        /**
+         * add code here
+         * Check for Label
+         *
+         * if(byteCOde instanceof LabelCode){
+         *     //somehow map the label the the statement
+         * }
+         */
+
         this.program.add(bytecode);
+
     }
 
     /**
@@ -30,11 +44,17 @@ public class Program {
      * correct addresses so the VirtualMachine knows what to set the Program Counter(PC)
      * HINT: make note what type of data-stucture bytecodes are stored in.
      *
-     * //@param program Program object that holds a list of ByteCodes
+     * @param program Program object that holds a list of ByteCodes
      */
-    public void resolveAddrs() {
+    public void resolveAddrs(Program program) {
+        for(ByteCode byteCode : program.program){
 
+            if(byteCode instanceof GotoCode || byteCode instanceof FalseBranchCode || byteCode instanceof CallCode){
+
+            }
+        }
     }
+
 
 
 

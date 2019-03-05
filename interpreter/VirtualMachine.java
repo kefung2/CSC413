@@ -11,6 +11,7 @@ public class VirtualMachine {
     private Program program;
     private int pc;
     private boolean isRunning;
+    private boolean isDumping = false;
 
     protected VirtualMachine(Program program) {
         this.program = program;
@@ -25,7 +26,9 @@ public class VirtualMachine {
         while (isRunning){
             ByteCode code = program.getCode(pc);
             code.execute(this);
-            //runStack.dump(); // Used to dump runstack state
+             if(isDumping) {
+                runStack.dump(); // Used to dump runstack state
+              }
             pc++;
         }
     }
@@ -44,5 +47,9 @@ public class VirtualMachine {
 
     public int getReturnAddrs(){
         return returnAddrs.pop();
+    }
+
+    public void setDumping (boolean dumpState) {
+        isDumping = dumpState;
     }
 }
