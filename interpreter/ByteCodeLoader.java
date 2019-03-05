@@ -34,6 +34,7 @@ public class ByteCodeLoader extends Object {
     public Program loadCodes() {
         //String codeLine;
         //System.out.println("Im in and loading boyz!");
+        int LineNo=0;
 
         StringTokenizer tokenizer = null;
         Program program = new Program();
@@ -42,12 +43,16 @@ public class ByteCodeLoader extends Object {
         try {
             // read file
             tokenizer = new StringTokenizer(byteSource.readLine());
+            LineNo++;
+            System.out.println(LineNo);
         } catch (IOException e) {
             System.out.println("No line find");
             //System.exit(-1);
         }
         //while the file is not empty
         while (tokenizer != null) {
+
+            argumentList.clear();
             //getting the code part of the string
             String codeName = CodeTable.getClassName(tokenizer.nextToken());
 
@@ -71,6 +76,8 @@ public class ByteCodeLoader extends Object {
             try {
                 //get more line from file
                 tokenizer = new StringTokenizer(byteSource.readLine());
+                LineNo++;
+                System.out.println(LineNo);
             } catch (IOException e) {
                 System.out.println("No line find");
                 //System.exit(-1);

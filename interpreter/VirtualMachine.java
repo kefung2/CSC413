@@ -46,6 +46,10 @@ public class VirtualMachine {
     }
 
     public int getReturnAddrs(){
+        if (returnAddrs.isEmpty()){
+            System.out.println("Empty Stack");
+            System.exit(-1);
+        }
         return returnAddrs.pop();
     }
 

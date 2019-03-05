@@ -12,9 +12,8 @@ public class LoadCode extends ByteCode {
     @Override
     public void init(ArrayList args) {
         n = Integer.parseInt((String) args.get(0));
-        if(args.size() == 2){
-            id = (String) args.get(0);
-        }
+        id = (String) args.get(1);
+
     }
 
     @Override
