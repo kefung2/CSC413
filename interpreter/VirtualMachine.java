@@ -53,6 +53,10 @@ public class VirtualMachine {
         return returnAddrs.pop();
     }
 
+    public void setReturnAddrs(){
+        returnAddrs.push(pc);
+    }
+
     public void setDumping (boolean dumpState) {
         isDumping = dumpState;
     }
