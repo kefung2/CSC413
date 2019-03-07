@@ -6,6 +6,7 @@ import interpreter.bytecode.ByteCode;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -58,7 +59,8 @@ public class ByteCodeLoader extends Object {
 
             try {
                 //building instance of bytecode
-                ByteCode byteCode = (ByteCode) (Class.forName("interpreter.bytecode." + codeName).newInstance());
+                ByteCode byteCode = (ByteCode) (Class.forName("interpreter.bytecode." + codeName).getDeclaredConstructor().newInstance());
+
 
                 while (tokenizer.hasMoreTokens()) {
                     // read any additional argument from the given bytecode if any
@@ -69,7 +71,7 @@ public class ByteCodeLoader extends Object {
                 //Store initialized bytecode instance into program
                 program.setByte(byteCode);
 
-            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
                 e.printStackTrace();
             }
 

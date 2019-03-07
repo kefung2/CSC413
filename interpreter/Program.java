@@ -47,12 +47,15 @@ public class Program {
      * @param program Program object that holds a list of ByteCodes
      */
     public void resolveAddrs(Program program) {
-        for(ByteCode byteCode : program.program){
+        /**
+         * for(ByteCode byteCode : program.program){
+         *
+         *      if(byteCode instanceof GotoCode || byteCode instanceof FalseBranchCode || byteCode instanceof CallCode){
+         *
+         *     }
+         * }
+         */
 
-            if(byteCode instanceof GotoCode || byteCode instanceof FalseBranchCode || byteCode instanceof CallCode){
-
-            }
-        }
     }
 
 

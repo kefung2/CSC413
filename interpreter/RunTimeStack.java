@@ -17,7 +17,7 @@ public class RunTimeStack {
     }
 
     public void dump(){
-        System.out.println(" ");
+        System.out.println(" "); // dump code, to be implement
     }
 
     public int peek(){
@@ -53,13 +53,13 @@ public class RunTimeStack {
     }
 
     public int load (int offset){
-        int val = runTimeStack.get(framePointer.peek() - offset);
-        push(val);
+        int val = runTimeStack.get(framePointer.peek() - offset); // load the value at offset
+        runTimeStack.add(val);  // add the RTS
         return val;
     }
 
     public Integer push(Integer val){
-        runTimeStack.add(val);
+        runTimeStack.add(val); //Add to RTS
         return 0;
     }
 }

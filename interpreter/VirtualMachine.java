@@ -46,10 +46,12 @@ public class VirtualMachine {
     }
 
     public int getReturnAddrs(){
+        //This if statement is for exit instead of crash error exit
         if (returnAddrs.isEmpty()){
             System.out.println("Empty Stack");
             System.exit(-1);
         }
+
         return returnAddrs.pop();
     }
 
