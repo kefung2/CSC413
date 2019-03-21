@@ -2,8 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="154aebbe-7d20-4e50-8a45-0439df61dbca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/TankWarsGame/TankGameMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TankWarsGame/TankWarsGame/TankGameMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TankWarsGame/TankGameMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TankWarsGame/TankGameMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TankGame/DrawPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TankGame/GameObj/GameObj.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TankGame/TankWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TankWarsGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TankWarsGame.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Background.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Bouncing.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Explosion_large.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Explosion_large.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Explosion_small.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Explosion_small.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Music.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Music.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Pickup.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Rocket.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Shell.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Shield1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Shield2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Tank1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Tank2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Title.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Wall1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Wall2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/Weapon.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/Resource/icon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankWarsGame/TankWarsGame/TankGameMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Background.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Background.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Bouncing.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Bouncing.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Explosion_large.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Explosion_large.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Explosion_large.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Explosion_large.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Explosion_small.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Explosion_small.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Explosion_small.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Explosion_small.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Music.mid" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Music.mid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Music.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Music.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Pickup.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Pickup.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Rocket.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Rocket.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Shell.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Shell.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Shield1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Shield1.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Shield2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Shield2.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Tank1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Tank1.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Tank2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Tank2.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Title.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Title.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Wall1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Wall1.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Wall2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Wall2.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/Weapon.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Weapon.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resource/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/icon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TankWarsGame/TankGameMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TankGame/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TankWarsGame/Tanks.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,16 +61,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/TankWarsGame/TankGameMain.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TankGame/Launcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TankGame/GameObj/GameObj.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TankGame/TankWorld.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2416#2417#0" expanded="true" />
+                <element signature="e#2438#2439#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/TankGame/DrawPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="78" column="32" lean-forward="true" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -32,6 +124,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/TankWarsGame/TankGameMain.java" />
+        <option value="$PROJECT_DIR$/src/TankWarsGame/Tanks.java" />
+        <option value="$PROJECT_DIR$/src/Launcher.java" />
+        <option value="$PROJECT_DIR$/src/TankWorld.java" />
+        <option value="$PROJECT_DIR$/src/TankGame/GameObj/GameObj.java" />
+        <option value="$PROJECT_DIR$/src/TankGame/Launcher.java" />
+        <option value="$PROJECT_DIR$/src/TankGame/TankWorld.java" />
+        <option value="$PROJECT_DIR$/src/TankGame/DrawPanel.java" />
       </list>
     </option>
   </component>
@@ -42,17 +141,20 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
+    <option name="x" value="-8" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -63,13 +165,25 @@
             <path>
               <item name="TankWarsGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="TankWarsGame" type="462c0819:PsiDirectoryNode" />
+              <item name="Resource" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TankWarsGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TankWarsGame" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TankWarsGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="TankWarsGame" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="TankGame" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TankWarsGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="TankWarsGame" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="TankGame" type="462c0819:PsiDirectoryNode" />
+              <item name="GameObj" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -80,12 +194,17 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552450781430" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ASMT01/csc413-p1-kefung2/calculator" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553137687447" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../TankRotationExample-20190312" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kevin\Desktop\CSC413\ASMT03\csc413-tankgame-kefung2\TankWarsGame" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -100,12 +219,12 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="TankGameMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TankWarsGame.TankGameMain" />
+    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TankGame.Launcher" />
       <module name="TankWarsGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="TankWarsGame.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,7 +234,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TankGameMain" />
+        <item itemvalue="Application.Launcher" />
       </list>
     </recent_temporary>
   </component>
@@ -131,35 +250,47 @@
       <updated>1552449379897</updated>
       <workItem from="1552449382970" duration="1118000" />
       <workItem from="1552450537394" duration="276000" />
+      <workItem from="1552451362472" duration="395000" />
+      <workItem from="1553115088069" duration="19917000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1394000" />
+    <option name="totallyTimeSpent" value="21706000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="UI Designer" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.25302014" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.09261745" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="1" weight="0.3286119" />
       <window_info anchor="bottom" id="Terminal" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
-      <window_info anchor="bottom" id="Run" order="7" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.33144477" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3286119" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="bottom" id="TODO" order="12" weight="0.3286119" />
       <window_info anchor="right" id="Theme Preview" order="0" />
       <window_info anchor="right" id="Database" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
@@ -170,15 +301,85 @@
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Designer" order="0" />
+      <window_info id="UI Designer" order="1" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.09261745" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="2" weight="0.3286119" />
+      <window_info anchor="bottom" id="Database Changes" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info anchor="bottom" id="Find" order="6" />
+      <window_info anchor="bottom" id="Run" order="7" visible="true" weight="0.33144477" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3286119" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="12" weight="0.3286119" />
+      <window_info anchor="right" id="Theme Preview" order="0" />
+      <window_info anchor="right" id="Database" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/TankWarsGame/TankGameMain.java">
+    <entry file="file://$PROJECT_DIR$/src/TankWarsGame/Tanks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TankGame/GameObj/GameObj.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TankGame/Launcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TankGame/TankWorld.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2416#2417#0" expanded="true" />
+            <element signature="e#2438#2439#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TankGame/DrawPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="78" column="32" lean-forward="true" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -239,6 +440,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
