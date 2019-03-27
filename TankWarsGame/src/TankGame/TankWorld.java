@@ -1,5 +1,7 @@
 package TankGame;
 
+import TankGame.GameObj.Tank;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -16,8 +18,8 @@ public class TankWorld extends JComponent {
     private String Title = "Tank Warz";
     private int frameWidth = 800;
     private int frameHeight = 822;
-    private int mapWidth = 1600;
-    private int mapHeigth = 1600;
+    private int mapWidth = 1600; //1024
+    private int mapHeigth = 1600; //768
 
     //resource
     private String bg;
@@ -44,6 +46,7 @@ public class TankWorld extends JComponent {
         this.drawPanel = new DrawPanel(mapWidth,mapHeigth,frameWidth,frameHeight,bg);
 
         setFrame();
+        playerSetup();
 
     }
 
@@ -102,18 +105,33 @@ public class TankWorld extends JComponent {
 
         frame.setVisible(true);
     }
+
     public void renderBG(){
 
     }
 
     public void playerSetup(){
+        BufferedImage p1tankImg = stringToBuffer(p1tank);
+        BufferedImage p2tankImg = stringToBuffer(p2tank);
 
+        Tank p1 = new Tank(this, p1tankImg, 100,100, 2, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER);
+        Tank p2 = new Tank(this, p2tankImg, 1500,1500, 2, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T);
+        this.drawPanel.setTank(p1, p2);
     }
 
     public void startGame(){
         init();
     }
 
+    public BufferedImage stringToBuffer(String path){
+        BufferedImage img = null;
+        try{
+            img = ImageIO.read(new File(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        return img;
+    }
 
 }

@@ -1,5 +1,7 @@
 package TankGame;
 
+import TankGame.GameObj.Tank;
+
 import javax.swing.JPanel;
 
 import java.awt.*;
@@ -19,6 +21,7 @@ public class DrawPanel extends JPanel {
     private int mapHeight;
     private int minimapWidht;
     private int minimapHeight;
+    private Tank tank1, tank2;
 
     BufferedImage p1, p2;
 
@@ -35,6 +38,7 @@ public class DrawPanel extends JPanel {
         mapHeight = mHeight;
         mapWidth = mWidth;
         setSize(mapWidth,mapHeight);
+        //setPreferredSize(new Dimension(fWidth,fHeight));
         this.bg = setImage(imgPath);
 
     }
@@ -62,12 +66,21 @@ public class DrawPanel extends JPanel {
         }
     }
 
+    public void drawTank(Graphics2D g){
+        Graphics2D gt = (Graphics2D) g;
+
+        this.tank1.draw(gt);
+        this.tank2.draw(gt);
+    }
+
 
     public void getGameImage(){
         BufferedImage bimg = new BufferedImage(mapWidth, mapHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = bimg.createGraphics();
 
         drawBG(g2);
+        drawTank(g2);
+        drawTank(g2);
 
         p1 = bimg.getSubimage(p1X, p1Y,frameWidth/2, frameHeight);
         p2 = bimg.getSubimage(p2X, p2Y,frameWidth, frameHeight);
@@ -83,6 +96,11 @@ public class DrawPanel extends JPanel {
         }
 
         return img;
+    }
+
+    public void setTank(Tank tank1, Tank tank2){
+        this.tank1 = tank1;
+        this.tank2 = tank2;
     }
 
 
