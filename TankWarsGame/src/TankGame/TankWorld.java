@@ -1,6 +1,7 @@
 package TankGame;
 
 import TankGame.GameObj.Tank;
+import TankGame.TankKey;
 
 import java.awt.*;
 import java.io.File;
@@ -36,6 +37,10 @@ public class TankWorld extends JComponent {
     //Draw
     private DrawPanel drawPanel;
 
+    //
+    private static Tank p1, p2;
+    private TankKey p1Key, p2Key;
+
 /******************************************************************************************/
     public void TankWorld(){
         //setMap();
@@ -45,8 +50,10 @@ public class TankWorld extends JComponent {
         setUpResourcePath();
         this.drawPanel = new DrawPanel(mapWidth,mapHeigth,frameWidth,frameHeight,bg);
 
-        setFrame();
         playerSetup();
+
+        setFrame();
+        //playerSetup();
 
     }
 
@@ -102,6 +109,8 @@ public class TankWorld extends JComponent {
         frame.setResizable(false);
         //frame.setLocationByPlatform(true);
         frame.setLocationRelativeTo(null);
+        frame.addKeyListener(p1Key);
+        frame.addKeyListener(p2Key);
 
         frame.setVisible(true);
     }
@@ -114,13 +123,30 @@ public class TankWorld extends JComponent {
         BufferedImage p1tankImg = stringToBuffer(p1tank);
         BufferedImage p2tankImg = stringToBuffer(p2tank);
 
-        Tank p1 = new Tank(this, p1tankImg, 100,100, 2, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER);
-        Tank p2 = new Tank(this, p2tankImg, 1500,1500, 2, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T);
+        p1 = new Tank(this, p1tankImg, 100,100, 2/**, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER*/);
+        p2 = new Tank(this, p2tankImg, 1500,1500, 2/**, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T*/);
+
+        p1Key = new TankKey(p1, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T);
+        p2Key = new TankKey(p2, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER);
+
+        p1.setOtherTank(p2);
+        p2.setOtherTank(p1);
+
         this.drawPanel.setTank(p1, p2);
     }
 
     public void startGame(){
         init();
+        try {
+            while(true) {
+                this.p1.update();
+                this.p2.update();
+                this.drawPanel.repaint();
+                Thread.sleep(1000/144);
+            }
+        } catch (InterruptedException ignored) {
+
+        }
     }
 
     public BufferedImage stringToBuffer(String path){
@@ -128,10 +154,23 @@ public class TankWorld extends JComponent {
         try{
             img = ImageIO.read(new File(path));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Image not found");
         }
-
         return img;
+    }
+
+    public static Tank getTank(int i){
+        switch (i){
+            case 1:
+                return p1;
+                //break;
+            case 2:
+                return p2;
+                //break;
+            default:
+                return null;
+
+        }
     }
 
 }

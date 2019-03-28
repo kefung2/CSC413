@@ -1,17 +1,24 @@
 package TankGame.GameObj;
 
+import java.awt.Image;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
-public abstract class GameObj {
+import javax.swing.JComponent;
+
+public abstract class GameObj extends JComponent{
 
     private BufferedImage img;
-    private int speed;
+    public int x;
+    public int y;
+
 
     public GameObj(){}
 
-    public GameObj (BufferedImage img, int speed){
+    public GameObj (int x, int y, BufferedImage img){
         this.img = img;
-        this.speed = speed;
+        this.x = x;
+        this.y = y;
     }
 
 }

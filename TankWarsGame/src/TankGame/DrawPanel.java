@@ -62,15 +62,8 @@ public class DrawPanel extends JPanel {
     public void drawBG(Graphics2D g2){
         for(int i = 0; i < 6; i++) {
             for(int j = 0; j < 8; j++)
-                g2.drawImage(bg, bg.getWidth(), bg.getHeight(), this);
+                g2.drawImage(bg, bg.getWidth()*i, bg.getHeight()*j, this);
         }
-    }
-
-    public void drawTank(Graphics2D g){
-        Graphics2D gt = (Graphics2D) g;
-
-        this.tank1.draw(gt);
-        this.tank2.draw(gt);
     }
 
 
@@ -80,12 +73,22 @@ public class DrawPanel extends JPanel {
 
         drawBG(g2);
         drawTank(g2);
-        drawTank(g2);
+        //drawTank(g2);
 
-        p1 = bimg.getSubimage(p1X, p1Y,frameWidth/2, frameHeight);
-        p2 = bimg.getSubimage(p2X, p2Y,frameWidth, frameHeight);
+        playerViewBoundChecker();
+        p1 = bimg.getSubimage(this.p1X, this.p1Y,frameWidth/2, frameHeight);
+        p2 = bimg.getSubimage(this.p2X, this.p2Y,frameWidth/2, frameHeight);
 
     }
+
+
+    public void drawTank(Graphics2D g){
+        //Graphics2D gt = (Graphics2D) g;
+
+        this.tank1.draw(g);
+        this.tank2.draw(g);
+    }
+
 
     public BufferedImage setImage(String path){
         BufferedImage img = null;
@@ -103,5 +106,31 @@ public class DrawPanel extends JPanel {
         this.tank2 = tank2;
     }
 
+    //CREDIT
+    private void playerViewBoundChecker() {
+        if ((this.p1X = tank1.getTankCenterX() - frameWidth / 4) < 0) {
+            this.p1X = 0;
+        } else if (this.p1X >= mapWidth - frameWidth / 2) {
+            this.p1X = (mapWidth - frameWidth / 2);
+        }
+
+        if ((this.p1Y = tank1.getTankCenterY() - frameHeight / 2) < 0) {
+            this.p1Y = 0;
+        } else if (this.p1Y >= mapHeight - frameHeight) {
+            this.p1Y = (mapHeight - frameHeight);
+        }
+
+        if ((this.p2X = tank2.getTankCenterX() - frameWidth / 4) < 0) {
+            this.p2X = 0;
+        } else if (this.p2X >= mapWidth - frameWidth / 2) {
+            this.p2X = (mapWidth - frameWidth / 2);
+        }
+
+        if ((this.p2Y = tank2.getTankCenterY() - frameHeight / 2) < 0) {
+            this.p2Y = 0;
+        } else if (this.p2Y >= mapHeight - frameHeight) {
+            this.p2Y = (mapHeight - frameHeight);
+        }
+    }
 
 }
