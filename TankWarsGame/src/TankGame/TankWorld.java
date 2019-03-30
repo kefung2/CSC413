@@ -1,6 +1,7 @@
 package TankGame;
 
 import TankGame.GameObj.Tank;
+import TankGame.GameObj.UnBreakableWall;
 import TankGame.TankKey;
 
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.io.IOException;
 
 import java.awt.image.BufferedImage;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -33,6 +35,7 @@ public class TankWorld extends JComponent {
 
     //Map
     private int[][] mapLayout;
+    private ArrayList<UnBreakableWall> UBW;
 
     //Draw
     private DrawPanel drawPanel;
@@ -51,6 +54,8 @@ public class TankWorld extends JComponent {
         this.drawPanel = new DrawPanel(mapWidth,mapHeigth,frameWidth,frameHeight,bg);
 
         playerSetup();
+        setMap();
+        setMapObj();
 
         setFrame();
         //playerSetup();
@@ -74,28 +79,61 @@ public class TankWorld extends JComponent {
     // 0 = empty, 1 = unbreakable walls, 2 = breakable walls, 3 = p1 spawn, 4 = p2 spawn, 5 = power up
     public void setMap(){
         mapLayout = new int[][]{
-                {1,1,1,1,1},
-                {1,3,0,5,1},
-                {1,0,2,0,1},
-                {1,0,0,4,1},
-                {1,1,1,1,1},
+                {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,5,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
         };
+    }
 
-        for(int row = 0; row < 5; row++){
-            for(int col = 0; col < 5; col++){
-                if(mapLayout[row][col] == 1){
-                    Image image = Toolkit.getDefaultToolkit().getImage(walls);
-                }else if(mapLayout[row][col] == 2){
-                    Image image = Toolkit.getDefaultToolkit().getImage(bwalls);
-                }else if(mapLayout[row][col] == 3){
-                    Image image = Toolkit.getDefaultToolkit().getImage(p1tank);
-                }else if(mapLayout[row][col] == 4){
-                    Image image = Toolkit.getDefaultToolkit().getImage(p2tank);
-                }else if(mapLayout[row][col] == 5){
-                    Image image = Toolkit.getDefaultToolkit().getImage(powerUp);
+    public void setMapObj(){
+        UBW = new ArrayList<>();
+        BufferedImage img;
+        int cellSize = 64;
+        int extra = 32;
+
+        for(int row = 0; row < 25; row++){
+            for(int col = 0; col < 25; col++){
+                if(this.mapLayout[row][col] == 1){
+                    img = stringToBuffer(walls);
+                    UBW.add(new UnBreakableWall(col*cellSize, row*cellSize, img.getWidth(), img.getHeight(),img));
+                    UBW.add(new UnBreakableWall((col*cellSize)+extra, row*cellSize,img.getWidth(), img.getHeight(),img));
+                    UBW.add(new UnBreakableWall(col*cellSize, (row*cellSize)+extra,img.getWidth(), img.getHeight(),img));
+                    UBW.add(new UnBreakableWall((col*cellSize)+extra, (row*cellSize)+extra,img.getWidth(), img.getHeight(),img));
+                }
+                if(mapLayout[row][col] == 2){
+                }
+                if(mapLayout[row][col] == 3){
+                }
+                if(mapLayout[row][col] == 4){
+                }
+                if(mapLayout[row][col] == 5){
                 }
             }
         }
+
+        this.drawPanel.setMapObj(this.UBW);
     }
 
     public void setFrame (){
@@ -124,7 +162,7 @@ public class TankWorld extends JComponent {
         BufferedImage p2tankImg = stringToBuffer(p2tank);
 
         p1 = new Tank(this, p1tankImg, 100,100, 2/**, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER*/);
-        p2 = new Tank(this, p2tankImg, 1500,1500, 2/**, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T*/);
+        p2 = new Tank(this, p2tankImg, 1400,1400, 2/**, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T*/);
 
         p1Key = new TankKey(p1, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T);
         p2Key = new TankKey(p2, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER);

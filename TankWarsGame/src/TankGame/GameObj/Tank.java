@@ -129,7 +129,7 @@ public class Tank extends GameObj{
     }
 
     public int getTankCenterY(){
-        return x + img.getHeight(null)/2;
+        return y + img.getHeight(null)/2;
     }
     //get
 
