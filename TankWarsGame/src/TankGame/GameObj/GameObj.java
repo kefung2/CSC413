@@ -13,6 +13,7 @@ public abstract class GameObj extends JComponent{
     public int y;
     public int width;
     public int height;
+    public int speed;
 
 
     public GameObj(){}
@@ -29,6 +30,14 @@ public abstract class GameObj extends JComponent{
         this.width = width;
         this.height = height;
         this.img = img;
+        //this.rectangleObj = new Rectangle(x,y, this.width, this.height);
+    }
+
+    public GameObj (int x, int y, BufferedImage img, int speed){
+        this.x = x;
+        this.y = y;
+        this.img = img;
+        this.speed = speed;
         //this.rectangleObj = new Rectangle(x,y, this.width, this.height);
     }
 

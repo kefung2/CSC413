@@ -1,7 +1,6 @@
 package TankGame;
 
-import TankGame.GameObj.Tank;
-import TankGame.GameObj.UnBreakableWall;
+import TankGame.GameObj.*;
 
 import javax.swing.JPanel;
 
@@ -13,10 +12,12 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 public class DrawPanel extends JPanel {
 
     private BufferedImage bg;
+    private BufferedImage Live1, Live2;
     Image minimap;
     private int frameWidth;
     private int frameHeight;
@@ -27,6 +28,10 @@ public class DrawPanel extends JPanel {
     private Tank tank1, tank2;
 
     private ArrayList<UnBreakableWall> UBW;
+    private ArrayList<BreakableWall> BW;
+    private ArrayList<PowerUp> PU;
+    private ArrayList<Bullet> B;
+
 
     BufferedImage p1, p2;
 
@@ -50,6 +55,8 @@ public class DrawPanel extends JPanel {
         this.bg = setImage(imgPath);
 
         UBW = new ArrayList<>();
+        BW = new ArrayList<>();
+        PU = new ArrayList<>();
 
     }
 
@@ -61,6 +68,7 @@ public class DrawPanel extends JPanel {
 
         g.drawImage(p1, 0, 0, this);
         g.drawImage(p2, frameWidth/2, 0, this);
+        drawHUD(g);
 
         g.setColor(Color.BLACK);
         g.draw3DRect(0,0,(frameWidth/2)-1,frameHeight-22,true);
@@ -78,6 +86,7 @@ public class DrawPanel extends JPanel {
         drawBG(g2);
         drawMapObj(g2);
         drawTank(g2);
+        drawBullet(g2);
 
 
         playerViewBoundChecker();
@@ -99,12 +108,84 @@ public class DrawPanel extends JPanel {
         UBW.forEach((curr) -> {
             curr.draw(g);
         });
+
+        BW.forEach((curr) -> {
+            curr.draw(g);
+        });
+
+        PU.forEach((curr) -> {
+            curr.draw(g);
+        });
+    }
+
+    private void drawBullet(Graphics2D g){
+        Graphics2D g2 = (Graphics2D) g;
+
+        try{
+            B.forEach((curr) -> {
+                if(curr.isVisible()){
+                curr.draw(this,g2);
+                }
+            });
+        } catch (ConcurrentModificationException e){
+        }
     }
 
     public void drawBG(Graphics2D g2){
         for(int i = 0; i < 6; i++) {
             for(int j = 0; j < 8; j++)
                 g2.drawImage(bg, bg.getWidth()*i, bg.getHeight()*j, this);
+        }
+    }
+
+    public void drawHUD(Graphics g){
+        int p1_hp = this.tank1.getHealth() * 2;
+        int p2_hp = this.tank2.getHealth() * 2;
+
+        int p1_lives = this.tank1.getLifes();
+        int p2_lives = this.tank2.getLifes();
+
+        int p1_hp_x = 22;
+        int p1_hp_y = 758;
+
+        int p2_hp_x = 578;
+        int p2_hp_y = 758;
+
+        int hp_w = 200;
+        int hp_h = 20;
+
+        int offset = 4;
+        int sizeOffect = 8;
+
+        //HP
+        g.setColor(Color.DARK_GRAY);
+        g.fillRect(p1_hp_x, p1_hp_y, hp_w, hp_h); //p1
+        g.fillRect(p2_hp_x, p2_hp_y, hp_w, hp_h); //p2
+
+        //HP lose
+        g.setColor(Color.RED);
+        g.fillRect(p1_hp_x + offset, p1_hp_y + offset, hp_w - sizeOffect, hp_h - sizeOffect);
+        g.fillRect(p2_hp_x + offset, p2_hp_y + offset, hp_w - sizeOffect, hp_h - sizeOffect);
+
+        //HP left
+        g.setColor(Color.GREEN);
+        g.fillRect(p1_hp_x + offset, p1_hp_y + offset, hp_w - sizeOffect, hp_h - sizeOffect);
+        g.fillRect(p2_hp_x + (hp_w - p2_hp) + offset, p2_hp_y + offset, p2_hp - sizeOffect, hp_h - sizeOffect);
+
+        //P1 lives
+        int p1_life_x = 110;
+        int p1_life_y = 730;
+        int p1_Loffset = 40;
+        for(int i = 0; i < p1_lives; i++){
+            g.drawImage(Live1 , p1_life_x + (i*p1_Loffset), p1_life_y, this);
+        }
+
+        //P2 lives
+        int p2_life_x = 690;
+        int p2_life_y = 730;
+        int p2_Loffset = 40;
+        for(int i = 0; i < p2_lives; i++){
+            g.drawImage(Live2 , p2_life_x - (i*p2_Loffset), p2_life_y, this);
         }
     }
 
@@ -116,8 +197,10 @@ public class DrawPanel extends JPanel {
         this.tank2 = tank2;
     }
 
-    public void setMapObj(ArrayList<UnBreakableWall> UBW){
+    public void setMapObj(ArrayList<UnBreakableWall> UBW, ArrayList<BreakableWall> BW, ArrayList<PowerUp> PU){
         this.UBW = UBW;
+        this.BW = BW;
+        this.PU = PU;
     }
 
     public BufferedImage setImage(String path){
@@ -130,6 +213,17 @@ public class DrawPanel extends JPanel {
 
         return img;
     }
+
+    public void setBullet(ArrayList<Bullet> b){
+        this.B = b;
+    }
+
+    public void setLiveIcon (BufferedImage p1L, BufferedImage p2L){
+        this.Live1 = p1L;
+        this.Live2 = p2L;
+    }
+
+    /*****************************************************************************************************************/
 
     //CREDIT
     private void playerViewBoundChecker() {

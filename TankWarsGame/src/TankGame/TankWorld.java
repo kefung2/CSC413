@@ -1,7 +1,11 @@
 package TankGame;
 
+import TankGame.GameObj.PowerUp;
 import TankGame.GameObj.Tank;
 import TankGame.GameObj.UnBreakableWall;
+import TankGame.GameObj.BreakableWall;
+import TankGame.GameObj.PowerUp;
+import TankGame.GameObj.Bullet;
 import TankGame.TankKey;
 
 import java.awt.*;
@@ -32,10 +36,17 @@ public class TankWorld extends JComponent {
     private String p1tank;
     private String p2tank;
     private String powerUp;
+    private String bulletShot;
+    private String liveIcon1;
+    private String liveIcon2;
 
     //Map
     private int[][] mapLayout;
     private ArrayList<UnBreakableWall> UBW;
+    private ArrayList<BreakableWall> BW;
+    private ArrayList<PowerUp> PU;
+    private ArrayList<Bullet> B;
+
 
     //Draw
     private DrawPanel drawPanel;
@@ -71,6 +82,9 @@ public class TankWorld extends JComponent {
         p1tank = "Resource/Tank1.gif";
         p2tank = "Resource/Tank2.gif";
         powerUp = "Resource/Pickup.gif";
+        bulletShot = "Resource/shell.gif";
+        liveIcon1 = "Resource/Weapon.gif";
+        liveIcon2 = "Resource/Weapon.gif";
 
     }
 
@@ -81,14 +95,14 @@ public class TankWorld extends JComponent {
         mapLayout = new int[][]{
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,5,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1},
+                {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,1},
+                {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,1},
+                {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1},
+                {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,1},
                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -109,6 +123,8 @@ public class TankWorld extends JComponent {
 
     public void setMapObj(){
         UBW = new ArrayList<>();
+        BW = new ArrayList<>();
+        PU = new ArrayList<>();
         BufferedImage img;
         int cellSize = 64;
         int extra = 32;
@@ -123,17 +139,25 @@ public class TankWorld extends JComponent {
                     UBW.add(new UnBreakableWall((col*cellSize)+extra, (row*cellSize)+extra,img.getWidth(), img.getHeight(),img));
                 }
                 if(mapLayout[row][col] == 2){
+                    img = stringToBuffer(bwalls);
+                    BW.add(new BreakableWall(col*cellSize, row*cellSize, img.getWidth(), img.getHeight(),img));
+                    BW.add(new BreakableWall((col*cellSize)+extra, row*cellSize,img.getWidth(), img.getHeight(),img));
+                    BW.add(new BreakableWall(col*cellSize, (row*cellSize)+extra,img.getWidth(), img.getHeight(),img));
+                    BW.add(new BreakableWall((col*cellSize)+extra, (row*cellSize)+extra,img.getWidth(), img.getHeight(),img));
                 }
                 if(mapLayout[row][col] == 3){
                 }
                 if(mapLayout[row][col] == 4){
                 }
                 if(mapLayout[row][col] == 5){
+                    img = stringToBuffer(powerUp);
+                    PU.add(new PowerUp((col*cellSize)+(extra/2), (row*cellSize)+(extra/2),img.getWidth(), img.getHeight(),img));
+
                 }
             }
         }
 
-        this.drawPanel.setMapObj(this.UBW);
+        this.drawPanel.setMapObj(this.UBW, this.BW, this.PU);
     }
 
     public void setFrame (){
@@ -153,13 +177,12 @@ public class TankWorld extends JComponent {
         frame.setVisible(true);
     }
 
-    public void renderBG(){
-
-    }
 
     public void playerSetup(){
         BufferedImage p1tankImg = stringToBuffer(p1tank);
         BufferedImage p2tankImg = stringToBuffer(p2tank);
+        BufferedImage p1L = stringToBuffer(liveIcon1);
+        BufferedImage p2L = stringToBuffer(liveIcon2);
 
         p1 = new Tank(this, p1tankImg, 100,100, 2/**, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER*/);
         p2 = new Tank(this, p2tankImg, 1400,1400, 2/**, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T*/);
@@ -170,7 +193,10 @@ public class TankWorld extends JComponent {
         p1.setOtherTank(p2);
         p2.setOtherTank(p1);
 
+        this.B = new ArrayList<>();
+
         this.drawPanel.setTank(p1, p2);
+        this.drawPanel.setLiveIcon(p1L,p2L);
     }
 
     public void startGame(){
@@ -179,6 +205,7 @@ public class TankWorld extends JComponent {
             while(true) {
                 this.p1.update();
                 this.p2.update();
+                this.drawPanel.setBullet(B);
                 this.drawPanel.repaint();
                 Thread.sleep(1000/144);
             }
@@ -209,6 +236,15 @@ public class TankWorld extends JComponent {
                 return null;
 
         }
+    }
+
+    public BufferedImage getBulletImg(){
+        BufferedImage shot = stringToBuffer(bulletShot);
+        return shot;
+    }
+
+    public ArrayList<Bullet> getBulletList(){
+        return B;
     }
 
 }

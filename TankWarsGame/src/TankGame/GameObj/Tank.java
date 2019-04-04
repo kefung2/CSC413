@@ -1,6 +1,8 @@
 package TankGame.GameObj;
 
 import TankGame.TankWorld;
+import TankGame.GameObj.Bullet;
+
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
@@ -17,6 +19,7 @@ public class Tank extends GameObj{
     private int speed;
     //private int up, down, left, right, shoot;
     private boolean goUp, goDown, goLeft, goRight, fire;
+    private int fireCD = 0;
     private Tank p1, p2;
     private TankWorld world;
     private boolean isDead;
@@ -66,6 +69,8 @@ public class Tank extends GameObj{
         this.goRight = true;
     }
 
+    public void toggleShoot(){ this.fire = true; }
+
     public void UntoggleGoUp(){
         this.goUp = false;
     }
@@ -82,6 +87,8 @@ public class Tank extends GameObj{
         this.goRight = false;
     }
 
+    public void UntoggleShoot() {this.fire = false;}
+
     public void update(){
         if(this.goUp){
             this.forward();
@@ -94,6 +101,9 @@ public class Tank extends GameObj{
         }
         if(this.goRight){
             this.rotateRight();
+        }
+        if(this.fire){
+            shoot(this);
         }
     }
 
@@ -115,6 +125,13 @@ public class Tank extends GameObj{
         y = (int) (y - Math.round(speed * Math.sin(Math.toRadians(angle))));
     }
 
+    private void shoot(Tank a){
+        if(fire && fireCD <= 0) {
+            Bullet shot = new Bullet(this.world, world.getBulletImg(), 5, this, 10);
+            world.getBulletList().add(shot);
+        }
+    }
+
     public void draw(Graphics2D g){
         p1 = TankWorld.getTank(1);
         p2 = TankWorld.getTank(2);
@@ -132,6 +149,18 @@ public class Tank extends GameObj{
         return y + img.getHeight(null)/2;
     }
     //get
+
+    public int getAngle(){
+        return angle;
+    }
+
+    public int getHealth(){
+        return health;
+    }
+
+    public int getLifes(){
+        return life;
+    }
 
     /**
     public int getUp() {
