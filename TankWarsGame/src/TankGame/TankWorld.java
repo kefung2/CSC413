@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.awt.image.BufferedImage;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -39,6 +40,7 @@ public class TankWorld extends JComponent {
     private String bulletShot;
     private String liveIcon1;
     private String liveIcon2;
+    private String mapcsv;
 
     //Map
     private int[][] mapLayout;
@@ -46,6 +48,7 @@ public class TankWorld extends JComponent {
     private ArrayList<BreakableWall> BW;
     private ArrayList<PowerUp> PU;
     private ArrayList<Bullet> B;
+    private Scanner scanner;
 
 
     //Draw
@@ -64,8 +67,8 @@ public class TankWorld extends JComponent {
         setUpResourcePath();
         this.drawPanel = new DrawPanel(mapWidth,mapHeigth,frameWidth,frameHeight,bg);
 
-        playerSetup();
-        setMap();
+        //playerSetup();
+        //setMap();
         setMapObj();
 
         setFrame();
@@ -85,77 +88,115 @@ public class TankWorld extends JComponent {
         bulletShot = "Resource/shell.gif";
         liveIcon1 = "Resource/Weapon.gif";
         liveIcon2 = "Resource/Weapon.gif";
+        mapcsv = "Resource/TankMap.csv";
 
     }
 
 
 
     // 0 = empty, 1 = unbreakable walls, 2 = breakable walls, 3 = p1 spawn, 4 = p2 spawn, 5 = power up
+    /**
     public void setMap(){
         mapLayout = new int[][]{
-                {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,5,1},
-                {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,1},
-                {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,1},
-                {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1},
-                {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 5, 1},
+                {1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1},
+                {1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1},
+                {1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1},
+                {1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
         };
-    }
 
+        try {
+            Scanner scanner = new Scanner(new File(mapcsv));
+        }catch (IOException e){
+            System.out.println("File not found");
+        }
+
+    }
+*/
     public void setMapObj(){
         UBW = new ArrayList<>();
         BW = new ArrayList<>();
         PU = new ArrayList<>();
         BufferedImage img;
-        int cellSize = 64;
-        int extra = 32;
 
-        for(int row = 0; row < 25; row++){
-            for(int col = 0; col < 25; col++){
-                if(this.mapLayout[row][col] == 1){
-                    img = stringToBuffer(walls);
-                    UBW.add(new UnBreakableWall(col*cellSize, row*cellSize, img.getWidth(), img.getHeight(),img));
-                    UBW.add(new UnBreakableWall((col*cellSize)+extra, row*cellSize,img.getWidth(), img.getHeight(),img));
-                    UBW.add(new UnBreakableWall(col*cellSize, (row*cellSize)+extra,img.getWidth(), img.getHeight(),img));
-                    UBW.add(new UnBreakableWall((col*cellSize)+extra, (row*cellSize)+extra,img.getWidth(), img.getHeight(),img));
-                }
-                if(mapLayout[row][col] == 2){
-                    img = stringToBuffer(bwalls);
-                    BW.add(new BreakableWall(col*cellSize, row*cellSize, img.getWidth(), img.getHeight(),img));
-                    BW.add(new BreakableWall((col*cellSize)+extra, row*cellSize,img.getWidth(), img.getHeight(),img));
-                    BW.add(new BreakableWall(col*cellSize, (row*cellSize)+extra,img.getWidth(), img.getHeight(),img));
-                    BW.add(new BreakableWall((col*cellSize)+extra, (row*cellSize)+extra,img.getWidth(), img.getHeight(),img));
-                }
-                if(mapLayout[row][col] == 3){
-                }
-                if(mapLayout[row][col] == 4){
-                }
-                if(mapLayout[row][col] == 5){
-                    img = stringToBuffer(powerUp);
-                    PU.add(new PowerUp((col*cellSize)+(extra/2), (row*cellSize)+(extra/2),img.getWidth(), img.getHeight(),img));
+        BufferedImage p1tankImg = stringToBuffer(p1tank);
+        BufferedImage p2tankImg = stringToBuffer(p2tank);
+        BufferedImage p1L = stringToBuffer(liveIcon1);
+        BufferedImage p2L = stringToBuffer(liveIcon2);
 
+        try {
+            scanner = new Scanner(new File(mapcsv));
+        }catch (IOException e){
+            System.out.println("File not found");
+        }
+
+        while(scanner.hasNext()) {
+
+            for (int row = 0; row < 50; row++) {
+                String data = scanner.next();
+                String[] value = data.split(",");
+                for (int col = 0; col < 50; col++) {
+                    int mapCode = Integer.parseInt(value[col]);
+                    if (mapCode == 1) {
+                        img = stringToBuffer(walls);
+                        UBW.add(new UnBreakableWall(col*32, row*32 , img.getWidth(), img.getHeight(), img));
+                        //UBW.add(new UnBreakableWall((col * cellSize) + extra, row * cellSize, img.getWidth(), img.getHeight(), img));
+                        //UBW.add(new UnBreakableWall(col * cellSize, (row * cellSize) + extra, img.getWidth(), img.getHeight(), img));
+                        //UBW.add(new UnBreakableWall((col * cellSize) + extra, (row * cellSize) + extra, img.getWidth(), img.getHeight(), img));
+                    }
+                    if (mapCode == 2) {
+                        img = stringToBuffer(bwalls);
+                        BW.add(new BreakableWall(col * 32, row * 32, img.getWidth(), img.getHeight(), img));
+                        //BW.add(new BreakableWall((col * cellSize) + extra, row * cellSize, img.getWidth(), img.getHeight(), img));
+                        //BW.add(new BreakableWall(col * cellSize, (row * cellSize) + extra, img.getWidth(), img.getHeight(), img));
+                        //BW.add(new BreakableWall((col * cellSize) + extra, (row * cellSize) + extra, img.getWidth(), img.getHeight(), img));
+                    }
+                    if (mapCode == 3) {
+                        p1 = new Tank(this, p1tankImg, row*32,col*32, 2);
+                        p1Key = new TankKey(p1, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T);
+                    }
+                    if (mapCode == 4) {
+                        p2 = new Tank(this, p2tankImg, row*32,col*32, 2);
+                        p2Key = new TankKey(p2, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER);
+
+                    }
+                    if (mapCode == 5) {
+                        img = stringToBuffer(powerUp);
+                        PU.add(new PowerUp(col * 32, row * 32, img.getWidth(), img.getHeight(), img));
+
+                    }
                 }
             }
         }
+        scanner.close();
+
+        p1.setOtherTank(p2);
+        p2.setOtherTank(p1);
+
+        this.B = new ArrayList<>();
+
+        this.drawPanel.setTank(p1, p2);
+        this.drawPanel.setLiveIcon(p1L,p2L);
 
         this.drawPanel.setMapObj(this.UBW, this.BW, this.PU);
     }
@@ -177,15 +218,15 @@ public class TankWorld extends JComponent {
         frame.setVisible(true);
     }
 
-
+/**
     public void playerSetup(){
         BufferedImage p1tankImg = stringToBuffer(p1tank);
         BufferedImage p2tankImg = stringToBuffer(p2tank);
         BufferedImage p1L = stringToBuffer(liveIcon1);
         BufferedImage p2L = stringToBuffer(liveIcon2);
 
-        p1 = new Tank(this, p1tankImg, 100,100, 2/**, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER*/);
-        p2 = new Tank(this, p2tankImg, 1400,1400, 2/**, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T*/);
+        p1 = new Tank(this, p1tankImg, 100,100, 2/**, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER);
+        p2 = new Tank(this, p2tankImg, 1400,1400, 2/**, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T);
 
         p1Key = new TankKey(p1, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T);
         p2Key = new TankKey(p2, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER);
@@ -198,7 +239,7 @@ public class TankWorld extends JComponent {
         this.drawPanel.setTank(p1, p2);
         this.drawPanel.setLiveIcon(p1L,p2L);
     }
-
+*/
     public void startGame(){
         init();
         try {

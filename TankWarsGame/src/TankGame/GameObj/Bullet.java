@@ -19,6 +19,7 @@ public class Bullet extends GameObj{
     public int xsize, ysize;
     public Tank shooter;
     public boolean visible;
+    private Rectangle bulletRect;
 
     public Bullet(TankWorld world, BufferedImage img, int speed, Tank t, int damage){
         super(t.getTankCenterX(), t.getTankCenterY(),img, speed);
@@ -30,6 +31,7 @@ public class Bullet extends GameObj{
         bulletAngle = t.getAngle();
         visible = true;
         this.world = world;
+        bulletRect = new Rectangle(this.x, this.y, this.width, this.height);
     }
 
     public void draw(ImageObserver iobs, Graphics2D g){
@@ -48,6 +50,7 @@ public class Bullet extends GameObj{
     public void update(){
         x += Math.round(speed*Math.cos(Math.toRadians(bulletAngle)));
         y += Math.round(speed*Math.sin(Math.toRadians(bulletAngle)));
+
 
     }
 

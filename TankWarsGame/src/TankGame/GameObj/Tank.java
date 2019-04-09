@@ -24,6 +24,7 @@ public class Tank extends GameObj{
     private TankWorld world;
     private boolean isDead;
     private BufferedImage img;
+    private Rectangle tankRect;
 
     private final int ROTATIONSPEED = 4;
 
@@ -44,6 +45,7 @@ public class Tank extends GameObj{
         this.spawnPointX = x;
         this.spawnPointY = y;
         this.world = world;
+        tankRect = new Rectangle(this.x, this.y, this.width, this.height);
     }
 
     public void setOtherTank(Tank otherTank){
@@ -69,7 +71,7 @@ public class Tank extends GameObj{
         this.goRight = true;
     }
 
-    public void toggleShoot(){ this.fire = true; }
+    public void toggleShoot(){ this.fire = true;}
 
     public void UntoggleGoUp(){
         this.goUp = false;
@@ -105,6 +107,7 @@ public class Tank extends GameObj{
         if(this.fire){
             shoot(this);
         }
+
     }
 
     private void rotateLeft() {
@@ -118,27 +121,43 @@ public class Tank extends GameObj{
     private void forward(){
         x = (int) (x + Math.round(speed * Math.cos(Math.toRadians(angle))));
         y = (int) (y + Math.round(speed * Math.sin(Math.toRadians(angle))));
+        tankRect.setLocation(x,y);
     }
 
     private void backward(){
         x = (int) (x - Math.round(speed * Math.cos(Math.toRadians(angle))));
         y = (int) (y - Math.round(speed * Math.sin(Math.toRadians(angle))));
+        tankRect.setLocation(x,y);
     }
 
     private void shoot(Tank a){
-        if(fire && fireCD <= 0) {
-            Bullet shot = new Bullet(this.world, world.getBulletImg(), 5, this, 10);
-            world.getBulletList().add(shot);
-        }
+
+            if (fire && fireCD <= 0) {
+                Bullet shot = new Bullet(this.world, world.getBulletImg(), 5, this, 10);
+                world.getBulletList().add(shot);
+                this.fireCD = 20;
+            }
+
     }
 
     public void draw(Graphics2D g){
         p1 = TankWorld.getTank(1);
         p2 = TankWorld.getTank(2);
+        fireCD -= 1;
 
         AffineTransform rotation = AffineTransform.getTranslateInstance(x, y);
         rotation.rotate(Math.toRadians(angle), img.getWidth() / 2.0, this.img.getHeight() / 2.0);
+        g.draw(tankRect);
         g.drawImage(img, rotation, null);
+
+    }
+
+    public boolean collision (GameObj gameObj){
+        Rectangle objRect = new Rectangle(gameObj.x, gameObj.y, gameObj.width, gameObj.height);
+        if(tankRect.intersects(objRect)) {
+            return true;
+        }
+        return false;
     }
 
     public int getTankCenterX(){

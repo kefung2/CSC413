@@ -22,6 +22,9 @@ public abstract class GameObj extends JComponent{
         this.img = img;
         this.x = x;
         this.y = y;
+        this.width = img.getWidth();
+        this.height = img.getHeight();
+        //this.rectangleObj = new Rectangle(x,y, this.width, this.height);
     }
 
     public GameObj (int x, int y, int width, int height, BufferedImage img){
@@ -30,12 +33,14 @@ public abstract class GameObj extends JComponent{
         this.width = width;
         this.height = height;
         this.img = img;
-        //this.rectangleObj = new Rectangle(x,y, this.width, this.height);
+        this.rectangleObj = new Rectangle(x,y, this.width, this.height);
     }
 
     public GameObj (int x, int y, BufferedImage img, int speed){
         this.x = x;
         this.y = y;
+        this.width = img.getWidth();
+        this.height = img.getHeight();
         this.img = img;
         this.speed = speed;
         //this.rectangleObj = new Rectangle(x,y, this.width, this.height);

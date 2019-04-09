@@ -25,7 +25,12 @@ public class TankKey implements KeyListener{
 
     @Override
     public void keyTyped(KeyEvent ke) {
-
+        /**
+        int keyPressed = ke.getKeyCode();
+        if (keyPressed == shoot){
+            this.player.toggleShoot();
+        }
+         */
     }
 
     @Override

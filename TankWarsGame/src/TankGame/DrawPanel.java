@@ -88,7 +88,6 @@ public class DrawPanel extends JPanel {
         drawTank(g2);
         drawBullet(g2);
 
-
         playerViewBoundChecker();
         p1 = bimg.getSubimage(this.p1X, this.p1Y,frameWidth/2, frameHeight);
         p2 = bimg.getSubimage(this.p2X, this.p2Y,frameWidth/2, frameHeight);
