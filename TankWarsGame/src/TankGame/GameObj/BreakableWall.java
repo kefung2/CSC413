@@ -1,11 +1,14 @@
 package TankGame.GameObj;
 
+import TankGame.TankWorld;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class BreakableWall extends GameObj {
-    Rectangle wall;
+    private Rectangle BwallRect;
     private int width, height;
+    private Tank p1,p2;
     private boolean dusted = false;
 
     //public UnBreakableWall(){}
@@ -14,16 +17,62 @@ public class BreakableWall extends GameObj {
         super(x,y,width,height,img);
         this.width = img.getWidth();
         this.height = img.getHeight();
-        wall = new Rectangle(x,y,width,height);
+        BwallRect = new Rectangle(x,y,width,height);
     }
 
     public void draw(Graphics g){
         g.drawImage(this.img, this.x, this.y, this);
     }
 
+    public Rectangle getWallRect(){
+        return BwallRect;
+    }
+
     public void dustedWall(){
         dusted = true;
     }
 
-    public void update(){}
+    public Rectangle getBwallRect(){
+        return BwallRect;
+    }
+
+    public void update(){
+        if(!dusted) {
+            p1 = TankWorld.getTank(1);
+            p2 = TankWorld.getTank(2);
+
+            if (p1.collision(BwallRect)) {
+                if (p1.getRectOffsetX() < x) {   //left side Tank, Right side wall
+                    System.out.println("Left " + x);
+                    p1.x = p1.getPx();
+                } else if (p1.x > x + 32) {                         //right side Tank, left side wall
+                    System.out.println("Right " + x);
+                    p1.x = p1.getPx();
+                }
+                if (p1.y > y - 32) {   //top side Tank, bottom side wall
+                    System.out.println("Top " + x);
+                    p1.y = p1.getPy();
+                } else if (p1.getRectOffsetY()< y) {                         //bottom side Tank, top side wall
+                    System.out.println("Bottom " + x);
+                    p1.y = p1.getPy();
+                }
+            }
+            if (p2.collision(BwallRect)) {
+                if (p2.getRectOffsetX() < x) {   //left side Tank, Right side wall
+                    System.out.println("Left " + x);
+                    p2.x = p2.getPx();
+                } else if (p2.x > x + 32) {                         //right side Tank, left side wall
+                    System.out.println("Right " + x);
+                    p2.x = p2.getPx();
+                }
+                if (p2.y > y - 32) {   //top side Tank, bottom side wall
+                    System.out.println("Top " + x);
+                    p2.y = p2.getPy();
+                } else if (p2.getRectOffsetY()< y) {                         //bottom side Tank, top side wall
+                    System.out.println("Bottom " + x);
+                    p2.y = p2.getPy();
+                }
+            }
+        }
+    }
 }

@@ -123,7 +123,7 @@ public class DrawPanel extends JPanel {
         try{
             B.forEach((curr) -> {
                 if(curr.isVisible()){
-                curr.draw(this,g2);
+                curr.draw(g2);
                 }
             });
         } catch (ConcurrentModificationException e){

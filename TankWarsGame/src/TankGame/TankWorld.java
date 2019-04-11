@@ -57,6 +57,7 @@ public class TankWorld extends JComponent {
     //
     private static Tank p1, p2;
     private TankKey p1Key, p2Key;
+    private boolean running = true;
 
 /******************************************************************************************/
     public void TankWorld(){
@@ -172,11 +173,11 @@ public class TankWorld extends JComponent {
                         //BW.add(new BreakableWall((col * cellSize) + extra, (row * cellSize) + extra, img.getWidth(), img.getHeight(), img));
                     }
                     if (mapCode == 3) {
-                        p1 = new Tank(this, p1tankImg, row*32,col*32, 2);
+                        p1 = new Tank(this, p1tankImg, row*32,col*32, 1);
                         p1Key = new TankKey(p1, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T);
                     }
                     if (mapCode == 4) {
-                        p2 = new Tank(this, p2tankImg, row*32,col*32, 2);
+                        p2 = new Tank(this, p2tankImg, row*32,col*32, 1);
                         p2Key = new TankKey(p2, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER);
 
                     }
@@ -243,16 +244,23 @@ public class TankWorld extends JComponent {
     public void startGame(){
         init();
         try {
-            while(true) {
-                this.p1.update();
-                this.p2.update();
+            while(running) {
+                update();
                 this.drawPanel.setBullet(B);
                 this.drawPanel.repaint();
+                if(p1.getDead() || p2.getDead()){
+                    running = false;
+                    stop();
+                }
                 Thread.sleep(1000/144);
             }
         } catch (InterruptedException ignored) {
 
         }
+    }
+
+    public void stop(){
+
     }
 
     public BufferedImage stringToBuffer(String path){
@@ -279,6 +287,26 @@ public class TankWorld extends JComponent {
         }
     }
 
+    public ArrayList<UnBreakableWall> getUBW(){
+        return UBW;
+    }
+
+    public int getUBWsize(){
+        return UBW.size();
+    }
+
+    public ArrayList<BreakableWall> getBW(){
+        return BW;
+    }
+
+    public int getBWsize(){
+        return BW.size();
+    }
+
+    public ArrayList<PowerUp> getPU(){
+        return PU;
+    }
+
     public BufferedImage getBulletImg(){
         BufferedImage shot = stringToBuffer(bulletShot);
         return shot;
@@ -287,5 +315,20 @@ public class TankWorld extends JComponent {
     public ArrayList<Bullet> getBulletList(){
         return B;
     }
+
+    public void update(){
+        this.p1.update();
+        this.p2.update();
+        UBW.forEach((curr) -> {
+            curr.update();
+        });
+        BW.forEach((curr) -> {
+            curr.update();
+        });
+        PU.forEach((curr) -> {
+            curr.update();
+        });
+    }
+
 
 }
