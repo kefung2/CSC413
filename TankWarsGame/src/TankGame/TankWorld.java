@@ -175,10 +175,12 @@ public class TankWorld extends JComponent {
                     if (mapCode == 3) {
                         p1 = new Tank(this, p1tankImg, row*32,col*32, 1);
                         p1Key = new TankKey(p1, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_T);
+                        p1.setAngle(90);
                     }
                     if (mapCode == 4) {
                         p2 = new Tank(this, p2tankImg, row*32,col*32, 1);
                         p2Key = new TankKey(p2, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_ENTER);
+                        p2.setAngle(-90);
 
                     }
                     if (mapCode == 5) {
@@ -260,7 +262,11 @@ public class TankWorld extends JComponent {
     }
 
     public void stop(){
+        if(p1.getDead()){
 
+        }else if(p2.getDead()){
+
+        }
     }
 
     public BufferedImage stringToBuffer(String path){

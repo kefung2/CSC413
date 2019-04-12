@@ -55,16 +55,36 @@ public class Bullet extends GameObj{
         bulletRect.setLocation(x,y);
 
         //System.out.println(shooter + " fired!");
+        this.hitTankCheck(p1);
+        this.hitTankCheck(p2);
 
-        if(p1.collision(bulletRect) && shooter != p1){
+ /**       if(p1.collision(bulletRect) && shooter != p1){
+            System.out.println("P2 fired");
                 world.getBulletList().clear();
                 p1.takeDamge();
+                if(p1.getHealth() == 0){
+                    if(p1.getLifes() > 0){
+                        p1.resetHP();
+                        p1.loseLife();
+                    }else{
+                        p1.playerDie();
+                    }
+                }
         }
 
         if(p2.collision(bulletRect) && shooter != p2){
+            System.out.println("P1 fired");
             world.getBulletList().clear();
             p2.takeDamge();
-        }
+            if(p2.getHealth() == 0){
+                if(p2.getLifes() > 0){
+                    p2.resetHP();
+                    p2.loseLife();
+                }else{
+                    p2.playerDie();
+                }
+            }
+        }*/
 
 
         //Check collision w/ Unbreakable walls
@@ -86,9 +106,21 @@ public class Bullet extends GameObj{
                 BW.dustedWall();
             }
         }
+    }
 
-
-
+    public void hitTankCheck(Tank player){
+        if(player.collision(bulletRect) && shooter != player){
+            world.getBulletList().clear();
+            player.takeDamge();
+            if(player.getHealth() == 0){
+                if(player.getLifes() > 0){
+                    player.resetHP();
+                    player.loseLife();
+                }else{
+                    player.playerDie();
+                }
+            }
+        }
     }
 
 }

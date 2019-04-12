@@ -211,8 +211,16 @@ public class Tank extends GameObj{
         return angle;
     }
 
+    public void setAngle(int i){
+        this.angle = i;
+    }
+
     public int getHealth(){
         return health;
+    }
+
+    public void resetHP(){
+        health = 100;
     }
 
     public int getLifes(){
@@ -243,14 +251,22 @@ public class Tank extends GameObj{
         return isDead;
     }
 
-    public void setDead(){ this.isDead = true;}
+    public void playerDie(){
+        this.isDead = true;
+    }
 
-    public void setLife(){
+    public void loseLife(){
         this.life--;
     }
 
     public void takeDamge(){
         this.health = health - 25;
     }
+
+    public void crashDamage(){
+        health--;
+    }
+
+
 
 }

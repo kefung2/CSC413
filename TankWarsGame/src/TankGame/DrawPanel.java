@@ -77,6 +77,15 @@ public class DrawPanel extends JPanel {
         g.drawImage(minimap, (frameWidth/2)-(minimapWidth/2), 580, this);
         g.draw3DRect((frameWidth/2)-(minimapWidth/2), 580, minimapWidth, minimapHeight, true);
 
+        if(tank1.getDead()){
+            g.setFont(new Font(g.getFont().getFontName(), Font.CENTER_BASELINE, 84));
+            g.drawString("P2 WIN", 64, frameHeight/2);
+        }
+        if(tank2.getDead()){
+            g.setFont(new Font(g.getFont().getFontName(), Font.CENTER_BASELINE, 84));
+            g.drawString("P1 WIN", 64, frameHeight/2);
+        }
+
     }
 
     public void getGameImage(){
@@ -168,7 +177,7 @@ public class DrawPanel extends JPanel {
 
         //HP left
         g.setColor(Color.GREEN);
-        g.fillRect(p1_hp_x + offset, p1_hp_y + offset, hp_w - sizeOffect, hp_h - sizeOffect);
+        g.fillRect(p1_hp_x + offset, p1_hp_y + offset, p1_hp - sizeOffect, hp_h - sizeOffect);
         g.fillRect(p2_hp_x + (hp_w - p2_hp) + offset, p2_hp_y + offset, p2_hp - sizeOffect, hp_h - sizeOffect);
 
         //P1 lives
