@@ -1,0 +1,5 @@
+1) Clone this repo to your computer
+2) Make the folder TankWarsGame as your root
+3) The Launcher class is the class that contain the main function, so run from there.
+
+Note: Make sure to set your working directory to TankWarsGame to ensure that the resource file run normally 
