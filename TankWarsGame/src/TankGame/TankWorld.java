@@ -43,7 +43,7 @@ public class TankWorld extends JComponent {
     private String mapcsv;
 
     //Map
-    private int[][] mapLayout;
+    //private int[][] mapLayout;
     private ArrayList<UnBreakableWall> UBW;
     private ArrayList<BreakableWall> BW;
     private ArrayList<PowerUp> PU;
@@ -83,10 +83,10 @@ public class TankWorld extends JComponent {
         bgm = "Resource/Music.mp3";
         walls = "Resource/Wall1.gif";
         bwalls = "Resource/Wall2.gif";
-        p1tank = "Resource/Tank1.gif";
-        p2tank = "Resource/Tank2.gif";
+        p1tank = "Resource/Tank1.png";
+        p2tank = "Resource/Tank2.png";
         powerUp = "Resource/Pickup.gif";
-        bulletShot = "Resource/shell.gif";
+        bulletShot = "Resource/shell.png";
         liveIcon1 = "Resource/Weapon.gif";
         liveIcon2 = "Resource/Weapon.gif";
         mapcsv = "Resource/TankMap.csv";

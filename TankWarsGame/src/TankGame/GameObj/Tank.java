@@ -267,6 +267,10 @@ public class Tank extends GameObj{
         health--;
     }
 
+    public Rectangle getTankRect(){
+        return this.tankRect;
+    }
+
 
 
 }
