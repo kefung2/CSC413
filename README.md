@@ -7,6 +7,7 @@ Note: Make sure to set your working directory to csc413-tankgame-kefung2\TankWar
 CREDIT:
 
 Structure and some code are taken or inspired from:
+
 https://github.com/monalimirel/Tank-Game
 
 COLLABORATION CREDIT:
