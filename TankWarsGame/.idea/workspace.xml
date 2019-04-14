@@ -7,8 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="154aebbe-7d20-4e50-8a45-0439df61dbca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../How to Build/Run this project" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TankGame/TankWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TankGame/TankWorld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jar/deletemeafteraddingjarfile.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -73,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TankGame/TankWorld.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1513">
-              <caret line="122" column="92" lean-forward="true" selection-start-line="122" selection-start-column="92" selection-end-line="122" selection-end-column="92" />
+            <state relative-caret-position="522">
+              <caret line="122" column="95" selection-start-line="122" selection-start-column="95" selection-end-line="122" selection-end-column="95" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -191,6 +191,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,14 +202,23 @@
             </path>
             <path>
               <item name="TankWarsGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TankWarsGame" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TankWarsGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TankWarsGame" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="TankGame" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TankWarsGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -274,11 +285,13 @@
       <workItem from="1554926964654" duration="27505000" />
       <workItem from="1555131101011" duration="2544000" />
       <workItem from="1555135569230" duration="3104000" />
+      <workItem from="1555213159919" duration="210000" />
+      <workItem from="1555218418030" duration="708000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122414000" />
+    <option name="totallyTimeSpent" value="123332000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -297,11 +310,11 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.1301956" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.13264059" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Terminal" order="2" weight="0.32362822" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.32362822" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Message" order="5" />
@@ -411,16 +424,7 @@
     <entry file="file://$PROJECT_DIR$/Resource/Weapon.gif">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TankGame/Sound.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TankGame/Sound.java" />
     <entry file="file://$PROJECT_DIR$/Resource/Wall1.gif">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -547,8 +551,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TankGame/TankWorld.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="122" column="92" lean-forward="true" selection-start-line="122" selection-start-column="92" selection-end-line="122" selection-end-column="92" />
+        <state relative-caret-position="522">
+          <caret line="122" column="95" selection-start-line="122" selection-start-column="95" selection-end-line="122" selection-end-column="95" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
