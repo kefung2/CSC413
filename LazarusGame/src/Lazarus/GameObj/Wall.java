@@ -10,9 +10,9 @@ public class Wall implements GameObj{
 
 /*********************************************************************************************************************/
 
-    public void Wall(){}
+    public Wall(){}
 
-    public void Wall(int x, int y, BufferedImage img){}
+    public Wall(int x, int y, BufferedImage img){}
 
     @Override
     public boolean collision(Rectangle gameRect) {

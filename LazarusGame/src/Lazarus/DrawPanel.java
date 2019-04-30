@@ -1,6 +1,6 @@
 package Lazarus;
 
-import Lazarus.GameObj.Player;
+import Lazarus.GameObj.*;
 
 import javax.swing.JPanel;
 
@@ -21,6 +21,11 @@ public class DrawPanel extends JPanel{
     private BufferedImage bg, screen;
     private LazarusWorld world;
     private Player p1;
+    private ArrayList<GameObj> boxList;
+    private CardBoardBox CBox;
+    private WoodBox WBox;
+    private MetalBox MBox;
+    private StoneBox SBox;
 
 
 /*********************************************************************************************************************/
@@ -59,6 +64,10 @@ public class DrawPanel extends JPanel{
         g.drawImage(bg ,2,2,this);
     }
 
+    public void drawBox(){
+
+    }
+
     public void drawPlayer(Graphics2D g){
         Graphics2D gz = (Graphics2D) g;
         this.p1.draw(gz);
@@ -70,5 +79,25 @@ public class DrawPanel extends JPanel{
 
     public void setP1(Player p1){
         this.p1 = p1;
+    }
+
+    public void setBox(ArrayList<GameObj> boxList){
+        this.boxList = boxList;
+    }
+
+    public void setCBox(CardBoardBox cBox){
+        this.CBox = cBox;
+    }
+
+    public void setWBox(WoodBox wbox){
+        this.WBox = wbox;
+    }
+
+    public void setMBox(MetalBox mbox){
+        this.MBox = mbox;
+    }
+
+    public void setSBox(StoneBox sBox){
+        this.SBox = sBox;
     }
 }

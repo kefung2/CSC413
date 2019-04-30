@@ -1,14 +1,41 @@
 package Lazarus.GameObj;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Button {
+public class Button implements GameObj{
 
     int x,y;
     private BufferedImage img;
+    private boolean levelup;
 
-    public void Button(){}
+    public Button(){}
 
-    public void Button(int x, int y, BufferedImage img){}
+    public Button(int x, int y, BufferedImage img){
+        this.x = x;
+        this.y = y;
+        this.img = img;
+        levelup = false;
+    }
 
+    public boolean getLevelup(){
+        return levelup;
+    }
+
+    public void setLevelup() {
+        levelup = false;
+    }
+
+
+
+
+    @Override
+    public boolean collision(Rectangle rect) {
+        return false;
+    }
+
+    @Override
+    public void draw(Graphics2D g) {
+        g.drawImage(img,x,y,null);
+    }
 }

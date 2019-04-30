@@ -31,6 +31,7 @@ public class Player implements GameObj {
         this.world = world;
         this.isDead = false;
         this.lives = 3;
+        lazaRect = new Rectangle();
     }
 
     public void toggleGoLeft() {
@@ -67,5 +68,23 @@ public class Player implements GameObj {
     public void draw(Graphics2D g){
 
         g.drawImage(img,x,y, null);
+    }
+    /*****************************************************************************************************************/
+    // get/set
+
+    public int getX(){
+        return x;
+    }
+
+    public void setX(int newX) {
+        this.x = newX;
+    }
+
+    public int getY(){
+        return y;
+    }
+
+    public void setY(int newY){
+        this.y = newY;
     }
 }
