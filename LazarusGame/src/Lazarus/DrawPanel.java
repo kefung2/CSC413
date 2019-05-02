@@ -1,6 +1,7 @@
 package Lazarus;
 
 import Lazarus.GameObj.*;
+import Lazarus.GameObj.Button;
 
 import javax.swing.JPanel;
 
@@ -21,11 +22,12 @@ public class DrawPanel extends JPanel{
     private BufferedImage bg, screen;
     private LazarusWorld world;
     private Player p1;
-    private ArrayList<GameObj> boxList;
-    private CardBoardBox CBox;
-    private WoodBox WBox;
-    private MetalBox MBox;
-    private StoneBox SBox;
+    private ArrayList<String> boxList;
+    private ArrayList<Boxes> allBoxonMap;
+    private ArrayList<Boxes> boxInAir;
+    private ArrayList<Button> buttons;
+    private Boxes droppingBox;
+    private boolean dropTheBox, boxDroping;
 
 
 /*********************************************************************************************************************/
@@ -39,6 +41,7 @@ public class DrawPanel extends JPanel{
         BGPath = imgPath;
         bg = world.stringToBuffer(BGPath);
         this.world = world;
+        dropTheBox = false;
 
         setSize(frameWidth,frameHeight);
 
@@ -56,7 +59,13 @@ public class DrawPanel extends JPanel{
         Graphics2D g2 = bimg.createGraphics();
 
         drawBG(g2);
+        drawBox(g2);
+        drawButton(g2);
         drawPlayer(g2);
+        if(dropTheBox){
+            drawdroppingbox(g2);
+            dropTheBox = false;
+        }
         screen = bimg;
     }
 
@@ -64,8 +73,33 @@ public class DrawPanel extends JPanel{
         g.drawImage(bg ,2,2,this);
     }
 
-    public void drawBox(){
+    public void drawBox(Graphics2D g){
+        allBoxonMap.forEach((curr) ->{
+            curr.draw(g);
+        });
+    }
 
+    public void drawdroppingbox(Graphics2D g){
+
+        Graphics2D g2 = (Graphics2D) g;
+        try {
+            boxInAir.forEach((curr) -> {
+                if(curr.getdroping())
+                curr.draw(g);
+            });
+        }catch(ConcurrentModificationException e){
+
+        }
+
+/*        world.getBoxList().set(0,world.getBoxList().get(1));
+        world.getBoxList().set(1,world.getBoxList().get(2));
+        world.getBoxList().remove(2);*/
+    }
+
+    public void drawButton(Graphics2D g){
+        buttons.forEach((curr) ->{
+            curr.draw(g);
+        });
     }
 
     public void drawPlayer(Graphics2D g){
@@ -81,23 +115,21 @@ public class DrawPanel extends JPanel{
         this.p1 = p1;
     }
 
-    public void setBox(ArrayList<GameObj> boxList){
+    public void setBox(ArrayList<String> boxList){
         this.boxList = boxList;
     }
 
-    public void setCBox(CardBoardBox cBox){
-        this.CBox = cBox;
+    public void setBoxonMap(ArrayList<Boxes> allBoxOnMap){this.allBoxonMap = allBoxOnMap;}
+
+    public void setBoxInAir(ArrayList<Boxes> boxInAir){this.boxInAir = boxInAir;}
+
+    public void setButtons(ArrayList<Button> button){this.buttons = button;}
+
+    public void DropABox(){
+        dropTheBox = true;
     }
 
-    public void setWBox(WoodBox wbox){
-        this.WBox = wbox;
-    }
-
-    public void setMBox(MetalBox mbox){
-        this.MBox = mbox;
-    }
-
-    public void setSBox(StoneBox sBox){
-        this.SBox = sBox;
+    public boolean getDropsStatus(){
+        return boxDroping;
     }
 }

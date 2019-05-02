@@ -48,14 +48,16 @@ public class LazarusWorld extends JComponent {
     private ArrayList<Wall> mapWall;
     private ArrayList<Button> levelButton;
     private Scanner scanner;
-    private CardBoardBox CBox;
-    private WoodBox WBox;
-    private MetalBox MBox;
-    private StoneBox SBox;
+    private Boxes droppingBox;
     private Random rng;
     private boolean firstTime;
-    private ArrayList<GameObj> boxList;
+    private boolean dropping;
+    private ArrayList<String> DropboxList;
+    private String boxType;
+    private ArrayList<Boxes> AllBoxOnMap;
+    private ArrayList<Boxes> boxInAir;
     private int nextBox;
+    private int dropClock, levelClock;
 
     //Draw
     private DrawPanel drawpanel;
@@ -71,10 +73,10 @@ public class LazarusWorld extends JComponent {
         currLevel = 1;
         maxlevel = 3;
         firstTime = true;
-        setFrame();
+
         setMapObj();
-        setSpwan();
-        //setPlayer();
+        setLevelClock();
+        setFrame();
     }
 
     public void startGame(){
@@ -82,6 +84,8 @@ public class LazarusWorld extends JComponent {
         try{
             while(true) {
                 update();
+                this.drawpanel.setBox(DropboxList);
+                this.drawpanel.setBoxInAir(boxInAir);
                 this.drawpanel.repaint();
 
                 if(levelButton.get(0).getLevelup() || levelButton.get(1).getLevelup()){
@@ -90,7 +94,7 @@ public class LazarusWorld extends JComponent {
                     }
                 }
 
-                Thread.sleep(1000/144);
+                Thread.sleep(100);
             }
 
         } catch (InterruptedException ignored){
@@ -102,10 +106,38 @@ public class LazarusWorld extends JComponent {
 
     public void levelUp() {
         currLevel++;
+        setLevelClock();
     }
 
     public void update(){
         boxQueue();
+        dropClock--;
+        if(!(dropping) && dropClock <= 0){
+            this.drawpanel.DropABox();
+            if (DropboxList.get(0) == "Cbox") {
+
+                droppingBox = new Boxes(p1.getX(), 0 , 1, this.getCBoximg(), this);
+                droppingBox.setDroping();
+
+            } else if (DropboxList.get(0) == "Wbox") {
+
+                droppingBox = new Boxes(p1.getX(), 0 , 2, this.getWBoximg(), this);
+                droppingBox.setDroping();
+
+            } else if (DropboxList.get(0) == "Mbox") {
+
+                droppingBox = new Boxes(p1.getX(), 0 , 3, this.getMBoximg(), this);
+                droppingBox.setDroping();
+
+            } else if (DropboxList.get(0) == "Sbox") {
+
+                droppingBox = new Boxes(p1.getX(), 0 , 4, this.getSBoximg(), this);
+                droppingBox.setDroping();
+            }
+
+            boxInAir.add(droppingBox);
+            dropClock = levelClock;
+        }
     }
 
     /*********************************************************************************************************/
@@ -122,9 +154,9 @@ public class LazarusWorld extends JComponent {
          stonebox = "Resource/StoneBox.gif";
          button = "Resource/Button.gif";
          wall = "Resource/Wall.gif";
-         level1 = "Resource/LazarusMap_Level1";
-         level2 = "Resource/LazarusMap_Level2";
-         level3 = "Resource/LazarusMap_Level3";
+         level1 = "Resource/LazarusMap_Level1.csv";
+         level2 = "Resource/LazarusMap_Level2.csv";
+         level3 = "Resource/LazarusMap_Level3.csv";
      }
 
      public void setFrame(){
@@ -141,6 +173,10 @@ public class LazarusWorld extends JComponent {
     public void setMapObj(){
         BufferedImage img;
         String mapLevel = null;
+        AllBoxOnMap = new ArrayList<>();
+        levelButton = new ArrayList<>();
+        DropboxList = new ArrayList<>();
+        boxInAir = new ArrayList<>();
 
         if(currLevel == 1){
             mapLevel = level1;
@@ -164,34 +200,44 @@ public class LazarusWorld extends JComponent {
                 String[] value = data.split(",");
                 for (int col = 0; col < 16; col++) {
                     int mapCode = Integer.parseInt(value[col]);
-                    if (mapCode == 0) {
-                        img = stringToBuffer(wall);
-                        mapWall.add(new Wall(row*40, col*40, img));
-                    }
                     if (mapCode == 1) {
+                        img = stringToBuffer(wall);
+                        //mapWall.add(new Wall(col*40, row*40, img));
+                        AllBoxOnMap.add(new Boxes(col*40, row*40, 0, img, this));
+                    }
+                    if (mapCode == 2) {
                         img = stringToBuffer(player);
                         if(currLevel == 1){
-                        p1 = new Player(row*40,col*40,img,this);
+                        p1 = new Player(col*40,row*40,img,this);
                         p1Key = new LazaKey(p1, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT);
                         }else if(currLevel > 1){
                             p1.setX(row*40);
                             p1.setY(col*40);
                         }
-                        drawpanel.setP1(p1);
                     }
-                    if (mapCode == 2) {
+                    if (mapCode == 3) {
                         img = stringToBuffer(button);
-                        levelButton.add(new Button(row*40, col*40, img));
+                        levelButton.add(new Button(col*40, row*40, img));
                     }
 
                 }
             }
         }
+
+        this.drawpanel.setBoxonMap(AllBoxOnMap);
+        this.drawpanel.setButtons(levelButton);
+        this.drawpanel.setP1(p1);
     }
 
 
-    public void setSpwan(){
-         spwanBox = new SpwanBox(this, p1);
+    public void setLevelClock(){
+        if (currLevel == 1) {
+            levelClock = 30;
+        } else if (currLevel == 2) {
+            levelClock = 20;
+        } else if (currLevel == 3) {
+            levelClock = 10;
+        }
     }
 
     public void boxQueue(){
@@ -199,39 +245,21 @@ public class LazarusWorld extends JComponent {
         if(firstTime) {
             for(int i = 0; i < 3; i++ ) {
                 nextBox = rng.nextInt(3);
-                if (nextBox + 1 == 1) {
-                    CBox = new CardBoardBox(0, 0, 1,stringToBuffer(cardboardbox));
-                    boxList.add(CBox);
-                } else if (nextBox + 1 == 2) {
-                    WBox = new WoodBox(0, 0, 2,stringToBuffer(woodbox));
-                    boxList.add(WBox);
-                } else if (nextBox + 1 == 3) {
-                    MBox = new MetalBox(0, 0, 3,stringToBuffer(metalbox));
-                    boxList.add(MBox);
-                } else if (nextBox + 1 == 4) {
-                    SBox = new StoneBox(0, 0, 4,stringToBuffer(stonebox));
-                    boxList.add(SBox);
-                }
+                grenateBox(nextBox);
             }
             firstTime = false;
-        }else if(boxList.size() < 3){
+        }else if(DropboxList.size() < 3){
             nextBox = rng.nextInt(3);
-            if (nextBox + 1 == 1) {
-                CBox = new CardBoardBox(0, 0, 1,stringToBuffer(cardboardbox));
-                boxList.set(2,CBox);
-            } else if (nextBox + 1 == 2) {
-                WBox = new WoodBox(0, 0, 2,stringToBuffer(woodbox));
-                boxList.set(2,WBox);
-            } else if (nextBox + 1 == 3) {
-                MBox = new MetalBox(0, 0, 3,stringToBuffer(metalbox));
-                boxList.set(2,MBox);
-            } else if (nextBox + 1 == 4) {
-                SBox = new StoneBox(0, 0, 4,stringToBuffer(stonebox));
-                boxList.set(2,SBox);
-            }
+            grenateBox(nextBox);
+
+        }
+        for(int i= 0;i <DropboxList.size(); i++){
+            System.out.println(DropboxList.get(i));
         }
 
-        this.drawpanel.setBox(boxList);
+        for(int i= 0;i <DropboxList.size(); i++){
+            System.out.println(DropboxList.get(i));
+        }
     }
 
 
@@ -245,13 +273,33 @@ public class LazarusWorld extends JComponent {
         return img;
     }
 
+    public void grenateBox(int n){
+        if (n + 1 == 1) {
+            boxType = "Cbox";
+            DropboxList.add(boxType);
+        } else if (n + 1 == 2) {
+            boxType = "Wbox";
+            DropboxList.add(boxType);
+        } else if (n + 1 == 3) {
+            boxType = "Mbox";
+            DropboxList.add(boxType);
+        } else if (n + 1 == 4) {
+            boxType = "Sbox";
+            DropboxList.add(boxType);
+        }
+    }
+
 
     /*********************************************************************************************************/
     // get/set
 
-    public ArrayList<GameObj> getBoxList(){
-        return boxList;
+    public ArrayList<String> getBoxList(){
+        return DropboxList;
     }
+
+    public ArrayList<Boxes> getAllBoxOnMap(){ return AllBoxOnMap;}
+
+    public void setAllBoxOnMap(int x, int y, BufferedImage img){}
 
     public BufferedImage getCBoximg(){
         return stringToBuffer(cardboardbox);
@@ -267,6 +315,10 @@ public class LazarusWorld extends JComponent {
 
     public BufferedImage getSBoximg(){
         return stringToBuffer(stonebox);
+    }
+
+    public void setDropping(){
+        dropping = false;
     }
 
 

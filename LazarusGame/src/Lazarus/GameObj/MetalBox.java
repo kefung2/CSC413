@@ -1,34 +1,58 @@
+
 package Lazarus.GameObj;
+
+import Lazarus.LazarusWorld;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class MetalBox implements GameObj{
+public class MetalBox extends Boxes{
     private int x,y;
     private BufferedImage img;
     private int weight;
     private Rectangle MBoxRect;
+    private LazarusWorld world;
+    private boolean droping;
+    private Boxes boxes;
+    private Rectangle boxRect;
 
-/*********************************************************************************************************************/
+
+/*********************************************************************************************************************//*
+
 
     public MetalBox(){}
 
-    public MetalBox(int x, int y, int weight, BufferedImage img){
+    public MetalBox(int x, int y, int weight, BufferedImage img,LazarusWorld world){
+        super(x,y,weight,img);
         this.x = x;
         this.y = y;
         this.weight = weight;
         this.img = img;
+        this.world = world;
+        this.droping = true;
         MBoxRect = new Rectangle(this.x, this.y, img.getWidth(), img.getHeight());
     }
 
-    @Override
     public boolean collision(Rectangle gameRect) {
         return false;
     }
 
-    @Override
     public void draw(Graphics2D g){
+        update();
+    }
 
+    public void update(){
+        if(droping) {
+            y -= 1;
+        }
+        for(int i = 0; i < world.getAllBoxOnMap().size(); i++) {
+            boxes = world.getAllBoxOnMap().get(i);
+            boxRect = boxes.getObjRect();
+            if (boxRect.intersects(MBoxRect)){
+                droping = false;
+                world.setAllBoxOnMap(this.x, this.y, this.img);
+            }
+        }
     }
 
     public int getWeight(){
@@ -42,6 +66,6 @@ public class MetalBox implements GameObj{
     public void setX(int newX){
         this.x = newX;
     }
-
+*/
 }
 

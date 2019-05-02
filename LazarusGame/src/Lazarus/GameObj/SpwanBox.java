@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class SpwanBox implements GameObj{
+public class SpwanBox{
 
     private LazarusWorld world;
     private Player p1;
@@ -23,7 +23,7 @@ public class SpwanBox implements GameObj{
     private boolean boxDropping;
 
     /******************************************************************************************************************/
-
+/*
     public SpwanBox(){}
 
     public SpwanBox(LazarusWorld world, Player p1){
@@ -71,6 +71,7 @@ public class SpwanBox implements GameObj{
 
 
         }
-    }
+    }*/
 
 }
+

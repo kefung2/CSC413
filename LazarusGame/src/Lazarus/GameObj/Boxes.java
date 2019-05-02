@@ -1,74 +1,67 @@
-
 package Lazarus.GameObj;
 
 import Lazarus.LazarusWorld;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.util.Objects;
 
-public class CardBoardBox extends Boxes{
+public class Boxes {
 
+    private Rectangle objRect;
+    public BufferedImage img;
     private int x,y;
-    private BufferedImage img;
     private int weight;
-    private Rectangle CBoxRect;
     private LazarusWorld world;
     private boolean droping;
     private Boxes boxes;
     private Rectangle boxRect;
 
+    public Boxes(){}
 
-/*********************************************************************************************************************//*
-
-
-    public CardBoardBox(){}
-
-    public CardBoardBox(int x, int y, int weight, BufferedImage img, LazarusWorld world){
-        super(x,y,weight,img);
+    public Boxes (int x, int y, int weight, BufferedImage img, LazarusWorld world){
         this.x = x;
         this.y = y;
         this.weight = weight;
         this.img = img;
         this.world = world;
-        droping = true;
-        CBoxRect = new Rectangle(this.x, this.y, img.getWidth(), img.getHeight());
+        this.objRect = new Rectangle(x,y,img.getWidth(), img.getHeight());
 
     }
-
-    public boolean collision(Rectangle gameRect) {
-        return false;
-    }
-
 
     public void draw(Graphics2D g){
+        AffineTransform rotation = AffineTransform.getTranslateInstance(x,y);
+        g.drawImage(img,rotation, null);
+        System.out.println(this + " --> " + x + "," + y);
         update();
     }
 
     public void update(){
         if(droping) {
-            y -= 1;
+            y++;
         }
         for(int i = 0; i < world.getAllBoxOnMap().size(); i++) {
             boxes = world.getAllBoxOnMap().get(i);
             boxRect = boxes.getObjRect();
-            if (boxRect.intersects(CBoxRect)){
+            if (objRect.intersects(boxRect)){
+                System.out.println("Landed");
                 droping = false;
+                world.setDropping();
                 world.setAllBoxOnMap(this.x, this.y, this.img);
             }
         }
     }
 
-    public int getWeight(){
-        return weight;
+    public Rectangle getObjRect(){
+        return objRect;
     }
 
-    public Rectangle getRect(){
-        return CBoxRect;
+    public void setDroping(){
+        droping = true;
     }
 
-    public void setX(int newX){
-        this.x = newX;
+    public boolean getdroping(){
+        return droping;
     }
-*/
 }
-

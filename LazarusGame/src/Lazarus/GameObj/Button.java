@@ -36,6 +36,6 @@ public class Button implements GameObj{
 
     @Override
     public void draw(Graphics2D g) {
-        g.drawImage(img,x,y,null);
+        g.drawImage(img,x+2,y+2,null);
     }
 }
