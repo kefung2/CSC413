@@ -2,6 +2,7 @@
 package Lazarus.GameObj;
 
 import Lazarus.LazarusWorld;
+import Lazarus.GameObj.Wall;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -14,17 +15,17 @@ public class CardBoardBox extends Boxes{
     private Rectangle CBoxRect;
     private LazarusWorld world;
     private boolean droping;
-    private Boxes boxes;
-    private Rectangle boxRect;
+    private Wall wall;
+    private Rectangle wallRect;
 
 
-/*********************************************************************************************************************//*
+/*********************************************************************************************************************/
 
 
     public CardBoardBox(){}
 
     public CardBoardBox(int x, int y, int weight, BufferedImage img, LazarusWorld world){
-        super(x,y,weight,img);
+        super(x,y,weight,img, world,true);
         this.x = x;
         this.y = y;
         this.weight = weight;
@@ -41,22 +42,33 @@ public class CardBoardBox extends Boxes{
 
 
     public void draw(Graphics2D g){
+        g.drawImage(img,x+2,y+2, null);
+        System.out.println(this + " --> " + x + "," + y);
         update();
     }
 
     public void update(){
         if(droping) {
-            y -= 1;
+            System.out.println("y++");
+            y++;
+            CBoxRect.setLocation(this.x, this.y);
         }
-        for(int i = 0; i < world.getAllBoxOnMap().size(); i++) {
-            boxes = world.getAllBoxOnMap().get(i);
-            boxRect = boxes.getObjRect();
-            if (boxRect.intersects(CBoxRect)){
+        for(int i = 0; i < world.getMapWall().size(); i++) {
+            wall = world.getMapWall().get(i);
+            wallRect = wall.getWallRect();
+            System.out.println("Falling");
+            System.out.println("Check: " + wallRect.intersects(CBoxRect));
+            if (wallRect.intersects(CBoxRect)){
+                System.out.println("Landed");
                 droping = false;
-                world.setAllBoxOnMap(this.x, this.y, this.img);
+                //world.setDropping();
+                //world.getmapC().add(this);
+                //world.getCboxInAir().remove(this);
             }
         }
     }
+
+
 
     public int getWeight(){
         return weight;
@@ -69,6 +81,5 @@ public class CardBoardBox extends Boxes{
     public void setX(int newX){
         this.x = newX;
     }
-*/
 }
 

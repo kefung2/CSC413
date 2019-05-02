@@ -24,7 +24,15 @@ public class DrawPanel extends JPanel{
     private Player p1;
     private ArrayList<String> boxList;
     private ArrayList<Boxes> allBoxonMap;
-    private ArrayList<Boxes> boxInAir;
+    private ArrayList<Wall> allWallBoxonMap;
+    private ArrayList<CardBoardBox> allCBoxonMap;
+    private ArrayList<WoodBox> allWBoxonMap;
+    private ArrayList<MetalBox> allMBoxonMap;
+    private ArrayList<StoneBox> allSBoxonMap;
+    private ArrayList<CardBoardBox> CboxInAir;
+    private ArrayList<WoodBox> WboxInAir;
+    private ArrayList<MetalBox> MboxInAir;
+    private ArrayList<StoneBox> SboxInAir;
     private ArrayList<Button> buttons;
     private Boxes droppingBox;
     private boolean dropTheBox, boxDroping;
@@ -41,7 +49,7 @@ public class DrawPanel extends JPanel{
         BGPath = imgPath;
         bg = world.stringToBuffer(BGPath);
         this.world = world;
-        dropTheBox = false;
+        //dropTheBox = false;
 
         setSize(frameWidth,frameHeight);
 
@@ -63,8 +71,12 @@ public class DrawPanel extends JPanel{
         drawButton(g2);
         drawPlayer(g2);
         if(dropTheBox){
-            drawdroppingbox(g2);
-            dropTheBox = false;
+            drawdroppingCbox(g2);
+            //drawdroppingWbox(g2);
+            //drawdroppingMbox(g2);
+            //drawdroppingSbox(g2);
+
+            //dropTheBox = false; reason why box drop and gone
         }
         screen = bimg;
     }
@@ -74,26 +86,61 @@ public class DrawPanel extends JPanel{
     }
 
     public void drawBox(Graphics2D g){
-        allBoxonMap.forEach((curr) ->{
+        allWallBoxonMap.forEach((curr) ->{
             curr.draw(g);
         });
     }
 
-    public void drawdroppingbox(Graphics2D g){
+    public void drawdroppingCbox(Graphics2D g){
 
         Graphics2D g2 = (Graphics2D) g;
         try {
-            boxInAir.forEach((curr) -> {
+            CboxInAir.forEach((curr) -> {
                 if(curr.getdroping())
                 curr.draw(g);
             });
         }catch(ConcurrentModificationException e){
 
         }
+    }
 
-/*        world.getBoxList().set(0,world.getBoxList().get(1));
-        world.getBoxList().set(1,world.getBoxList().get(2));
-        world.getBoxList().remove(2);*/
+    public void drawdroppingWbox(Graphics2D g){
+
+        Graphics2D g2 = (Graphics2D) g;
+        try {
+            WboxInAir.forEach((curr) -> {
+                if(curr.getdroping())
+                    curr.draw(g);
+            });
+        }catch(ConcurrentModificationException e){
+
+        }
+    }
+
+    public void drawdroppingMbox(Graphics2D g){
+
+        Graphics2D g2 = (Graphics2D) g;
+        try {
+            MboxInAir.forEach((curr) -> {
+                if(curr.getdroping())
+                    curr.draw(g);
+            });
+        }catch(ConcurrentModificationException e){
+
+        }
+    }
+
+    public void drawdroppingSbox(Graphics2D g){
+
+        Graphics2D g2 = (Graphics2D) g;
+        try {
+            SboxInAir.forEach((curr) -> {
+                if(curr.getdroping())
+                    curr.draw(g);
+            });
+        }catch(ConcurrentModificationException e){
+
+        }
     }
 
     public void drawButton(Graphics2D g){
@@ -121,7 +168,24 @@ public class DrawPanel extends JPanel{
 
     public void setBoxonMap(ArrayList<Boxes> allBoxOnMap){this.allBoxonMap = allBoxOnMap;}
 
-    public void setBoxInAir(ArrayList<Boxes> boxInAir){this.boxInAir = boxInAir;}
+    public void setWallBoxonMap(ArrayList<Wall> allWallBoxOnMap){this.allWallBoxonMap = allWallBoxOnMap;}
+
+    public void setCBoxonMap(ArrayList<CardBoardBox> allCBoxOnMap){this.allCBoxonMap = allCBoxOnMap;}
+
+    public void setWBoxonMap(ArrayList<WoodBox> allWBoxOnMap){this.allWBoxonMap = allWBoxOnMap;}
+
+    public void setMBoxonMap(ArrayList<MetalBox> allMBoxOnMap){this.allMBoxonMap = allMBoxOnMap;}
+
+    public void setSBoxonMap(ArrayList<StoneBox> allSBoxOnMap){this.allSBoxonMap = allSBoxOnMap;}
+
+    public void setCBoxInAir(ArrayList<CardBoardBox> CboxInAir){this.CboxInAir = CboxInAir;}
+
+    public void setWBoxInAir(ArrayList<WoodBox> WboxInAir){this.WboxInAir = WboxInAir;}
+
+    public void setMBoxInAir(ArrayList<MetalBox> MboxInAir){this.MboxInAir = MboxInAir;}
+
+    public void setSBoxInAir(ArrayList<StoneBox> SboxInAir){this.SboxInAir = SboxInAir;}
+
 
     public void setButtons(ArrayList<Button> button){this.buttons = button;}
 

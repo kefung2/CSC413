@@ -16,11 +16,10 @@ public class WoodBox extends Boxes{
     private Rectangle boxRect;
 
 /*********************************************************************************************************************/
-/*
     public WoodBox(){}
 
     public WoodBox(int x, int y, int weight, BufferedImage img, LazarusWorld world){
-        super(x,y,weight,img);
+        super(x,y,weight,img, world,true);
         this.x = x;
         this.y = y;
         this.weight = weight;
@@ -37,22 +36,10 @@ public class WoodBox extends Boxes{
 
 
     public void draw(Graphics2D g){
-        update();
+        g.drawImage(img,x+2,y+2, null);
+        super.update();
     }
 
-    public void update(){
-        if(droping) {
-            y -= 1;
-        }
-        for(int i = 0; i < world.getAllBoxOnMap().size(); i++) {
-            boxes = world.getAllBoxOnMap().get(i);
-            boxRect = boxes.getObjRect();
-            if (boxRect.intersects(WBoxRect)){
-                droping = false;
-                world.setAllBoxOnMap(this.x, this.y, this.img);
-            }
-        }
-    }
 
     public int getWeight(){
         return weight;
@@ -64,5 +51,5 @@ public class WoodBox extends Boxes{
 
     public void setX(int newX){
         this.x = newX;
-    }*/
+    }
 }

@@ -26,9 +26,6 @@ public class Button implements GameObj{
         levelup = false;
     }
 
-
-
-
     @Override
     public boolean collision(Rectangle rect) {
         return false;

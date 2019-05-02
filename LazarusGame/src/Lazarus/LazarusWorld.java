@@ -46,17 +46,28 @@ public class LazarusWorld extends JComponent {
     private LazaKey p1Key;
     private SpwanBox spwanBox;
     private ArrayList<Wall> mapWall;
+    private ArrayList<CardBoardBox> mapC;
+    private ArrayList<WoodBox> mapW;
+    private ArrayList<MetalBox> mapM;
+    private ArrayList<StoneBox> mapS;
     private ArrayList<Button> levelButton;
     private Scanner scanner;
-    private Boxes droppingBox;
+    private CardBoardBox droppingCBox;
+    private WoodBox droppingWBox;
+    private MetalBox droppingMBox;
+    private StoneBox droppingSBox;
     private Random rng;
     private boolean firstTime;
     private boolean dropping;
     private ArrayList<String> DropboxList;
     private String boxType;
     private ArrayList<Boxes> AllBoxOnMap;
-    private ArrayList<Boxes> boxInAir;
+    private ArrayList<CardBoardBox> CboxInAir;
+    private ArrayList<WoodBox> WboxInAir;
+    private ArrayList<MetalBox> MboxInAir;
+    private ArrayList<StoneBox> SboxInAir;
     private int nextBox;
+    private int currDropping;
     private int dropClock, levelClock;
 
     //Draw
@@ -84,8 +95,11 @@ public class LazarusWorld extends JComponent {
         try{
             while(true) {
                 update();
-                this.drawpanel.setBox(DropboxList);
-                this.drawpanel.setBoxInAir(boxInAir);
+                this.drawpanel.setBox(DropboxList); // display next 3 box
+                this.drawpanel.setCBoxInAir(CboxInAir);
+                //this.drawpanel.setWBoxInAir(WboxInAir);
+                //this.drawpanel.setMBoxInAir(MboxInAir);
+                //this.drawpanel.setSBoxInAir(SboxInAir);
                 this.drawpanel.repaint();
 
                 if(levelButton.get(0).getLevelup() || levelButton.get(1).getLevelup()){
@@ -94,7 +108,7 @@ public class LazarusWorld extends JComponent {
                     }
                 }
 
-                Thread.sleep(100);
+                Thread.sleep(1000/144); //1000/144
             }
 
         } catch (InterruptedException ignored){
@@ -116,28 +130,39 @@ public class LazarusWorld extends JComponent {
             this.drawpanel.DropABox();
             if (DropboxList.get(0) == "Cbox") {
 
-                droppingBox = new Boxes(p1.getX(), 0 , 1, this.getCBoximg(), this);
-                droppingBox.setDroping();
+                droppingCBox = new CardBoardBox(p1.getX(), 0 , 1, this.getCBoximg(), this);
+                droppingCBox.setDroping();
+                CboxInAir.add(droppingCBox);
+                dropping = true;
+                currDropping = 1;
 
             } else if (DropboxList.get(0) == "Wbox") {
 
-                droppingBox = new Boxes(p1.getX(), 0 , 2, this.getWBoximg(), this);
-                droppingBox.setDroping();
+                droppingWBox = new WoodBox(p1.getX(), 0 , 2, this.getWBoximg(), this);
+                droppingWBox.setDroping();
+                WboxInAir.add(droppingWBox);
+                currDropping = 2;
 
             } else if (DropboxList.get(0) == "Mbox") {
 
-                droppingBox = new Boxes(p1.getX(), 0 , 3, this.getMBoximg(), this);
-                droppingBox.setDroping();
+                droppingMBox = new MetalBox(p1.getX(), 0 , 3, this.getMBoximg(), this);
+                droppingMBox.setDroping();
+                MboxInAir.add(droppingMBox);
+                currDropping = 3;
+
 
             } else if (DropboxList.get(0) == "Sbox") {
 
-                droppingBox = new Boxes(p1.getX(), 0 , 4, this.getSBoximg(), this);
-                droppingBox.setDroping();
-            }
+                droppingSBox = new StoneBox(p1.getX(), 0 , 4, this.getSBoximg(), this);
+                droppingSBox.setDroping();
+                SboxInAir.add(droppingSBox);
+                currDropping = 4;
 
-            boxInAir.add(droppingBox);
+            }
+            System.out.println("Now dropping: " + currDropping);
             dropClock = levelClock;
         }
+
     }
 
     /*********************************************************************************************************/
@@ -176,7 +201,15 @@ public class LazarusWorld extends JComponent {
         AllBoxOnMap = new ArrayList<>();
         levelButton = new ArrayList<>();
         DropboxList = new ArrayList<>();
-        boxInAir = new ArrayList<>();
+        CboxInAir = new ArrayList<>();
+        WboxInAir = new ArrayList<>();
+        MboxInAir = new ArrayList<>();
+        SboxInAir = new ArrayList<>();
+        mapWall = new ArrayList<>();
+        mapC = new ArrayList<>();
+        mapW = new ArrayList<>();
+        mapM = new ArrayList<>();
+        mapS = new ArrayList<>();
 
         if(currLevel == 1){
             mapLevel = level1;
@@ -202,8 +235,8 @@ public class LazarusWorld extends JComponent {
                     int mapCode = Integer.parseInt(value[col]);
                     if (mapCode == 1) {
                         img = stringToBuffer(wall);
-                        //mapWall.add(new Wall(col*40, row*40, img));
-                        AllBoxOnMap.add(new Boxes(col*40, row*40, 0, img, this));
+                        mapWall.add(new Wall(col*40, row*40, img));
+                        AllBoxOnMap.add(new Wall(col*40, row*40, img));
                     }
                     if (mapCode == 2) {
                         img = stringToBuffer(player);
@@ -225,6 +258,7 @@ public class LazarusWorld extends JComponent {
         }
 
         this.drawpanel.setBoxonMap(AllBoxOnMap);
+        this.drawpanel.setWallBoxonMap(mapWall);
         this.drawpanel.setButtons(levelButton);
         this.drawpanel.setP1(p1);
     }
@@ -245,21 +279,24 @@ public class LazarusWorld extends JComponent {
         if(firstTime) {
             for(int i = 0; i < 3; i++ ) {
                 nextBox = rng.nextInt(3);
-                grenateBox(nextBox);
+                grenateBox(0);
+
+                for(int j = 0;j <DropboxList.size(); j++){
+                    System.out.println(DropboxList.get(j));
+                }
             }
             firstTime = false;
         }else if(DropboxList.size() < 3){
             nextBox = rng.nextInt(3);
-            grenateBox(nextBox);
+            grenateBox(0);
+
+            for(int j= 0;j <DropboxList.size(); j++){
+                System.out.println(DropboxList.get(j));
+            }
 
         }
-        for(int i= 0;i <DropboxList.size(); i++){
-            System.out.println(DropboxList.get(i));
-        }
 
-        for(int i= 0;i <DropboxList.size(); i++){
-            System.out.println(DropboxList.get(i));
-        }
+
     }
 
 
@@ -297,9 +334,11 @@ public class LazarusWorld extends JComponent {
         return DropboxList;
     }
 
-    public ArrayList<Boxes> getAllBoxOnMap(){ return AllBoxOnMap;}
+    public ArrayList<CardBoardBox> getmapC(){ return mapC;}
 
-    public void setAllBoxOnMap(int x, int y, BufferedImage img){}
+    public ArrayList<CardBoardBox> getCboxInAir(){return CboxInAir;}
+
+    public ArrayList<Wall> getMapWall() {return mapWall;}
 
     public BufferedImage getCBoximg(){
         return stringToBuffer(cardboardbox);
@@ -317,9 +356,18 @@ public class LazarusWorld extends JComponent {
         return stringToBuffer(stonebox);
     }
 
+    public int getCurrLevel(){
+        return  currLevel;
+    }
+
     public void setDropping(){
         dropping = false;
     }
+
+    public void setAllBoxOnMap(Boxes box){
+        AllBoxOnMap.add(box);
+    }
+
 
 
 }
