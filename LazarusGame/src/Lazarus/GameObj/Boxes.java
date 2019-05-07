@@ -21,13 +21,13 @@ public class Boxes extends JComponent {
 
     public Boxes(){}
 
-    public Boxes (int x, int y, int weight, BufferedImage img, LazarusWorld world, boolean dropable){
+    public Boxes (int x, int y, int weight, BufferedImage img, LazarusWorld world){
         this.x = x;
         this.y = y;
         this.weight = weight;
         this.img = img;
         this.world = world;
-        this.droping = dropable;
+        this.droping = true;
         this.objRect = new Rectangle(x,y,img.getWidth(), img.getHeight());
 
     }
@@ -35,8 +35,8 @@ public class Boxes extends JComponent {
     public void draw(Graphics2D g){
         AffineTransform rotation = AffineTransform.getTranslateInstance(x,y);
         g.drawImage(img,x+2, y+2, null);
-        System.out.println(this + " --> " + x + "," + y);
-        update();
+        //System.out.println(this + " --> " + x + "," + y);
+        //update();
     }
 
     public void update(){
@@ -60,10 +60,6 @@ public class Boxes extends JComponent {
 
     public Rectangle getObjRect(){
         return objRect;
-    }
-
-    public void setDroping(){
-        droping = true;
     }
 
     public boolean getdroping(){

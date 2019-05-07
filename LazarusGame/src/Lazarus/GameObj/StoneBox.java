@@ -13,15 +13,15 @@ public class StoneBox extends Boxes{
     private Rectangle SBoxRect;
     private LazarusWorld world;
     private boolean droping;
-    private Boxes boxes;
-    private Rectangle boxRect;
+    private Wall wall;
+    private Rectangle wallRect;
 
 /*********************************************************************************************************************/
 
     public StoneBox(){}
 
     public StoneBox(int x, int y, int weight, BufferedImage img, LazarusWorld world){
-        super(x,y,weight,img, world,true);
+        super(x,y,weight,img, world);
         this.x = x;
         this.y = y;
         this.weight = weight;
@@ -38,9 +38,33 @@ public class StoneBox extends Boxes{
 
     public void draw(Graphics2D g){
         g.drawImage(img,x+2,y+2, null);
-        super.update();
+        update();
     }
 
+    public void update(){
+        if(droping) {
+            System.out.println("y++");
+            y++;
+            SBoxRect.setLocation(this.x, this.y);
+        }
+        for(int i = 0; i < world.getMapWall().size(); i++) {
+            wall = world.getMapWall().get(i);
+            wallRect = wall.getWallRect();
+            System.out.println("Falling");
+            System.out.println("Check: " + wallRect.intersects(SBoxRect));
+            if (wallRect.intersects(SBoxRect)){
+                System.out.println("Landed");
+                droping = false;
+                world.setDropping();
+                world.getmapS().add(this);
+                world.getSboxInAir().remove(this);
+            }
+        }
+    }
+
+    public void setDroping(){
+        droping = true;
+    }
 
     public int getWeight(){
         return weight;

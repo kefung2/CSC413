@@ -51,6 +51,17 @@ public class DrawPanel extends JPanel{
         this.world = world;
         //dropTheBox = false;
 
+        buttons = new ArrayList<>();
+        CboxInAir = new ArrayList<>();
+        WboxInAir = new ArrayList<>();
+        MboxInAir = new ArrayList<>();
+        SboxInAir = new ArrayList<>();
+        allWallBoxonMap = new ArrayList<>();
+        allCBoxonMap = new ArrayList<>();
+        allWBoxonMap = new ArrayList<>();
+        allMBoxonMap = new ArrayList<>();
+        allSBoxonMap = new ArrayList<>();
+
         setSize(frameWidth,frameHeight);
 
     }
@@ -67,17 +78,22 @@ public class DrawPanel extends JPanel{
         Graphics2D g2 = bimg.createGraphics();
 
         drawBG(g2);
-        drawBox(g2);
+        drawBox(g2); // the wall
         drawButton(g2);
         drawPlayer(g2);
-        if(dropTheBox){
+        drawCBox(g2);
+        drawWBox(g2);
+        drawMBox(g2);
+        drawSBox(g2);
+        drawHUD(g2);
+
             drawdroppingCbox(g2);
-            //drawdroppingWbox(g2);
-            //drawdroppingMbox(g2);
-            //drawdroppingSbox(g2);
+            drawdroppingWbox(g2);
+            drawdroppingMbox(g2);
+            drawdroppingSbox(g2);
 
             //dropTheBox = false; reason why box drop and gone
-        }
+
         screen = bimg;
     }
 
@@ -85,10 +101,81 @@ public class DrawPanel extends JPanel{
         g.drawImage(bg ,2,2,this);
     }
 
+    public void drawHUD(Graphics2D g){
+        ArrayList<BufferedImage> boxImage = new ArrayList<>();
+        for(int i=0; i < boxList.size(); i++){
+            if (boxList.get(i) == "Cbox") {
+                boxImage.add(world.getCBoximg());
+            } else if (boxList.get(i) == "Wbox") {
+                boxImage.add(world.getWBoximg());
+            } else if (boxList.get(i) == "Mbox") {
+                boxImage.add(world.getMBoximg());
+            } else if (boxList.get(i) == "Sbox") {
+                boxImage.add(world.getSBoximg());
+            }
+        }
+
+        g.setColor(Color.black);
+
+        g.fillRect(0,480,640,40);
+
+        for(int j = 0; j < boxImage.size(); j++){
+            g.drawImage(boxImage.get(j),480 + (j*60) , 480, this);
+        }
+    }
+
     public void drawBox(Graphics2D g){
         allWallBoxonMap.forEach((curr) ->{
             curr.draw(g);
         });
+    }
+
+    public void drawAllBox(Graphics2D g){
+        try {
+            allBoxonMap.forEach((curr) -> {
+                curr.draw(g);
+            });
+        }catch (ConcurrentModificationException e){
+
+        }
+    }
+
+    public void drawCBox(Graphics2D g){
+        try {
+            allCBoxonMap.forEach((curr) -> {
+                curr.draw(g);
+            });
+        }catch (ConcurrentModificationException e){
+
+        }
+    }
+
+    public void drawWBox(Graphics2D g){
+        try {
+            allWBoxonMap.forEach((curr) -> {
+                curr.draw(g);
+            });
+        }catch (ConcurrentModificationException e){
+
+        }
+    }
+    public void drawMBox(Graphics2D g){
+        try {
+            allMBoxonMap.forEach((curr) -> {
+                curr.draw(g);
+            });
+        }catch (ConcurrentModificationException e){
+
+        }
+    }
+    public void drawSBox(Graphics2D g){
+        try {
+            allSBoxonMap.forEach((curr) -> {
+                curr.draw(g);
+            });
+        }catch (ConcurrentModificationException e){
+
+        }
     }
 
     public void drawdroppingCbox(Graphics2D g){
@@ -99,8 +186,8 @@ public class DrawPanel extends JPanel{
                 if(curr.getdroping())
                 curr.draw(g);
             });
-        }catch(ConcurrentModificationException e){
-
+        }catch(ConcurrentModificationException | NullPointerException e){
+            System.out.println("no box");
         }
     }
 
@@ -112,8 +199,8 @@ public class DrawPanel extends JPanel{
                 if(curr.getdroping())
                     curr.draw(g);
             });
-        }catch(ConcurrentModificationException e){
-
+        }catch(ConcurrentModificationException | NullPointerException e){
+            System.out.println("no box");
         }
     }
 
@@ -125,8 +212,8 @@ public class DrawPanel extends JPanel{
                 if(curr.getdroping())
                     curr.draw(g);
             });
-        }catch(ConcurrentModificationException e){
-
+        }catch(ConcurrentModificationException | NullPointerException e){
+            System.out.println("no box");
         }
     }
 
@@ -138,8 +225,8 @@ public class DrawPanel extends JPanel{
                 if(curr.getdroping())
                     curr.draw(g);
             });
-        }catch(ConcurrentModificationException e){
-
+        }catch(ConcurrentModificationException | NullPointerException e){
+            System.out.println("no box");
         }
     }
 
@@ -185,7 +272,6 @@ public class DrawPanel extends JPanel{
     public void setMBoxInAir(ArrayList<MetalBox> MboxInAir){this.MboxInAir = MboxInAir;}
 
     public void setSBoxInAir(ArrayList<StoneBox> SboxInAir){this.SboxInAir = SboxInAir;}
-
 
     public void setButtons(ArrayList<Button> button){this.buttons = button;}
 

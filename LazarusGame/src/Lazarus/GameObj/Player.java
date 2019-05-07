@@ -31,7 +31,7 @@ public class Player implements GameObj {
         this.world = world;
         this.isDead = false;
         this.lives = 3;
-        lazaRect = new Rectangle();
+        lazaRect = new Rectangle(this.x, this.y, img.getWidth(), img.getHeight());
     }
 
     public void toggleGoLeft() {
@@ -53,9 +53,20 @@ public class Player implements GameObj {
     public void update() {
 
         if (this.goLeft) {
+            this.moveLeft();
+            System.out.println("left");
         }
         if (this.goRight) {
+            this.moveRight();
         }
+    }
+
+    private void moveLeft(){
+        x--;
+    }
+
+    private void moveRight(){
+        x++;
     }
 
 

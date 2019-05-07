@@ -13,8 +13,8 @@ public class MetalBox extends Boxes{
     private Rectangle MBoxRect;
     private LazarusWorld world;
     private boolean droping;
-    private Boxes boxes;
-    private Rectangle boxRect;
+    private Wall wall;
+    private Rectangle wallRect;
 
 
 /*********************************************************************************************************************/
@@ -23,7 +23,7 @@ public class MetalBox extends Boxes{
     public MetalBox(){}
 
     public MetalBox(int x, int y, int weight, BufferedImage img,LazarusWorld world){
-        super(x,y,weight,img, world,true);
+        super(x,y,weight,img, world);
         this.x = x;
         this.y = y;
         this.weight = weight;
@@ -39,7 +39,32 @@ public class MetalBox extends Boxes{
 
     public void draw(Graphics2D g){
         g.drawImage(img,x+2,y+2, null);
-        super.update();
+        update();
+    }
+
+    public void update(){
+        if(droping) {
+            System.out.println("y++");
+            y++;
+            MBoxRect.setLocation(this.x, this.y);
+        }
+        for(int i = 0; i < world.getMapWall().size(); i++) {
+            wall = world.getMapWall().get(i);
+            wallRect = wall.getWallRect();
+            System.out.println("Falling");
+            System.out.println("Check: " + wallRect.intersects(MBoxRect));
+            if (wallRect.intersects(MBoxRect)){
+                System.out.println("Landed");
+                droping = false;
+                world.setDropping();
+                world.getmapM().add(this);
+                world.getMboxInAir().remove(this);
+            }
+        }
+    }
+
+    public void setDroping(){
+        droping = true;
     }
 
     public int getWeight(){
