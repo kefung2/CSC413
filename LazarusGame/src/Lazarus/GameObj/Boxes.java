@@ -24,13 +24,15 @@ public class Boxes extends JComponent {
         droping = true;
     }
 
-    public Boxes(int x, int y, BufferedImage img){
+    public Boxes(boolean drop) {droping = drop;}
+
+    public Boxes(int x, int y, BufferedImage img, Rectangle objRect){
         this.x = x;
         this.y = y;
         this.img = img;
         this.weight = 0;
-        this.p1 = p1;
-        objRect = new Rectangle(x+2,y+2,img.getWidth(), img.getHeight());
+        //this.p1 = p1;
+        this.objRect = objRect;
     }
 
     public Boxes (int x, int y, int weight, BufferedImage img, LazarusWorld world, Rectangle objRect){
@@ -39,32 +41,33 @@ public class Boxes extends JComponent {
         this.weight = weight;
         this.img = img;
         this.world = world;
-        this.p1 = p1;
+        //this.p1 = p1;
         this.objRect = objRect;
 
     }
 
     public void draw(Graphics2D g){
         AffineTransform rotation = AffineTransform.getTranslateInstance(x,y);
-        g.drawImage(img,x+2, y+2, null);
+        g.drawImage(img,x, y, null);
         g.draw(objRect);
         //System.out.println(this + " --> " + x + "," + y);
         //update();
     }
 
-//    public void update(){
-//        p1 = LazarusWorld.getP1();
-
-//        if(p1.collision(objRect)){
-//            if(p1.getX()+50 < x){
-//                System.out.println("Left " + x);
-//                p1.setX(p1.getPx());
-//            }else if(p1.getX() > x+32){
-//                System.out.println("Right " + x);
-//                p1.setX(p1.getPx());
-//            }
-//        }
-//    }
+    public void update(){
+        p1 = LazarusWorld.getP1();
+        System.out.println("Boxes updating...");
+        int p1x = p1.getXforColli();
+        if(p1.collision(objRect)){
+            if(p1x+35 < x){
+                System.out.println("Left " + x);
+                p1.setX(p1.getPx());
+            }else if(p1x > x+35){
+                System.out.println("Right " + x);
+                p1.setX(p1.getPx());
+            }
+        }
+    }
 
     public Rectangle getObjRect(){
         return objRect;

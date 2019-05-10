@@ -22,8 +22,8 @@ public class WoodBox extends Boxes{
 
     public WoodBox(int x, int y, int weight, BufferedImage img, LazarusWorld world, Player p1){
         super();
-        this.x = x;
-        this.y = y;
+        this.x = x+2;
+        this.y = y+2;
         this.weight = weight;
         this.img = img;
         this.world = world;
@@ -39,7 +39,7 @@ public class WoodBox extends Boxes{
 
 
     public void draw(Graphics2D g){
-        g.drawImage(img,x+2,y+2, null);
+        g.drawImage(img,x,y, null);
         update();
     }
 

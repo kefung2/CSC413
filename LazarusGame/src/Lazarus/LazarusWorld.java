@@ -58,6 +58,7 @@ public class LazarusWorld extends JComponent {
     private Random rng;
     private boolean firstTime;
     private boolean dropping;
+    private boolean firstBox;
     private ArrayList<String> DropboxList;
     private String boxType;
     private ArrayList<Boxes> AllBoxOnMap;
@@ -83,7 +84,10 @@ public class LazarusWorld extends JComponent {
         currLevel = 1;
         maxlevel = 3;
         firstTime = true;
+        firstBox = true;
+        dropping = true;
 
+        setArraylist();
         setMapObj();
         setLevelClock();
         setFrame();
@@ -114,15 +118,28 @@ public class LazarusWorld extends JComponent {
 
     public void levelUp() {
         currLevel++;
+        clearList();
         setLevelClock();
+        setMapObj();
+        dropping = false;
     }
 
     public void update(){
         this.p1.update();
 
-//        AllBoxOnMap.forEach((curr) -> {
-//            curr.update();
-//        });
+        AllBoxOnMap.forEach((curr) -> {
+            curr.update();
+        });
+
+        levelButton.forEach((curr) -> {
+            curr.update();
+        });
+
+        if(firstBox){
+            firstBox = false;
+            dropping = false;
+            dropClock = 300;
+        }
 
         boxQueue();
         dropClock--;
@@ -205,18 +222,42 @@ public class LazarusWorld extends JComponent {
          jFrame.setVisible(true);
      }
 
+     public void setArraylist(){
+         AllBoxOnMap = new ArrayList<>();
+         levelButton = new ArrayList<>();
+
+         DropboxList = new ArrayList<>();
+         CboxInAir = new ArrayList<>();
+         WboxInAir = new ArrayList<>();
+         MboxInAir = new ArrayList<>();
+         SboxInAir = new ArrayList<>();
+
+         mapWall = new ArrayList<>();
+     }
+
+     public void clearList(){
+         DropboxList.clear();
+         CboxInAir.clear();
+         WboxInAir.clear();
+         MboxInAir.clear();
+         SboxInAir.clear();
+         levelButton.clear();
+         mapWall.clear();
+         AllBoxOnMap.clear();
+     }
+
 
     public void setMapObj(){
         BufferedImage img;
         String mapLevel = null;
-        AllBoxOnMap = new ArrayList<>();
-        levelButton = new ArrayList<>();
-
-        DropboxList = new ArrayList<>();
-        CboxInAir = new ArrayList<>();
-        WboxInAir = new ArrayList<>();
-        MboxInAir = new ArrayList<>();
-        SboxInAir = new ArrayList<>();
+//        AllBoxOnMap = new ArrayList<>();
+//        levelButton = new ArrayList<>();
+//
+//        DropboxList = new ArrayList<>();
+//        CboxInAir = new ArrayList<>();
+//        WboxInAir = new ArrayList<>();
+//        MboxInAir = new ArrayList<>();
+//        SboxInAir = new ArrayList<>();
 
 //        mapWall = new ArrayList<>();
 //        mapC = new ArrayList<>();
@@ -248,14 +289,14 @@ public class LazarusWorld extends JComponent {
                     int mapCode = Integer.parseInt(value[col]);
                     if (mapCode == 1) {
                         img = stringToBuffer(wall);
-                        //mapWall.add(new Wall(col*40, row*40, img));
-                        AllBoxOnMap.add(new Boxes(col*40, row*40, img));
+                        mapWall.add(new Wall(col*40, row*40, img, this));
+                        //AllBoxOnMap.add(new Boxes(col*40, row*40, img));
                     }
                     if (mapCode == 2) {
                         img = stringToBuffer(player);
                         if(currLevel == 1){
                         p1 = new Player(col*40,row*40,img,this);
-                        p1Key = new LazaKey(p1, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT);
+                        p1Key = new LazaKey(p1, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT/*, KeyEvent.VK_UP, KeyEvent.VK_DOWN*/);
                         }else if(currLevel > 1){
                             p1.setX(col*40);
                             p1.setY(row*40);

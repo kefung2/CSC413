@@ -20,7 +20,7 @@ public class Player implements GameObj {
     private Boxes box;
     private Rectangle boxRect;
 
-    private boolean goLeft, goRight, hitAWall;
+    private boolean goLeft, goRight, goUp, goDown, hitAWall;
 
 /*********************************************************************************************************************/
 
@@ -37,7 +37,7 @@ public class Player implements GameObj {
         this.r = 40;
         this.angle = 0;
         this.hitAWall = false;
-        lazaRect = new Rectangle(this.x, this.y-2, img.getWidth(), img.getHeight());
+        lazaRect = new Rectangle(this.x, this.y-3, img.getWidth(), img.getHeight());
     }
 
     public void toggleGoLeft() {
@@ -48,12 +48,28 @@ public class Player implements GameObj {
         this.goRight = true;
     }
 
+    public void toggleGoUp(){
+        this.goUp = true;
+    }
+
+    public void toggleGoDown(){
+        this.goDown = true;
+    }
+
     public void UntoggleGoLeft() {
         this.goLeft = false;
     }
 
     public void UntoggleGoRight() {
         this.goRight = false;
+    }
+
+    public void UntoggleGoUp(){
+        this.goUp = false;
+    }
+
+    public void UntoggleGoDown(){
+        this.goDown = false;
     }
 
     public void update() {
@@ -66,57 +82,70 @@ public class Player implements GameObj {
             this.moveRight();
             System.out.println("right");
         }
+//        if (this.goUp) {
+//            y--;
+//            System.out.println("up");
+//        }
+//        if (this.goDown) {
+//            y++;
+//            System.out.println("down");
+//        }
     }
 
     private void moveLeft(){
-          px = x;
-//
-//        collisionCheck();
-//
-//        if(!hitAWall){
-//            x--;
-//            lazaRect.setLocation(this.x, this.y+3);
-//        }
-        x--;
-        lazaRect.setLocation(this.x, this.y+3);
+        px = x;
+        //hitAWall = collisionCheck();
+
+        if(!(hitAWall)){
+            x--;
+            lazaRect.setLocation(this.x, this.y-3);
+        }
+
 
     }
 
     private void moveRight(){
           px = x;
-//
-//        collisionCheck();
-//
-//        if(!hitAWall){
-//            x++;
-//            lazaRect.setLocation(this.x, this.y+3);
-//        }
-        x++;
-        lazaRect.setLocation(this.x, this.y+5);
+        //hitAWall = collisionCheck();
+
+
+        if(!(hitAWall)) {
+              x++;
+              lazaRect.setLocation(this.x, this.y-3);
+          }
     }
 
     private void jump(){}
 
-    private void collisionCheck(){
+    private boolean collisionCheck(){
         for(int i = 0; i < world.getAllBoxOnMap().size(); i++){
             box = world.getAllBoxOnMap().get(i);
             boxRect = box.getObjRect();
             if(lazaRect.intersects(boxRect)){
+                System.out.println("Touching");
                 x = px;
-                lazaRect.setLocation(this.x, this.y+5);
-                hitAWall = false;
+                lazaRect.setLocation(this.x, this.y-3);
+                return true;
+                //hitAWall = true;
             }else {
-                hitAWall = false;
+                return false;
+                //hitAWall = false;
             }
         }
+        return false;
     }
 
 
     @Override
     public boolean collision(Rectangle gameRect) {
         if(lazaRect.intersects(gameRect)){
+            System.out.println("Touching");
+            hitAWall = true;
             return true;
-        } else {return false;}
+        } else {
+            hitAWall = false;
+            return false;
+        }
     }
 
     @Override
@@ -132,40 +161,44 @@ public class Player implements GameObj {
         if(0 <= z && z < 40) {
             return 0;
         }else if(41 <= z && z < 80) {
-            return 40;
+            return 40-4;
         }else if(81 <= z && z < 120) {
-            return 80;
+            return 80-4;
         }else if(121 <= z && z < 160) {
-            return 120;
+            return 120-4;
         }else if(161 <= z && z < 200) {
-            return 160;
+            return 160-4;
         }else if(201 <= z && z < 240) {
-            return 200;
+            return 200-4;
         }else if(241 <= z && z < 280) {
-            return 240;
+            return 240-4;
         }else if(281 <= z && z < 320) {
-            return 280;
+            return 280-4;
         }else if(321 <= z && z < 360) {
-            return 320;
+            return 320-4;
         }else if(361 <= z && z < 400) {
-            return 360;
+            return 360-4;
         }else if(401 <= z && z < 440) {
-            return 400;
+            return 400-4;
         }else if(441 <= z && z < 480) {
-            return 440;
+            return 440-4;
         }else if(481 <= z && z < 520) {
-            return 480;
+            return 480-4;
         }else if(521 <= z && z < 560) {
-            return 520;
+            return 520-4;
         }else if(561 <= z && z < 600) {
-            return 560;
+            return 560-4;
         }else if(601 <= z && z < 640) {
-            return 600;
+            return 600-4;
         }else
 //        else if(641 <= x && x < 6) {
 //            return 640;
 //        }
         return x;
+    }
+
+    public int getXforColli(){
+        return  x;
     }
 
     public void setX(int newX) {
