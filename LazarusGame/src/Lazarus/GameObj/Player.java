@@ -10,6 +10,7 @@ public class Player implements GameObj {
 
     private int x, y, r, angle, px, py;
     private BufferedImage img;
+    private Image animation;
     private Rectangle lazaRect;
     private LazarusWorld world;
     private int RectOffsetX, RectOffsetY;
@@ -18,9 +19,9 @@ public class Player implements GameObj {
     private int lives;
 
     private Boxes box;
-    private Rectangle boxRect;
+    private Rectangle boxRect, jumpRect;
 
-    private boolean goLeft, goRight, goUp, goDown, hitAWall;
+    private boolean goLeft, goRight, goUp, goDown, hitAWall, ready, jump;
 
 /*********************************************************************************************************************/
 
@@ -38,6 +39,7 @@ public class Player implements GameObj {
         this.angle = 0;
         this.hitAWall = false;
         lazaRect = new Rectangle(this.x, this.y-3, img.getWidth(), img.getHeight());
+        jumpRect = new Rectangle(this.x, this.y-3, img.getWidth(), img.getHeight());
     }
 
     public void toggleGoLeft() {
@@ -90,49 +92,68 @@ public class Player implements GameObj {
 //            y++;
 //            System.out.println("down");
 //        }
+        //collisionCheck();
     }
 
     private void moveLeft(){
         px = x;
-        //hitAWall = collisionCheck();
 
-        if(!(hitAWall)){
+        if(!(hitAWall)) {
             x--;
-            lazaRect.setLocation(this.x, this.y-3);
+            lazaRect.setLocation(this.x, this.y - 3);
+            jumpRect.setLocation(this.x - 40, this.y - 43);
+            if (ready && jump) {
+                jump("left");
+            }
         }
-
-
     }
 
     private void moveRight(){
           px = x;
-        //hitAWall = collisionCheck();
-
 
         if(!(hitAWall)) {
               x++;
               lazaRect.setLocation(this.x, this.y-3);
-          }
-    }
-
-    private void jump(){}
-
-    private boolean collisionCheck(){
-        for(int i = 0; i < world.getAllBoxOnMap().size(); i++){
-            box = world.getAllBoxOnMap().get(i);
-            boxRect = box.getObjRect();
-            if(lazaRect.intersects(boxRect)){
-                System.out.println("Touching");
-                x = px;
-                lazaRect.setLocation(this.x, this.y-3);
-                return true;
-                //hitAWall = true;
-            }else {
-                return false;
-                //hitAWall = false;
+              jumpRect.setLocation(this.x+40, this.y-43);
+          if(ready && jump){
+            jump("right");
             }
         }
-        return false;
+    }
+
+    private void jump(String direction){
+        System.out.println("trying to jump");
+        if(direction == "left") {
+            this.x = x - 40;
+            this.y = y - 40;
+        }
+            if (direction == "right") {
+                this.x = x + 40;
+                this.y = y - 40;
+            }
+
+    }
+
+    private void collisionCheck(){
+
+        for(int i = 0; i < world.getAllBoxOnMap().size(); i++){
+            System.out.println("I'm in");
+            box = world.getAllBoxOnMap().get(i);
+            boxRect = box.getObjRect();
+            //System.out.println("jump Check: " + hitAWall + " " + !(jumpRect.intersects(boxRect)));
+            if(lazaRect.intersects(boxRect)){
+                ready = true;
+            } else {
+                ready = false;
+            }
+
+            if(!(jumpRect.intersects(boxRect))){
+                System.out.println("I can jump");
+                jump = true;
+            } else{
+                jump = false;
+            }
+        }
     }
 
 
@@ -140,7 +161,7 @@ public class Player implements GameObj {
     public boolean collision(Rectangle gameRect) {
         if(lazaRect.intersects(gameRect)){
             System.out.println("Touching");
-            hitAWall = true;
+            //hitAWall = true;
             return true;
         } else {
             hitAWall = false;
@@ -150,8 +171,24 @@ public class Player implements GameObj {
 
     @Override
     public void draw(Graphics2D g){
-        g.drawImage(img,x,y, null);
-        g.draw(lazaRect);
+        if(!isDead /*&& !goLeft && !goRight*/) {
+            g.drawImage(img, x, y, null);
+            g.draw(lazaRect);
+            g.draw(jumpRect);
+        }
+
+        if(isDead){
+            animation = world.getSquishedgif();
+            g.drawImage(animation, x, y, animation.getWidth(null), animation.getHeight(null), null);
+        }
+//        if(goLeft){
+//            animation = world.getMoveLeftgif();
+//            g.drawImage(animation, x, y+10, animation.getWidth(null), animation.getHeight(null), null);
+//        }
+//        if(goRight){
+//            animation = world.getMoveRightgif();
+//            g.drawImage(animation, x, y+10, animation.getWidth(null), animation.getHeight(null), null);
+//        }
     }
     /*****************************************************************************************************************/
     // get/set
@@ -215,11 +252,13 @@ public class Player implements GameObj {
 
     public int getPx(){ return px;}
 
-    public int getRectOffsetX(){
-        return RectOffsetX;
-    }
-
     public Rectangle getLazaRect() {
         return lazaRect;
     }
+
+    public void setHitAWall(boolean hit) {hitAWall = hit;}
+
+    public void setDead() {isDead = true;}
+
+    public boolean getDead() {return isDead;}
 }

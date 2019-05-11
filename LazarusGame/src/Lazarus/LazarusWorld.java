@@ -28,6 +28,8 @@ public class LazarusWorld extends JComponent {
     private String background;
     private String jumpleft;
     private String jumpright;
+    private String moveleft;
+    private String moveright;
     private String squished;
     private String cardboardbox;    // all box dimension 40x40
     private String metalbox;
@@ -197,8 +199,10 @@ public class LazarusWorld extends JComponent {
      public void setResourcePath(){
          background = "Resource/Background.bmp";
          player = "Resource/Lazarus_stand.gif";
-         jumpleft = "Resource/Lazarus_left.gif";
-         jumpright = "Resource/Lazarus_right.gif";
+         moveleft = "Resource/Lazarus_left.gif";
+         jumpleft = "Resource/Lazarus_jump_left.gif";
+         moveright = "Resource/Lazarus_right.gif";
+         jumpright = "Resource/Lazarus_jump_right.gif";
          squished = "Resource/Lazarus_squished.gif";
          cardboardbox = "Resource/CardBox.gif";
          woodbox = "Resource/WoodBox.gif";
@@ -361,6 +365,11 @@ public class LazarusWorld extends JComponent {
         return img;
     }
 
+    public Image stringToImage(String path){
+        Image img = Toolkit.getDefaultToolkit().getImage(path);
+        return img;
+    }
+
     public void grenateBox(int n){
         if (n + 1 == 1) {
             boxType = "Cbox";
@@ -433,6 +442,17 @@ public class LazarusWorld extends JComponent {
     public BufferedImage getJumpRight() {return stringToBuffer(jumpright);}
 
     public BufferedImage getSquished() {return stringToBuffer(squished);}
+
+
+    public Image getMoveLeftgif() {return stringToImage(moveleft);}
+
+    public Image getMoveRightgif() {return stringToImage(moveright);}
+
+    public Image getJumpLeftgif() {return stringToImage(jumpleft);}
+
+    public Image getJumpRightgif() {return stringToImage(jumpright);}
+
+    public Image getSquishedgif() {return stringToImage(squished);}
 
     public int getCurrLevel(){
         return  currLevel;

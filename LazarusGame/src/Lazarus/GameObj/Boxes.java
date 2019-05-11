@@ -56,9 +56,12 @@ public class Boxes extends JComponent {
 
     public void update(){
         p1 = LazarusWorld.getP1();
-        System.out.println("Boxes updating...");
+        //System.out.println("Boxes updating...");
         int p1x = p1.getXforColli();
+        int p1y = p1.getY();
+        //p1.setHitAWall(false);
         if(p1.collision(objRect)){
+            p1.setHitAWall(true);
             if(p1x+35 < x){
                 System.out.println("Left " + x);
                 p1.setX(p1.getPx());
@@ -66,6 +69,7 @@ public class Boxes extends JComponent {
                 System.out.println("Right " + x);
                 p1.setX(p1.getPx());
             }
+
         }
     }
 

@@ -2,15 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1795ded6-0753-4612-8c84-3da2607c2143" name="Default Changelist" comment="Can spawn box, sometime box disappear after it touch the floor, purple boy can move now">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resource/Lazarus_jump_left.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Lazarus_jump_left.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resource/Lazarus_jump_right.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Lazarus_jump_right.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resource/Lazarus_left.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Lazarus_left.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resource/Lazarus_right.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Lazarus_right.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resource/Lazarus_squished.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Resource/Lazarus_squished.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/GameObj/CardBoardBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/GameObj/CardBoardBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/GameObj/MetalBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/GameObj/MetalBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/GameObj/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/GameObj/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/GameObj/StoneBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/GameObj/StoneBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/GameObj/WoodBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/GameObj/WoodBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/LazarusWorld.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus/LazarusWorld.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus_jump_left.gif" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus_jump_left.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus_jump_right.gif" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus_jump_right.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus_left.gif" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus_left.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus_right.gif" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus_right.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus_squished.gif" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LazarusGame/Lazarus_squished.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lazarus/GameObj/Boxes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lazarus/GameObj/Boxes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lazarus/GameObj/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lazarus/GameObj/Button.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lazarus/GameObj/CardBoardBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lazarus/GameObj/CardBoardBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lazarus/GameObj/MetalBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lazarus/GameObj/MetalBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lazarus/GameObj/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lazarus/GameObj/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lazarus/GameObj/StoneBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lazarus/GameObj/StoneBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lazarus/GameObj/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lazarus/GameObj/Wall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lazarus/GameObj/WoodBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lazarus/GameObj/WoodBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lazarus/LazaKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lazarus/LazaKey.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lazarus/LazarusWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lazarus/LazarusWorld.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,25 +50,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lazarus/LazarusWorld.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="140" column="25" selection-start-line="140" selection-start-column="25" selection-end-line="140" selection-end-column="25" />
+            <state relative-caret-position="129">
+              <caret line="367" column="44" lean-forward="true" selection-start-line="367" selection-start-column="44" selection-end-line="367" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#10541#10542#0" expanded="true" />
-                <element signature="e#10575#10576#0" expanded="true" />
-                <element signature="e#11291#11292#0" expanded="true" />
-                <element signature="e#11342#11343#0" expanded="true" />
-                <element signature="e#11382#11383#0" expanded="true" />
-                <element signature="e#11428#11429#0" expanded="true" />
-                <element signature="e#11468#11469#0" expanded="true" />
-                <element signature="e#11515#11516#0" expanded="true" />
-                <element signature="e#11555#11556#0" expanded="true" />
-                <element signature="e#11602#11603#0" expanded="true" />
-                <element signature="e#11655#11656#0" expanded="true" />
-                <element signature="e#11687#11688#0" expanded="true" />
+                <element signature="e#11764#11765#0" expanded="true" />
+                <element signature="e#11798#11799#0" expanded="true" />
+                <element signature="e#12514#12515#0" expanded="true" />
+                <element signature="e#12565#12566#0" expanded="true" />
+                <element signature="e#12605#12606#0" expanded="true" />
+                <element signature="e#12651#12652#0" expanded="true" />
+                <element signature="e#12691#12692#0" expanded="true" />
+                <element signature="e#12738#12739#0" expanded="true" />
+                <element signature="e#12778#12779#0" expanded="true" />
+                <element signature="e#12825#12826#0" expanded="true" />
+                <element signature="e#13084#13085#0" expanded="true" />
+                <element signature="e#13117#13118#0" expanded="true" />
+                <element signature="e#13149#13150#0" expanded="true" />
+                <element signature="e#13181#13182#0" expanded="true" />
+                <element signature="e#13225#13226#0" expanded="true" />
+                <element signature="e#13261#13262#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -63,7 +81,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lazarus/DrawPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="4046">
               <caret line="255" selection-start-line="255" selection-end-line="255" />
               <folding>
                 <element signature="e#6946#6947#0" expanded="true" />
@@ -75,12 +93,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/CardBoardBox.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-892">
-              <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+            <state relative-caret-position="-178">
+              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1042#1043#0" expanded="true" />
-                <element signature="e#1070#1071#0" expanded="true" />
                 <element signature="e#3192#3193#0" expanded="true" />
                 <element signature="e#3222#3223#0" expanded="true" />
                 <element signature="e#3256#3257#0" expanded="true" />
@@ -99,11 +115,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/WoodBox.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+            <state relative-caret-position="400">
+              <caret line="57" column="78" lean-forward="true" selection-start-line="57" selection-start-column="78" selection-end-line="57" selection-end-column="78" />
               <folding>
-                <element signature="e#970#971#0" expanded="true" />
-                <element signature="e#998#999#0" expanded="true" />
                 <element signature="e#2491#2492#0" expanded="true" />
                 <element signature="e#2521#2522#0" expanded="true" />
                 <element signature="e#2555#2556#0" expanded="true" />
@@ -122,21 +136,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/StoneBox.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+            <state relative-caret-position="332">
+              <caret line="51" column="71" lean-forward="true" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/Boxes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="67" column="13" lean-forward="true" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
+            <state relative-caret-position="417">
+              <caret line="70" column="13" lean-forward="true" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1766#1767#0" expanded="true" />
-                <element signature="e#1796#1797#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -145,8 +157,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/Button.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="22" column="82" lean-forward="true" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
+            <state relative-caret-position="315">
+              <caret line="35" column="8" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -157,8 +169,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/MetalBox.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+            <state relative-caret-position="408">
+              <caret line="46" column="21" lean-forward="true" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -167,7 +179,7 @@
         <entry file="file://$PROJECT_DIR$/src/Lazarus/LazaKey.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -178,27 +190,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="230">
+              <caret line="97" column="28" lean-forward="true" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
               <folding>
-                <element signature="e#1228#1229#0" expanded="true" />
-                <element signature="e#1260#1261#0" expanded="true" />
-                <element signature="e#1293#1294#0" expanded="true" />
-                <element signature="e#1327#1328#0" expanded="true" />
-                <element signature="e#1504#1505#0" expanded="true" />
-                <element signature="e#1537#1538#0" expanded="true" />
-                <element signature="e#1572#1573#0" expanded="true" />
-                <element signature="e#1607#1608#0" expanded="true" />
-                <element signature="e#4869#4870#0" expanded="true" />
-                <element signature="e#4894#4895#0" expanded="true" />
-                <element signature="e#4953#4954#0" expanded="true" />
-                <element signature="e#4607#4608#0" expanded="true" />
-                <element signature="e#4631#4632#0" expanded="true" />
-                <element signature="e#4664#4665#0" expanded="true" />
-                <element signature="e#4693#4694#0" expanded="true" />
-                <element signature="e#4764#4765#0" expanded="true" />
-                <element signature="e#4798#4799#0" expanded="true" />
-                <element signature="e#5237#5238#0" expanded="true" />
+                <element signature="e#6137#6138#0" expanded="true" />
+                <element signature="e#6162#6163#0" expanded="true" />
+                <element signature="e#6372#6373#0" expanded="true" />
+                <element signature="e#6249#6250#0" expanded="true" />
+                <element signature="e#6273#6274#0" expanded="true" />
+                <element signature="e#6306#6307#0" expanded="true" />
+                <element signature="e#6335#6336#0" expanded="true" />
+                <element signature="e#6588#6589#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -221,11 +223,15 @@
       <find>left</find>
       <find>key</find>
       <find>landed</find>
-      <find>touch</find>
       <find>setC</find>
-      <find>touching</find>
       <find>tou</find>
       <find>dropping</find>
+      <find>die</find>
+      <find>in</find>
+      <find>touching</find>
+      <find>jump</find>
+      <find>touch</find>
+      <find>jump Check: true true</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -240,15 +246,15 @@
         <option value="$PROJECT_DIR$/Resource/LazarusMap_Level1.csv" />
         <option value="$PROJECT_DIR$/src/Lazarus/DrawPanel.java" />
         <option value="$PROJECT_DIR$/src/Lazarus/GameObj/Wall.java" />
+        <option value="$PROJECT_DIR$/src/Lazarus/GameObj/Button.java" />
+        <option value="$PROJECT_DIR$/src/Lazarus/LazaKey.java" />
         <option value="$PROJECT_DIR$/src/Lazarus/GameObj/CardBoardBox.java" />
         <option value="$PROJECT_DIR$/src/Lazarus/GameObj/WoodBox.java" />
         <option value="$PROJECT_DIR$/src/Lazarus/GameObj/StoneBox.java" />
         <option value="$PROJECT_DIR$/src/Lazarus/GameObj/MetalBox.java" />
-        <option value="$PROJECT_DIR$/src/Lazarus/GameObj/Button.java" />
-        <option value="$PROJECT_DIR$/src/Lazarus/LazaKey.java" />
+        <option value="$PROJECT_DIR$/src/Lazarus/LazarusWorld.java" />
         <option value="$PROJECT_DIR$/src/Lazarus/GameObj/Boxes.java" />
         <option value="$PROJECT_DIR$/src/Lazarus/GameObj/Player.java" />
-        <option value="$PROJECT_DIR$/src/Lazarus/LazarusWorld.java" />
       </list>
     </option>
   </component>
@@ -267,18 +273,12 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="LazarusGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="LazarusGame" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LazarusGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LazarusGame" type="462c0819:PsiDirectoryNode" />
-              <item name="Resource" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LazarusGame" type="b2602c69:ProjectViewProjectNode" />
@@ -302,13 +302,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557364550137" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../csc413-tankgame-kefung2/TankWarsGame" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Lazarus-Puzzle-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -351,17 +352,18 @@
       <workItem from="1556745333830" duration="19361000" />
       <workItem from="1557187508366" duration="7943000" />
       <workItem from="1557346886825" duration="17666000" />
+      <workItem from="1557596512864" duration="7501000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88424000" />
+    <option name="totallyTimeSpent" value="96004000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.16075794" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16075794" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -453,13 +455,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Lazarus/GameObj/Player.java</url>
-          <line>124</line>
+          <line>150</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Lazarus/GameObj/Boxes.java</url>
-          <line>61</line>
+          <line>64</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
@@ -562,45 +564,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/CardBoardBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-892">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1042#1043#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#3192#3193#0" expanded="true" />
-            <element signature="e#3222#3223#0" expanded="true" />
-            <element signature="e#3256#3257#0" expanded="true" />
-            <element signature="e#3286#3287#0" expanded="true" />
-            <element signature="e#3315#3316#0" expanded="true" />
-            <element signature="e#3344#3345#0" expanded="true" />
-            <element signature="e#3377#3378#0" expanded="true" />
-            <element signature="e#3408#3409#0" expanded="true" />
-            <element signature="e#3441#3442#0" expanded="true" />
-            <element signature="e#3470#3471#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/StoneBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/MetalBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Lazarus/DrawPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="4046">
           <caret line="255" selection-start-line="255" selection-end-line="255" />
           <folding>
             <element signature="e#6946#6947#0" expanded="true" />
@@ -610,11 +576,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/WoodBox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+        <state relative-caret-position="400">
+          <caret line="57" column="78" lean-forward="true" selection-start-line="57" selection-start-column="78" selection-end-line="57" selection-end-column="78" />
           <folding>
-            <element signature="e#970#971#0" expanded="true" />
-            <element signature="e#998#999#0" expanded="true" />
             <element signature="e#2491#2492#0" expanded="true" />
             <element signature="e#2521#2522#0" expanded="true" />
             <element signature="e#2555#2556#0" expanded="true" />
@@ -629,12 +593,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/Button.java">
+    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/StoneBox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="22" column="82" lean-forward="true" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
+        <state relative-caret-position="332">
+          <caret line="51" column="71" lean-forward="true" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/MetalBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="46" column="21" lean-forward="true" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/CardBoardBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-178">
+          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3192#3193#0" expanded="true" />
+            <element signature="e#3222#3223#0" expanded="true" />
+            <element signature="e#3256#3257#0" expanded="true" />
+            <element signature="e#3286#3287#0" expanded="true" />
+            <element signature="e#3315#3316#0" expanded="true" />
+            <element signature="e#3344#3345#0" expanded="true" />
+            <element signature="e#3377#3378#0" expanded="true" />
+            <element signature="e#3408#3409#0" expanded="true" />
+            <element signature="e#3441#3442#0" expanded="true" />
+            <element signature="e#3470#3471#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -642,70 +630,72 @@
     <entry file="file://$PROJECT_DIR$/src/Lazarus/LazaKey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/Boxes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="67" column="13" lean-forward="true" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1766#1767#0" expanded="true" />
-            <element signature="e#1796#1797#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#1228#1229#0" expanded="true" />
-            <element signature="e#1260#1261#0" expanded="true" />
-            <element signature="e#1293#1294#0" expanded="true" />
-            <element signature="e#1327#1328#0" expanded="true" />
-            <element signature="e#1504#1505#0" expanded="true" />
-            <element signature="e#1537#1538#0" expanded="true" />
-            <element signature="e#1572#1573#0" expanded="true" />
-            <element signature="e#1607#1608#0" expanded="true" />
-            <element signature="e#4869#4870#0" expanded="true" />
-            <element signature="e#4894#4895#0" expanded="true" />
-            <element signature="e#4953#4954#0" expanded="true" />
-            <element signature="e#4607#4608#0" expanded="true" />
-            <element signature="e#4631#4632#0" expanded="true" />
-            <element signature="e#4664#4665#0" expanded="true" />
-            <element signature="e#4693#4694#0" expanded="true" />
-            <element signature="e#4764#4765#0" expanded="true" />
-            <element signature="e#4798#4799#0" expanded="true" />
-            <element signature="e#5237#5238#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lazarus/LazarusWorld.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="140" column="25" selection-start-line="140" selection-start-column="25" selection-end-line="140" selection-end-column="25" />
+        <state relative-caret-position="129">
+          <caret line="367" column="44" lean-forward="true" selection-start-line="367" selection-start-column="44" selection-end-line="367" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10541#10542#0" expanded="true" />
-            <element signature="e#10575#10576#0" expanded="true" />
-            <element signature="e#11291#11292#0" expanded="true" />
-            <element signature="e#11342#11343#0" expanded="true" />
-            <element signature="e#11382#11383#0" expanded="true" />
-            <element signature="e#11428#11429#0" expanded="true" />
-            <element signature="e#11468#11469#0" expanded="true" />
-            <element signature="e#11515#11516#0" expanded="true" />
-            <element signature="e#11555#11556#0" expanded="true" />
-            <element signature="e#11602#11603#0" expanded="true" />
-            <element signature="e#11655#11656#0" expanded="true" />
-            <element signature="e#11687#11688#0" expanded="true" />
+            <element signature="e#11764#11765#0" expanded="true" />
+            <element signature="e#11798#11799#0" expanded="true" />
+            <element signature="e#12514#12515#0" expanded="true" />
+            <element signature="e#12565#12566#0" expanded="true" />
+            <element signature="e#12605#12606#0" expanded="true" />
+            <element signature="e#12651#12652#0" expanded="true" />
+            <element signature="e#12691#12692#0" expanded="true" />
+            <element signature="e#12738#12739#0" expanded="true" />
+            <element signature="e#12778#12779#0" expanded="true" />
+            <element signature="e#12825#12826#0" expanded="true" />
+            <element signature="e#13084#13085#0" expanded="true" />
+            <element signature="e#13117#13118#0" expanded="true" />
+            <element signature="e#13149#13150#0" expanded="true" />
+            <element signature="e#13181#13182#0" expanded="true" />
+            <element signature="e#13225#13226#0" expanded="true" />
+            <element signature="e#13261#13262#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="35" column="8" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="97" column="28" lean-forward="true" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+          <folding>
+            <element signature="e#6137#6138#0" expanded="true" />
+            <element signature="e#6162#6163#0" expanded="true" />
+            <element signature="e#6372#6373#0" expanded="true" />
+            <element signature="e#6249#6250#0" expanded="true" />
+            <element signature="e#6273#6274#0" expanded="true" />
+            <element signature="e#6306#6307#0" expanded="true" />
+            <element signature="e#6335#6336#0" expanded="true" />
+            <element signature="e#6588#6589#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lazarus/GameObj/Boxes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="70" column="13" lean-forward="true" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

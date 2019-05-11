@@ -61,6 +61,10 @@ public class MetalBox extends Boxes{
                         MBoxLanded();
                     }
                 }
+
+                if(MBoxRect.intersects(p1.getLazaRect()) && droping){
+                    p1.setDead();
+                }
             }
         }
     }

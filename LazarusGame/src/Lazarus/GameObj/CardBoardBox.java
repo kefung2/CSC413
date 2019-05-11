@@ -79,9 +79,9 @@ public class CardBoardBox extends Boxes{
                     }
                 }
 
-//                if(CBoxRect.intersects(p1.getLazaRect()) && droping){
-//
-//                }
+                if(CBoxRect.intersects(p1.getLazaRect()) && droping){
+                    p1.setDead();
+                }
             }
 
 //            for (int j = 0; j < world.getmapC().size(); j++) {

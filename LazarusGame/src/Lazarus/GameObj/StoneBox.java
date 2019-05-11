@@ -61,6 +61,10 @@ public class StoneBox extends Boxes{
                         SBoxLanded();
                     }
                 }
+
+                if(SBoxRect.intersects(p1.getLazaRect()) && droping){
+                    p1.setDead();
+                }
             }
         }
 

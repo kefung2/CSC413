@@ -62,6 +62,10 @@ public class WoodBox extends Boxes{
                     }
 
                 }
+
+                if(WBoxRect.intersects(p1.getLazaRect()) && droping){
+                    p1.setDead();
+                }
             }
         }
 
