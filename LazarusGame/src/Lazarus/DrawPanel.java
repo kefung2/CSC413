@@ -97,6 +97,7 @@ public class DrawPanel extends JPanel{
             //dropTheBox = false; reason why box drop and gone
 
         screen = bimg;
+
     }
 
     public void drawBG(Graphics2D g){

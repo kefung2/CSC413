@@ -40,6 +40,7 @@ public class LazarusWorld extends JComponent {
     private String level1;
     private String level2;
     private String level3;
+    private String gameOver;
     private int maxlevel;
 
     //Game Element
@@ -61,7 +62,9 @@ public class LazarusWorld extends JComponent {
     private boolean firstTime;
     private boolean dropping;
     private boolean firstBox;
+    private boolean running;
     private ArrayList<String> DropboxList;
+    private ArrayList<String> deathgif;
     private String boxType;
     private ArrayList<Boxes> AllBoxOnMap;
     private ArrayList<CardBoardBox> CboxInAir;
@@ -88,6 +91,7 @@ public class LazarusWorld extends JComponent {
         firstTime = true;
         firstBox = true;
         dropping = true;
+        running = true;
 
         setArraylist();
         setMapObj();
@@ -98,17 +102,26 @@ public class LazarusWorld extends JComponent {
     public void startGame(){
         init();
         try{
-            while(true) {
+            while(running) {
                 update();
                 this.drawpanel.repaint();
 
-                if(levelButton.get(0).getLevelup() || levelButton.get(1).getLevelup()){
-                    if(currLevel < maxlevel){
-                        levelUp();
+                try {
+                    if (levelButton.get(0).getLevelup() || levelButton.get(1).getLevelup()) {
+                        if (currLevel < maxlevel) {
+                            levelUp();
+                        }
                     }
+                }catch (IndexOutOfBoundsException e){
+                    System.out.println("Game Over");
+                }
+
+                if(p1.getDead()){
+                    stop();
                 }
 
                 Thread.sleep(1000/144); //1000/144
+
             }
 
         } catch (InterruptedException ignored){
@@ -116,7 +129,14 @@ public class LazarusWorld extends JComponent {
         }
     }
 
-    public void stop(){}
+    public void stop(){
+        clearList();
+        GameOver();
+        while (true){
+            this.drawpanel.repaint();
+        }
+
+    }
 
     public void levelUp() {
         currLevel++;
@@ -142,6 +162,7 @@ public class LazarusWorld extends JComponent {
             dropping = false;
             dropClock = 300;
         }
+
 
         boxQueue();
         dropClock--;
@@ -192,11 +213,25 @@ public class LazarusWorld extends JComponent {
         }
         this.drawpanel.setBox(DropboxList); // display next 3 box
 
+
     }
 
     /*********************************************************************************************************/
     //set up
      public void setResourcePath(){
+         deathgif = new ArrayList<>();
+         deathgif.add("Resource/squished/1.gif");
+         deathgif.add("Resource/squished/2.gif");
+         deathgif.add("Resource/squished/3.gif");
+         deathgif.add("Resource/squished/4.gif");
+         deathgif.add("Resource/squished/5.gif");
+         deathgif.add("Resource/squished/6.gif");
+         deathgif.add("Resource/squished/7.gif");
+         deathgif.add("Resource/squished/8.gif");
+         deathgif.add("Resource/squished/9.gif");
+         deathgif.add("Resource/squished/10.gif");
+         deathgif.add("Resource/squished/11.gif");
+
          background = "Resource/Background.bmp";
          player = "Resource/Lazarus_stand.gif";
          moveleft = "Resource/Lazarus_left.gif";
@@ -213,6 +248,7 @@ public class LazarusWorld extends JComponent {
          level1 = "Resource/LazarusMap_Level1.csv";
          level2 = "Resource/LazarusMap_Level2.csv";
          level3 = "Resource/LazarusMap_Level3.csv";
+         gameOver = "Resource/LazarusMap_GameOver.csv";
      }
 
      public void setFrame(){
@@ -300,7 +336,7 @@ public class LazarusWorld extends JComponent {
                         img = stringToBuffer(player);
                         if(currLevel == 1){
                         p1 = new Player(col*40,row*40,img,this);
-                        p1Key = new LazaKey(p1, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT/*, KeyEvent.VK_UP, KeyEvent.VK_DOWN*/);
+                        p1Key = new LazaKey(p1, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_P);
                         }else if(currLevel > 1){
                             p1.setX(col*40);
                             p1.setY(row*40);
@@ -322,6 +358,39 @@ public class LazarusWorld extends JComponent {
 //        this.drawpanel.setWallBoxonMap(mapWall);
         this.drawpanel.setButtons(levelButton);
         this.drawpanel.setP1(p1);
+    }
+
+    public void GameOver(){
+        try {
+            scanner = new Scanner(new File(gameOver));
+        }catch (IOException e){
+            System.out.println("File not found");
+        }
+
+        while(scanner.hasNext()) {
+
+            BufferedImage img;
+
+            for (int row = 0; row < 12; row++) {
+                String data = scanner.next();
+                String[] value = data.split(",");
+                for (int col = 0; col < 16; col++) {
+                    int mapCode = Integer.parseInt(value[col]);
+                    if (mapCode == 1) {
+                        img = stringToBuffer(wall);
+                        mapWall.add(new Wall(col*40, row*40, img, this));
+                        //AllBoxOnMap.add(new Boxes(col*40, row*40, img));
+                    }
+                    if (mapCode == 2) {
+                            p1.setX(col*40);
+                            p1.setY(row*40);
+                        }
+                    }
+
+                }
+            }
+        this.drawpanel.setBoxonMap(AllBoxOnMap);
+
     }
 
 
@@ -421,6 +490,8 @@ public class LazarusWorld extends JComponent {
 
     public ArrayList<Wall> getMapWall() {return mapWall;}
 
+    public ArrayList<String> getDeathgif() {return deathgif;}
+
     public BufferedImage getCBoximg(){
         return stringToBuffer(cardboardbox);
     }
@@ -465,6 +536,8 @@ public class LazarusWorld extends JComponent {
     public void setAllBoxOnMap(Boxes box){
         AllBoxOnMap.add(box);
     }
+
+    public void setGameOver() {running = false;}
 
 
 

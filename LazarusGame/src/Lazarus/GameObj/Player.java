@@ -18,10 +18,10 @@ public class Player implements GameObj {
     private boolean isDead;
     private int lives;
 
-    private Boxes box;
-    private Rectangle boxRect, jumpRect;
+    private Boxes box, box2;
+    private Rectangle boxRect, boxRect2, jumpRect;
 
-    private boolean goLeft, goRight, goUp, goDown, hitAWall, ready, jump;
+    private boolean goLeft, goRight, goUp, goDown, hitAWall, ready, jump, godMode;
 
 /*********************************************************************************************************************/
 
@@ -38,16 +38,22 @@ public class Player implements GameObj {
         this.r = 40;
         this.angle = 0;
         this.hitAWall = false;
+        this.godMode = false;
         lazaRect = new Rectangle(this.x, this.y-3, img.getWidth(), img.getHeight());
         jumpRect = new Rectangle(this.x, this.y-3, img.getWidth(), img.getHeight());
+
     }
 
     public void toggleGoLeft() {
         this.goLeft = true;
+        //this.moveLeft();
     }
 
     public void toggleGoRight() {
+
         this.goRight = true;
+
+        //this.moveRight();
     }
 
     public void toggleGoUp(){
@@ -57,6 +63,8 @@ public class Player implements GameObj {
     public void toggleGoDown(){
         this.goDown = true;
     }
+
+    public void toggleGodMode() {this.godMode = true;}
 
     public void UntoggleGoLeft() {
         this.goLeft = false;
@@ -68,36 +76,45 @@ public class Player implements GameObj {
 
     public void UntoggleGoUp(){
         this.goUp = false;
+
     }
 
     public void UntoggleGoDown(){
         this.goDown = false;
+
     }
 
-    public void update() {
+    public void UntoggleGodMode() {this.godMode = false;}
 
-        if (this.goLeft) {
-            this.moveLeft();
-            System.out.println("left");
-        }
-        if (this.goRight) {
-            this.moveRight();
-            System.out.println("right");
-        }
-//        if (this.goUp) {
-//            y--;
-//            System.out.println("up");
-//        }
-//        if (this.goDown) {
-//            y++;
-//            System.out.println("down");
-//        }
-        //collisionCheck();
+    public void update() {
+            if (this.goLeft) {
+                this.moveLeft();
+                System.out.println("left");
+            }
+            if (this.goRight) {
+                this.moveRight();
+                System.out.println("right");
+            }
+
+            if (this.goUp && godMode) {
+                y--;
+                lazaRect.setLocation(this.x, this.y-3);
+                jumpRect.setLocation(this.x, this.y-43);
+                System.out.println("up");
+            }
+            if (this.goDown && godMode) {
+                y++;
+                lazaRect.setLocation(this.x, this.y-3);
+                jumpRect.setLocation(this.x, this.y+38);
+                System.out.println("down");
+            }
+
+
+        collisionCheck();
     }
 
     private void moveLeft(){
         px = x;
-
         if(!(hitAWall)) {
             x--;
             lazaRect.setLocation(this.x, this.y - 3);
@@ -137,22 +154,25 @@ public class Player implements GameObj {
     private void collisionCheck(){
 
         for(int i = 0; i < world.getAllBoxOnMap().size(); i++){
-            System.out.println("I'm in");
+            //System.out.println("I'm in");
             box = world.getAllBoxOnMap().get(i);
             boxRect = box.getObjRect();
             //System.out.println("jump Check: " + hitAWall + " " + !(jumpRect.intersects(boxRect)));
             if(lazaRect.intersects(boxRect)){
-                ready = true;
-            } else {
-                ready = false;
+                for(int j = 0; j < world.getAllBoxOnMap().size(); j++){
+                    box2 = world.getAllBoxOnMap().get(j);
+                    boxRect2 = box2.getObjRect();
+                if(!(jumpRect.intersects(boxRect2))) {
+                    System.out.println("I can jump");
+                    this.x = box.getX();
+                    this.y = y - 40;
+                    jump = true;
+                    break;
+                    }
+                }
+
             }
 
-            if(!(jumpRect.intersects(boxRect))){
-                System.out.println("I can jump");
-                jump = true;
-            } else{
-                jump = false;
-            }
         }
     }
 
@@ -178,16 +198,20 @@ public class Player implements GameObj {
         }
 
         if(isDead){
+//            for(int i = 0; i<world.getDeathgif().size(); i++){
+//                animation = world.stringToBuffer(world.getDeathgif().get(i));
+//                g.drawImage(animation, x, y, animation.getWidth(null), animation.getHeight(null), null);
+//            }
             animation = world.getSquishedgif();
             g.drawImage(animation, x, y, animation.getWidth(null), animation.getHeight(null), null);
         }
 //        if(goLeft){
 //            animation = world.getMoveLeftgif();
-//            g.drawImage(animation, x, y+10, animation.getWidth(null), animation.getHeight(null), null);
+//            g.drawImage(animation, x, y-40, animation.getWidth(null), animation.getHeight(null), null);
 //        }
 //        if(goRight){
 //            animation = world.getMoveRightgif();
-//            g.drawImage(animation, x, y+10, animation.getWidth(null), animation.getHeight(null), null);
+//            g.drawImage(animation, x, y-40, animation.getWidth(null), animation.getHeight(null), null);
 //        }
     }
     /*****************************************************************************************************************/
@@ -261,4 +285,8 @@ public class Player implements GameObj {
     public void setDead() {isDead = true;}
 
     public boolean getDead() {return isDead;}
+
+    public boolean getGodmode(){
+        return godMode;
+    }
 }
