@@ -50,10 +50,6 @@ public class LazarusWorld extends JComponent {
     private static Player p1;
     private LazaKey p1Key;
     private ArrayList<Wall> mapWall;
-    private ArrayList<CardBoardBox> mapC;
-    private ArrayList<WoodBox> mapW;
-    private ArrayList<MetalBox> mapM;
-    private ArrayList<StoneBox> mapS;
     private ArrayList<Button> levelButton;
     private Scanner scanner;
     private CardBoardBox droppingCBox;
@@ -300,20 +296,6 @@ public class LazarusWorld extends JComponent {
     public void setMapObj(){
         BufferedImage img;
         String mapLevel = null;
-//        AllBoxOnMap = new ArrayList<>();
-//        levelButton = new ArrayList<>();
-//
-//        DropboxList = new ArrayList<>();
-//        CboxInAir = new ArrayList<>();
-//        WboxInAir = new ArrayList<>();
-//        MboxInAir = new ArrayList<>();
-//        SboxInAir = new ArrayList<>();
-
-//        mapWall = new ArrayList<>();
-//        mapC = new ArrayList<>();
-//        mapW = new ArrayList<>();
-//        mapM = new ArrayList<>();
-//        mapS = new ArrayList<>();
 
         if(currLevel == 1){
             mapLevel = level1;
@@ -360,12 +342,7 @@ public class LazarusWorld extends JComponent {
                 }
             }
         }
-//        this.drawpanel.setCBoxonMap(mapC);
-//        this.drawpanel.setWBoxonMap(mapW);
-//        this.drawpanel.setMBoxonMap(mapM);
-//        this.drawpanel.setSBoxonMap(mapS);
         this.drawpanel.setBoxonMap(AllBoxOnMap);
-//        this.drawpanel.setWallBoxonMap(mapWall);
         this.drawpanel.setButtons(levelButton);
         this.drawpanel.setP1(p1);
     }
@@ -466,12 +443,6 @@ public class LazarusWorld extends JComponent {
                 GoBoxIChooseYou();
 
         }
-
-//        for(int i = 0; i < DropboxList.size(); i++){
-//            System.out.println(DropboxList.get(i));
-//        }
-
-
     }
 
 
@@ -519,17 +490,7 @@ public class LazarusWorld extends JComponent {
     /*********************************************************************************************************/
     // get/set
 
-    public ArrayList<String> getBoxList(){
-        return DropboxList;
-    }
-
     public ArrayList<Boxes> getAllBoxOnMap(){return AllBoxOnMap;}
-
-//    public ArrayList<CardBoardBox> getmapC(){ return mapC;}
-//
-//    public ArrayList<WoodBox> getmapW(){ return mapW;}
-//    public ArrayList<MetalBox> getmapM(){ return mapM;}
-//    public ArrayList<StoneBox> getmapS(){ return mapS;}
 
     public ArrayList<CardBoardBox> getCboxInAir(){return CboxInAir;}
 
@@ -540,10 +501,6 @@ public class LazarusWorld extends JComponent {
     public ArrayList<StoneBox> getSboxInAir(){return SboxInAir;}
 
     public static Player getP1(){return p1;}
-
-    public ArrayList<Wall> getMapWall() {return mapWall;}
-
-    public ArrayList<String> getDeathgif() {return deathgif;}
 
     public BufferedImage getCBoximg(){
         return stringToBuffer(cardboardbox);
@@ -561,27 +518,11 @@ public class LazarusWorld extends JComponent {
         return stringToBuffer(stonebox);
     }
 
-    public BufferedImage getJumpLeft() {return stringToBuffer(jumpleft);}
-
-    public BufferedImage getJumpRight() {return stringToBuffer(jumpright);}
-
-    public BufferedImage getSquished() {return stringToBuffer(squished);}
 
     public BufferedImage getGodImg() {return stringToBuffer(playerGod);}
 
-    public Image getMoveLeftgif() {return stringToImage(moveleft);}
-
-    public Image getMoveRightgif() {return stringToImage(moveright);}
-
-    public Image getJumpLeftgif() {return stringToImage(jumpleft);}
-
-    public Image getJumpRightgif() {return stringToImage(jumpright);}
-
     public Image getSquishedgif() {return stringToImage(squished);}
 
-    public int getCurrLevel(){
-        return  currLevel;
-    }
 
     public void setDropping(){
         dropping = false;
@@ -590,7 +531,4 @@ public class LazarusWorld extends JComponent {
     public void setAllBoxOnMap(Boxes box){
         AllBoxOnMap.add(box);
     }
-
-    public void setGameOver() {running = false;}
-
 }

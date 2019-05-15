@@ -72,21 +72,6 @@ public class WoodBox extends Boxes{
                 }
             }
         }
-
-
-//        for (int j = 0; j < world.getmapC().size(); j++) {
-//            CBox = world.getmapC().get(j);
-//            wallRect = CBox.getRect();
-//            System.out.println("Falling");
-//            System.out.println("Check: " + wallRect.intersects(WBoxRect));
-//            if (wallRect.intersects(WBoxRect)) {
-//                System.out.println("Landed");
-//                droping = false;
-//                world.setDropping();
-//                world.getmapW().add(this);
-//                world.getWboxInAir().remove(this);
-//            }
-//        }
     }
 
     public void setDroping(){

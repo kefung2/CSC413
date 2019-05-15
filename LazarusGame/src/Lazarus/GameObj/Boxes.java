@@ -16,9 +16,7 @@ public class Boxes extends JComponent {
     private int weight;
     private LazarusWorld world;
     private Player p1;
-    private boolean droping;
-    private Wall boxes;
-    private Rectangle boxRect;
+    private boolean droping;;
 
     public Boxes(){
         droping = true;
@@ -31,7 +29,6 @@ public class Boxes extends JComponent {
         this.y = y;
         this.img = img;
         this.weight = 0;
-        //this.p1 = p1;
         this.objRect = objRect;
     }
 
@@ -41,25 +38,20 @@ public class Boxes extends JComponent {
         this.weight = weight;
         this.img = img;
         this.world = world;
-        //this.p1 = p1;
         this.objRect = objRect;
 
     }
 
     public void draw(Graphics2D g){
-        AffineTransform rotation = AffineTransform.getTranslateInstance(x,y);
         g.drawImage(img,x, y, null);
         g.draw(objRect);
-        //System.out.println(this + " --> " + x + "," + y);
         //update();
     }
 
     public void update(){
         p1 = LazarusWorld.getP1();
-        //System.out.println("Boxes updating...");
         int p1x = p1.getXforColli();
         int p1y = p1.getY();
-        //p1.setHitAWall(false);
         if(p1.collision(objRect)){
             p1.setHitAWall(true);
             if(p1x+35 < x){

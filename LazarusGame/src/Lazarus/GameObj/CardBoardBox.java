@@ -60,16 +60,6 @@ public class CardBoardBox extends Boxes{
             }
             CBoxRect.setLocation(this.x, this.y);
 
-//            for (int i = 0; i < world.getMapWall().size(); i++) {
-//                wall = world.getMapWall().get(i);
-//                wallRect = wall.getWallRect();
-//                System.out.println("Falling");
-//                System.out.println("Check: " + wallRect.intersects(CBoxRect));
-//                if (wallRect.intersects(CBoxRect)) {
-//                    CBoxLanded();
-//                }
-//            }
-
             for (int i = 0; i < world.getAllBoxOnMap().size(); i++) {
                 box = world.getAllBoxOnMap().get(i);
                 wallRect = box.getObjRect();
@@ -87,20 +77,6 @@ public class CardBoardBox extends Boxes{
                     p1.setDead();
                 }
             }
-
-//            for (int j = 0; j < world.getmapC().size(); j++) {
-//                CBox = world.getmapC().get(j);
-//                wallRect = CBox.getRect();
-//                System.out.println("Falling");
-//                System.out.println("Check: " + wallRect.intersects(CBoxRect));
-//                if (wallRect.intersects(CBoxRect)) {
-//                    System.out.println("Landed");
-//                    droping = false;
-//                    world.setDropping();
-//                    world.getmapC().add(this);
-//                    world.getCboxInAir().remove(this);
-//                }
-//            }
         }
     }
 

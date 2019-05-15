@@ -49,19 +49,12 @@ public class DrawPanel extends JPanel{
         BGPath = imgPath;
         bg = world.stringToBuffer(BGPath);
         this.world = world;
-        //dropTheBox = false;
 
         buttons = new ArrayList<>();
         CboxInAir = new ArrayList<>();
         WboxInAir = new ArrayList<>();
         MboxInAir = new ArrayList<>();
         SboxInAir = new ArrayList<>();
-
-//        allWallBoxonMap = new ArrayList<>();
-//        allCBoxonMap = new ArrayList<>();
-//        allWBoxonMap = new ArrayList<>();
-//        allMBoxonMap = new ArrayList<>();
-//        allSBoxonMap = new ArrayList<>();
 
         setSize(frameWidth,frameHeight);
 
@@ -143,44 +136,6 @@ public class DrawPanel extends JPanel{
         }
     }
 
-//    public void drawCBox(Graphics2D g){
-//        try {
-//            allCBoxonMap.forEach((curr) -> {
-//                curr.draw(g);
-//            });
-//        }catch (ConcurrentModificationException e){
-//
-//        }
-//    }
-//
-//    public void drawWBox(Graphics2D g){
-//        try {
-//            allWBoxonMap.forEach((curr) -> {
-//                curr.draw(g);
-//            });
-//        }catch (ConcurrentModificationException e){
-//
-//        }
-//    }
-//    public void drawMBox(Graphics2D g){
-//        try {
-//            allMBoxonMap.forEach((curr) -> {
-//                curr.draw(g);
-//            });
-//        }catch (ConcurrentModificationException e){
-//
-//        }
-//    }
-//    public void drawSBox(Graphics2D g){
-//        try {
-//            allSBoxonMap.forEach((curr) -> {
-//                curr.draw(g);
-//            });
-//        }catch (ConcurrentModificationException e){
-//
-//        }
-//    }
-
     public void drawdroppingCbox(Graphics2D g){
 
         Graphics2D g2 = (Graphics2D) g;
@@ -258,16 +213,6 @@ public class DrawPanel extends JPanel{
 
     public void setBoxonMap(ArrayList<Boxes> allBoxOnMap){this.allBoxonMap = allBoxOnMap;}
 
-//    public void setWallBoxonMap(ArrayList<Wall> allWallBoxOnMap){this.allWallBoxonMap = allWallBoxOnMap;}
-//
-//    public void setCBoxonMap(ArrayList<CardBoardBox> allCBoxOnMap){this.allCBoxonMap = allCBoxOnMap;}
-//
-//    public void setWBoxonMap(ArrayList<WoodBox> allWBoxOnMap){this.allWBoxonMap = allWBoxOnMap;}
-//
-//    public void setMBoxonMap(ArrayList<MetalBox> allMBoxOnMap){this.allMBoxonMap = allMBoxOnMap;}
-//
-//    public void setSBoxonMap(ArrayList<StoneBox> allSBoxOnMap){this.allSBoxonMap = allSBoxOnMap;}
-
     public void setCBoxInAir(ArrayList<CardBoardBox> CboxInAir){this.CboxInAir = CboxInAir;}
 
     public void setWBoxInAir(ArrayList<WoodBox> WboxInAir){this.WboxInAir = WboxInAir;}
@@ -280,9 +225,5 @@ public class DrawPanel extends JPanel{
 
     public void DropABox(){
         dropTheBox = true;
-    }
-
-    public boolean getDropsStatus(){
-        return boxDroping;
     }
 }
