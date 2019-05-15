@@ -42,6 +42,7 @@ public class LazarusWorld extends JComponent {
     private String level2;
     private String level3;
     private String gameOver;
+    private String win;
     private int maxlevel;
 
     //Game Element
@@ -117,7 +118,7 @@ public class LazarusWorld extends JComponent {
                     System.out.println("Game Over");
                 }
 
-                if(p1.getDead()){
+                if(p1.getDead() || (currLevel == maxlevel && levelButton.get(0).getLevelup() || levelButton.get(1).getLevelup())){
                     stop();
                 }
 
@@ -130,9 +131,15 @@ public class LazarusWorld extends JComponent {
         }
     }
 
+
     public void stop(){
         clearList();
-        GameOver();
+        if(p1.getDead()){
+            GameOver();
+        }
+        if(currLevel == maxlevel && !p1.getDead()){
+            Win();
+        }
         while (true){
             this.drawpanel.repaint();
         }
@@ -251,6 +258,7 @@ public class LazarusWorld extends JComponent {
          level2 = "Resource/LazarusMap_Level2.csv";
          level3 = "Resource/LazarusMap_Level3.csv";
          gameOver = "Resource/LazarusMap_GameOver.csv";
+         win = "Resource/LazarusMap_Win.csv";
      }
 
      public void setFrame(){
@@ -338,7 +346,7 @@ public class LazarusWorld extends JComponent {
                         img = stringToBuffer(player);
                         if(currLevel == 1){
                         p1 = new Player(col*40,row*40,img,this);
-                        p1Key = new LazaKey(p1, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_P, this);
+                        p1Key = new LazaKey(p1, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_P ,this);
                         }else if(currLevel > 1){
                             p1.setX(col*40);
                             p1.setY(row*40);
@@ -360,6 +368,11 @@ public class LazarusWorld extends JComponent {
 //        this.drawpanel.setWallBoxonMap(mapWall);
         this.drawpanel.setButtons(levelButton);
         this.drawpanel.setP1(p1);
+    }
+
+    public void Restart(){
+         clearList();
+         init();
     }
 
     public void GameOver(){
@@ -393,6 +406,38 @@ public class LazarusWorld extends JComponent {
             }
         this.drawpanel.setBoxonMap(AllBoxOnMap);
 
+    }
+
+    public void Win(){
+        try {
+            scanner = new Scanner(new File(win));
+        }catch (IOException e){
+            System.out.println("File not found");
+        }
+
+        while(scanner.hasNext()) {
+
+            BufferedImage img;
+
+            for (int row = 0; row < 12; row++) {
+                String data = scanner.next();
+                String[] value = data.split(",");
+                for (int col = 0; col < 16; col++) {
+                    int mapCode = Integer.parseInt(value[col]);
+                    if (mapCode == 1) {
+                        img = stringToBuffer(wall);
+                        mapWall.add(new Wall(col*40, row*40, img, this));
+                        //AllBoxOnMap.add(new Boxes(col*40, row*40, img));
+                    }
+                    if (mapCode == 2) {
+                        p1.setX(col*40);
+                        p1.setY(row*40);
+                    }
+                }
+
+            }
+        }
+        this.drawpanel.setBoxonMap(AllBoxOnMap);
     }
 
 

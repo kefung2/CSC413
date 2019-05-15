@@ -36,6 +36,7 @@ public class LazaKey implements KeyListener{
                             this.player.UntoggleGodMode();
                             world.setLevelClock();
                             ascended = false;
+                            break;
                         }
             }
         }

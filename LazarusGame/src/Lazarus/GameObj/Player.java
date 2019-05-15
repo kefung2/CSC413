@@ -110,7 +110,7 @@ public class Player implements GameObj {
             }
 
 
-        collisionCheck();
+        //collisionCheck();
     }
 
     private void moveLeft(){
