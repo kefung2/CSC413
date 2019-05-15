@@ -53,7 +53,11 @@ public class CardBoardBox extends Boxes{
     public void update(){
         if(droping) {
             System.out.println("y++");
+            if(p1.getGodmode()){
+                y += 2;
+            }else{
             y++;
+            }
             CBoxRect.setLocation(this.x, this.y);
 
 //            for (int i = 0; i < world.getMapWall().size(); i++) {
@@ -127,6 +131,7 @@ public class CardBoardBox extends Boxes{
         //world.getmapC().add(this);
         world.setAllBoxOnMap(new Boxes(this.x, this.y, this.weight, this.img, this.world, this.CBoxRect));
         world.getCboxInAir().clear();
+
     }
 }
 

@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 public class Player implements GameObj {
 
     private int x, y, r, angle, px, py;
-    private BufferedImage img;
+    private BufferedImage img, godimg;
     private Image animation;
     private Rectangle lazaRect;
     private LazarusWorld world;
@@ -191,7 +191,7 @@ public class Player implements GameObj {
 
     @Override
     public void draw(Graphics2D g){
-        if(!isDead /*&& !goLeft && !goRight*/) {
+        if(!isDead && !godMode /*&& !goLeft && !goRight*/) {
             g.drawImage(img, x, y, null);
             g.draw(lazaRect);
             g.draw(jumpRect);
@@ -205,6 +205,14 @@ public class Player implements GameObj {
             animation = world.getSquishedgif();
             g.drawImage(animation, x, y, animation.getWidth(null), animation.getHeight(null), null);
         }
+
+        if(godMode && !isDead){
+            godimg = world.getGodImg();
+            g.drawImage(godimg, x, y, null);
+            g.draw(lazaRect);
+            g.draw(jumpRect);
+        }
+
 //        if(goLeft){
 //            animation = world.getMoveLeftgif();
 //            g.drawImage(animation, x, y-40, animation.getWidth(null), animation.getHeight(null), null);

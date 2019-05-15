@@ -10,8 +10,9 @@ public class LazaKey implements KeyListener{
         private Player player;
         private int left, right, up, down, godMode;
         private boolean ascended;
+        private LazarusWorld world;
 
-        public LazaKey (Player player, int left, int right, int up, int down, int godMode){
+        public LazaKey (Player player, int left, int right, int up, int down, int godMode, LazarusWorld world){
             this.player = player;
             this.left = left;
             this.right = right;
@@ -19,6 +20,7 @@ public class LazaKey implements KeyListener{
             this.down = down;
             this.godMode = godMode;
             this.ascended = false;
+            this.world = world;
         }
 
         @Override
@@ -26,11 +28,13 @@ public class LazaKey implements KeyListener{
             switch(ke.getKeyChar()){
                 case 'p' : if(!ascended) {
                             this.player.toggleGodMode();
+                            world.setLevelClock();
                             ascended = true;
                             break;
                             }
                             if(ascended) {
                             this.player.UntoggleGodMode();
+                            world.setLevelClock();
                             ascended = false;
                         }
             }

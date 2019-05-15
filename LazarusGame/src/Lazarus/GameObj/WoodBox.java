@@ -46,7 +46,11 @@ public class WoodBox extends Boxes{
     public void update(){
         if(droping) {
             System.out.println("y++");
-            y++;
+            if(p1.getGodmode()){
+                y += 2;
+            }else{
+                y++;
+            }
             WBoxRect.setLocation(this.x, this.y);
 
             for (int i = 0; i < world.getAllBoxOnMap().size()-1; i++) {

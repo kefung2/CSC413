@@ -25,6 +25,7 @@ public class LazarusWorld extends JComponent {
 
     //Resource
     private String player;
+    private String playerGod;
     private String background;
     private String jumpleft;
     private String jumpright;
@@ -234,6 +235,7 @@ public class LazarusWorld extends JComponent {
 
          background = "Resource/Background.bmp";
          player = "Resource/Lazarus_stand.gif";
+         playerGod = "Resource/Lazarus_stand_god.gif";
          moveleft = "Resource/Lazarus_left.gif";
          jumpleft = "Resource/Lazarus_jump_left.gif";
          moveright = "Resource/Lazarus_right.gif";
@@ -336,7 +338,7 @@ public class LazarusWorld extends JComponent {
                         img = stringToBuffer(player);
                         if(currLevel == 1){
                         p1 = new Player(col*40,row*40,img,this);
-                        p1Key = new LazaKey(p1, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_P);
+                        p1Key = new LazaKey(p1, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_P, this);
                         }else if(currLevel > 1){
                             p1.setX(col*40);
                             p1.setY(row*40);
@@ -401,6 +403,10 @@ public class LazarusWorld extends JComponent {
             levelClock = 700;
         } else if (currLevel == 3) {
             levelClock = 500;
+        }
+
+        if(p1.getGodmode()){
+            levelClock = 200;
         }
     }
 
@@ -481,12 +487,14 @@ public class LazarusWorld extends JComponent {
 //    public ArrayList<StoneBox> getmapS(){ return mapS;}
 
     public ArrayList<CardBoardBox> getCboxInAir(){return CboxInAir;}
+
     public ArrayList<WoodBox> getWboxInAir(){return WboxInAir;}
+
     public ArrayList<MetalBox> getMboxInAir(){return MboxInAir;}
+
     public ArrayList<StoneBox> getSboxInAir(){return SboxInAir;}
 
     public static Player getP1(){return p1;}
-
 
     public ArrayList<Wall> getMapWall() {return mapWall;}
 
@@ -514,6 +522,7 @@ public class LazarusWorld extends JComponent {
 
     public BufferedImage getSquished() {return stringToBuffer(squished);}
 
+    public BufferedImage getGodImg() {return stringToBuffer(playerGod);}
 
     public Image getMoveLeftgif() {return stringToImage(moveleft);}
 
@@ -538,9 +547,5 @@ public class LazarusWorld extends JComponent {
     }
 
     public void setGameOver() {running = false;}
-
-
-
-
 
 }
